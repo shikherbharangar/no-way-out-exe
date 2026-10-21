@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-21T05:23:09.117Z",
+  "capturedAt": "2026-10-21T12:05:52.798Z",
   "renderer": "Phaser in Chromium via Playwright",
   "viewport": {
     "width": 1280,
@@ -48,8 +48,8 @@
           },
           {
             "id": 1,
-            "x": 217.88888888888857,
-            "y": 293.9722222222222,
+            "x": 215.98333333333304,
+            "y": 295.6444444444444,
             "grounded": false
           }
         ],
@@ -59,38 +59,38 @@
         "remainingTiles": 326,
         "activeExplosions": [
           {
-            "x": 242.38888888888857,
-            "y": 272.9555555555555,
-            "frame": 3
+            "x": 240.47222222222192,
+            "y": 266.9555555555555,
+            "frame": 4
           },
           {
             "x": 230,
-            "y": 272,
-            "frame": 3
+            "y": 266,
+            "frame": 4
           }
         ]
       }
     },
     {
-      "path": "artifacts/environment.png",
-      "description": "The scrolled prison environment, machinery, damaged masonry, and puzzle platforms.",
+      "path": "artifacts/aftermath.png",
+      "description": "Actual expanding smoke, falling material fragments, exposed fracture edges and scorch residue after the blast.",
       "stateBeforeScreenshot": {
-        "tick": 587,
+        "tick": 148,
         "players": [
           {
             "id": 0,
-            "x": 488.4916666666638,
-            "y": 224.89622222222226,
+            "x": 90,
+            "y": 288.9555555555555,
             "grounded": true
           },
           {
             "id": 1,
-            "x": 372.9083333333338,
-            "y": 288.8944444444444,
+            "x": 215.98333333333304,
+            "y": 336.8222222222222,
             "grounded": true
           }
         ],
-        "plate": true,
+        "plate": false,
         "hack": 0,
         "gate": false,
         "remainingTiles": 326,
@@ -98,28 +98,54 @@
       }
     },
     {
-      "path": "artifacts/cooperative.png",
-      "description": "BRICK holds the power plate while ZIP actively hacks the linked terminal.",
+      "path": "artifacts/environment.png",
+      "description": "The scrolled prison environment, machinery, damaged masonry, and puzzle platforms.",
       "stateBeforeScreenshot": {
-        "tick": 623,
+        "tick": 493,
         "players": [
           {
             "id": 0,
-            "x": 491.3305555555527,
-            "y": 224.89622222222226,
+            "x": 491.008333333331,
+            "y": 224.78955555555547,
             "grounded": true
           },
           {
             "id": 1,
-            "x": 372.9083333333338,
-            "y": 288.8944444444444,
+            "x": 372.97500000000065,
+            "y": 288.9666666666666,
             "grounded": true
           }
         ],
         "plate": true,
-        "hack": 0.26666666666666655,
+        "hack": 0,
         "gate": false,
-        "remainingTiles": 326,
+        "remainingTiles": 311,
+        "activeExplosions": []
+      }
+    },
+    {
+      "path": "artifacts/cooperative.png",
+      "description": "BRICK holds the power plate while ZIP actively hacks the linked terminal.",
+      "stateBeforeScreenshot": {
+        "tick": 530,
+        "players": [
+          {
+            "id": 0,
+            "x": 493.8472222222199,
+            "y": 224.78955555555547,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 372.97500000000065,
+            "y": 288.9666666666666,
+            "grounded": true
+          }
+        ],
+        "plate": true,
+        "hack": 0.2555555555555554,
+        "gate": false,
+        "remainingTiles": 311,
         "activeExplosions": []
       }
     },
@@ -127,25 +153,25 @@
       "path": "artifacts/gameplay.png",
       "description": "Both prisoners in the rendered scene immediately after completing the cooperative gate puzzle.",
       "stateBeforeScreenshot": {
-        "tick": 692,
+        "tick": 600,
         "players": [
           {
             "id": 0,
-            "x": 491.3305555555527,
-            "y": 224.89622222222226,
+            "x": 493.8472222222199,
+            "y": 224.78955555555547,
             "grounded": true
           },
           {
             "id": 1,
-            "x": 372.9083333333338,
-            "y": 288.8944444444444,
+            "x": 372.97500000000065,
+            "y": 288.9666666666666,
             "grounded": true
           }
         ],
         "plate": true,
         "hack": 1,
         "gate": true,
-        "remainingTiles": 326,
+        "remainingTiles": 311,
         "activeExplosions": []
       }
     }

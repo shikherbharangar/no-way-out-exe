@@ -77,10 +77,25 @@ try {
   await page.waitForFunction(() => window.__prison.sim.players[1].x > 209);
   await page.keyboard.up('ArrowRight');
   await page.keyboard.down('ControlRight');
-  await page.waitForFunction(() => window.__prison.children.list.some(o =>
-    o.texture?.key === 'explosion' && Number(o.frame.name) >= 3 && Number(o.frame.name) <= 7));
+  // Pause immediately after an actual peak-fire frame has rendered. This keeps a
+  // slow screenshot encoder from advancing into the smoke phase; no game state,
+  // textures, positions, or pixels are changed to manufacture the image.
+  await page.evaluate(() => new Promise(resolve => {
+    const game = window.__prison.game;
+    const afterRender = () => {
+      if (!window.__prison.children.list.some(o => o.texture?.key === 'explosion'
+          && o.visible && Number(o.frame.name) >= 4 && Number(o.frame.name) <= 7)) return;
+      game.events.off('postrender', afterRender);
+      game.loop.sleep();
+      resolve();
+    };
+    game.events.on('postrender', afterRender);
+  }));
   await capture('explosions', 'A live blast-punch/barrel explosion removing masonry and floor tiles.');
+  await page.evaluate(() => window.__prison.game.loop.wake());
   await page.keyboard.up('ControlRight');
+  await page.waitForFunction(() => !window.__prison.children.list.some(o => o.texture?.key === 'explosion' && o.visible));
+  await capture('aftermath', 'Actual expanding smoke, falling material fragments, exposed fracture edges and scorch residue after the blast.');
 
   await drive(1, 369);
   await drive(0, 487);
