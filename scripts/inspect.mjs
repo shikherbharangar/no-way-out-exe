@@ -1,0 +1,12 @@
+import { chromium } from '@playwright/test';
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const page=await browser.newPage({viewport:{width:1280,height:720}});
+page.on('pageerror', e=>console.error('PAGE ERROR',e.message));
+page.on('console', m=>{if(m.type()==='error')console.error(m.text())});
+await page.goto('http://127.0.0.1:5173');
+await page.waitForSelector('#play');await page.waitForTimeout(800);
+await page.screenshot({path:'artifacts/title.png'});
+await page.click('#play');await page.click('#start');await page.waitForTimeout(2500);
+await page.screenshot({path:'artifacts/prison.png'});
+console.log(await page.evaluate(()=>({players:window.__prison.sim.players.map(p=>({x:p.x,y:p.y})),textures:window.__prison.textures.getTextureKeys()})));
+await browser.close();
