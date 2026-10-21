@@ -25,8 +25,7 @@ function tutorial() {
 function keyName(s: string) { return s.replace('Key', '').replace('Arrow', '').replace('Right', 'R').replace('Left', 'L').replace('Control', 'Ctrl'); }
 function playing() {
  screen = 'playing'; scene.pausedRun = false; scene.keys.clear();
- const labels = scene.bindings.map(b => `${[b.left,b.right].map(k=>`<kbd>${escape(keyName(k))}</kbd>`).join('')} MOVE &nbsp;<kbd>${escape(keyName(b.jump))}</kbd> JUMP &nbsp;<kbd>${escape(keyName(b.interact))}</kbd> INTERACT &nbsp;<kbd>${escape(keyName(b.special))}</kbd> ABILITY`);
- set(`<div class="in-game-tools"><button id="sound" class="icon-btn">${scene.sfx.volume ? 'SOUND ON' : 'MUTED'}</button><button id="full" class="icon-btn">FULLSCREEN</button><button id="pause" class="icon-btn">${scene.online ? 'MENU' : 'ESC / PAUSE'}</button></div><div class="control-strip"><span class="zip">ZIP ${labels[0]}</span><span class="brick">BRICK ${labels[1]}</span></div>`);
+ set(`<div class="in-game-tools compact-tools"><button id="sound" class="icon-btn" aria-label="Toggle sound" title="Toggle sound">${scene.sfx.volume ? 'SND' : 'MUTE'}</button><button id="full" class="icon-btn" aria-label="Fullscreen" title="Fullscreen">FULL</button><button id="pause" class="icon-btn" aria-label="Pause or menu" title="Escape / menu">II</button></div>`);
  click('pause', pause); click('full', () => { if (document.fullscreenElement) void document.exitFullscreen(); else void document.querySelector('#app')!.requestFullscreen().catch(() => {}); });
  click('sound', () => { scene.sfx.setVolume(scene.sfx.volume ? 0 : .35); playing(); });
 }

@@ -11,3 +11,8 @@ artifacts/*
 !artifacts/capture-evidence.json
 !artifacts/README.md
 *.log
+
+__pycache__/
+!artifacts/before/
+!artifacts/visual-review.md
+!artifacts/aftermath.png
