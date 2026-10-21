@@ -79,7 +79,7 @@ npm run test:browser
 - The WebSocket test covers ready states, room capacity, authoritative movement, reconnect, duplicate-slot rejection, and rejected client state changes.
 - Playwright runs two independent browser contexts. It exercises local controls/remapping, pause, live destruction, resizing, real lobby join/ready, each online character, synchronized terrain, and disconnection UI. It checks unhandled browser exceptions.
 
-Browser scripts use `/usr/bin/chromium`. Set `CHROMIUM_PATH` to a compatible installed executable if needed. Alternatively install Playwright's Chromium and adapt the launch path. Screenshots are saved under ignored `artifacts/`. `npm run inspect` captures title and gameplay screenshots. Browser checks target the development server because their assertions read a development-only inspection hook; the hook is absent from production builds.
+Browser scripts use `/usr/bin/chromium`. Set `CHROMIUM_PATH` to a compatible installed executable if needed. Alternatively install Playwright's Chromium and adapt the launch path. Temporary validation screenshots are ignored; the five verified screenshots linked in [artifacts/README.md](artifacts/README.md) are committed. `node scripts/capture-gameplay.mjs` reproduces this set through real keyboard gameplay. `npm run inspect` captures additional title and gameplay screenshots. Browser checks target the development server because their assertions read a development-only inspection hook; the hook is absent from production builds.
 
 The production bundle is large because it includes Phaser (~355 KB gzip for the JS bundle). Vite's size warning is expected. A separate production-build asset-loading check is described in `docs/VALIDATION.md`.
 
@@ -96,7 +96,7 @@ No Broforce sprites, maps, textures, audio, or UI were extracted, traced, or red
 
 ## GitHub and Vercel
 
-The checkout was initially empty. The implementation is committed locally; it has not been pushed or deployed. To publish the reviewed commit to the selected repository's initial main branch:
+The checkout was initially empty. To publish reviewed changes to the selected repository's main branch:
 
 ```bash
 git remote -v

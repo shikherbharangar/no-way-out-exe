@@ -2,5 +2,12 @@ node_modules/
 dist/
 .env
 .env.local
-artifacts/
+artifacts/*
+!artifacts/gameplay.png
+!artifacts/characters.png
+!artifacts/environment.png
+!artifacts/explosions.png
+!artifacts/cooperative.png
+!artifacts/capture-evidence.json
+!artifacts/README.md
 *.log

@@ -1,0 +1,153 @@
+{
+  "capturedAt": "2026-10-21T05:23:09.117Z",
+  "renderer": "Phaser in Chromium via Playwright",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "controls": "Keyboard input; game state observed, never overwritten",
+  "browserErrors": [],
+  "captures": [
+    {
+      "path": "artifacts/characters.png",
+      "description": "ZIP and BRICK in the actual playable prison scene.",
+      "stateBeforeScreenshot": {
+        "tick": 61,
+        "players": [
+          {
+            "id": 0,
+            "x": 90,
+            "y": 288.9555555555555,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 138,
+            "y": 288.9555555555555,
+            "grounded": true
+          }
+        ],
+        "plate": false,
+        "hack": 0,
+        "gate": false,
+        "remainingTiles": 351,
+        "activeExplosions": []
+      }
+    },
+    {
+      "path": "artifacts/explosions.png",
+      "description": "A live blast-punch/barrel explosion removing masonry and floor tiles.",
+      "stateBeforeScreenshot": {
+        "tick": 117,
+        "players": [
+          {
+            "id": 0,
+            "x": 90,
+            "y": 288.9555555555555,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 217.88888888888857,
+            "y": 293.9722222222222,
+            "grounded": false
+          }
+        ],
+        "plate": false,
+        "hack": 0,
+        "gate": false,
+        "remainingTiles": 326,
+        "activeExplosions": [
+          {
+            "x": 242.38888888888857,
+            "y": 272.9555555555555,
+            "frame": 3
+          },
+          {
+            "x": 230,
+            "y": 272,
+            "frame": 3
+          }
+        ]
+      }
+    },
+    {
+      "path": "artifacts/environment.png",
+      "description": "The scrolled prison environment, machinery, damaged masonry, and puzzle platforms.",
+      "stateBeforeScreenshot": {
+        "tick": 587,
+        "players": [
+          {
+            "id": 0,
+            "x": 488.4916666666638,
+            "y": 224.89622222222226,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 372.9083333333338,
+            "y": 288.8944444444444,
+            "grounded": true
+          }
+        ],
+        "plate": true,
+        "hack": 0,
+        "gate": false,
+        "remainingTiles": 326,
+        "activeExplosions": []
+      }
+    },
+    {
+      "path": "artifacts/cooperative.png",
+      "description": "BRICK holds the power plate while ZIP actively hacks the linked terminal.",
+      "stateBeforeScreenshot": {
+        "tick": 623,
+        "players": [
+          {
+            "id": 0,
+            "x": 491.3305555555527,
+            "y": 224.89622222222226,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 372.9083333333338,
+            "y": 288.8944444444444,
+            "grounded": true
+          }
+        ],
+        "plate": true,
+        "hack": 0.26666666666666655,
+        "gate": false,
+        "remainingTiles": 326,
+        "activeExplosions": []
+      }
+    },
+    {
+      "path": "artifacts/gameplay.png",
+      "description": "Both prisoners in the rendered scene immediately after completing the cooperative gate puzzle.",
+      "stateBeforeScreenshot": {
+        "tick": 692,
+        "players": [
+          {
+            "id": 0,
+            "x": 491.3305555555527,
+            "y": 224.89622222222226,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 372.9083333333338,
+            "y": 288.8944444444444,
+            "grounded": true
+          }
+        ],
+        "plate": true,
+        "hack": 1,
+        "gate": true,
+        "remainingTiles": 326,
+        "activeExplosions": []
+      }
+    }
+  ]
+}
