@@ -1,0 +1,78 @@
+{
+  "verifiedAt": "2026-10-22T16:27:54.662Z",
+  "sourceDuration": 24.114812,
+  "encodedDuration": 24.169333,
+  "videoCodec": "h264",
+  "audioCodec": "aac",
+  "encodedFrames": 724,
+  "actualRenderedFrames": 653,
+  "canvas": [
+    640,
+    360
+  ],
+  "uncut": true,
+  "decodePassed": true,
+  "pngsDecoded": 10,
+  "files": [
+    {
+      "name": "01-counterweight.png",
+      "bytes": 59237,
+      "sha256": "cfcae51706b3a385e1628ce666ad18826e0094c355d0fdd545bc044e0077c6f6"
+    },
+    {
+      "name": "02-relay.png",
+      "bytes": 53263,
+      "sha256": "86026e3fd3f4432360b69f7bdbb2a96126eab0f9ceb75978575baa3b8f831571"
+    },
+    {
+      "name": "03-trap.png",
+      "bytes": 44782,
+      "sha256": "e4dc64c18b94cba42665ee1b9ceed2edcf7523815d9fc30a8d7ff35b06dea36e"
+    },
+    {
+      "name": "04-chase.png",
+      "bytes": 49083,
+      "sha256": "84dd945748a721354bdc8182cb8dfd28b729c4a4d5e7b7e30a4417f4a27113fa"
+    },
+    {
+      "name": "05-cooperative-ram.png",
+      "bytes": 44306,
+      "sha256": "c939616f0a06c026ca7a6df70740bc0205063c96e9ac0dff713ac52bfb541cff"
+    },
+    {
+      "name": "06-heart-explosion.png",
+      "bytes": 53686,
+      "sha256": "668cc3c8200e478905a31b4e1aeda5ab184396645be9c7ea5c24d67466c82cfa"
+    },
+    {
+      "name": "07-sector-clear.png",
+      "bytes": 43185,
+      "sha256": "03a446573cfb00a084d695c8330cdc94a16dcd38f7c7a5bbcfa662e0e3408bb6"
+    },
+    {
+      "name": "08-online-zip.png",
+      "bytes": 47985,
+      "sha256": "14b1158663d91c883c8874cddd6eb6b0a3c4e18b398e4ecd2913f4849034a939"
+    },
+    {
+      "name": "09-online-brick.png",
+      "bytes": 46641,
+      "sha256": "c84a54dbe880c67713cdc6be5496b677a8e58054b414d7bbe6a1dc269614e8a3"
+    },
+    {
+      "name": "gameplay.png",
+      "bytes": 44306,
+      "sha256": "c939616f0a06c026ca7a6df70740bc0205063c96e9ac0dff713ac52bfb541cff"
+    },
+    {
+      "name": "gameplay.webm",
+      "bytes": 4496245,
+      "sha256": "e322c0b6620a5d760e12a07fbb30c4af2cea7122bd113aca3a87b5b196c14bfa"
+    },
+    {
+      "name": "gameplay.mp4",
+      "bytes": 1554782,
+      "sha256": "7f8d219fe41d945d2f0a3ab9f09e955aa64ff78f9839c3e2735d5db87bb898f7"
+    }
+  ]
+}

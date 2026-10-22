@@ -18,3 +18,5 @@ __pycache__/
 !artifacts/aftermath.png
 
 !artifacts/premium/
+
+!artifacts/machine/

@@ -2,9 +2,11 @@
 
 **Two idiots. One prison. Infinite bad decisions.**
 
-A playable, original pixel-art prison escape built with Phaser 3, TypeScript, and Vite. This release deliberately concentrates on **Cell Block Zero**, the visual and gameplay acceptance slice. It is not the complete three-sector game described in the master brief.
+A playable, original pixel-art prison escape built with Phaser 3, TypeScript, and Vite. This build contains **Cell Block Zero and Sector 02: THE MACHINE**, a complete two-sector cooperative chapter. The remaining sectors from the master brief are future work.
 
 The premium action pass adds editable pixel drawings, a composed ash-furnace encounter, guard aiming/recoil, shield charging and timed barrel chains. Watch the [15-second real gameplay showcase](artifacts/premium/gameplay-15s.mp4), browse the [captured sequence and Broforce comparison](docs/PREMIUM_ACTION_REVIEW.md), or read the [art pipeline notes](docs/ART_DIRECTION.md). The original co-op puzzle, escape route and authoritative online server are preserved.
+
+THE MACHINE adds a vertical counterweight shaft, seeded industrial rooms, a synchronized relay, a crusher chase and a cooperative magnetic ram boss. See the [new gameplay video and sector guide](docs/THE_MACHINE.md).
 
 ## Play locally
 
@@ -35,9 +37,11 @@ Controls can be remapped in Settings. For a solo rehearsal, operate the two keyb
 2. Put BRICK on the brass pressure plate. ZIP climbs the two steel steps to the terminal and holds interact for 1.5 seconds. Both characters are needed: the electrical link supplies the terminal.
 3. Pass the unlocked bulkhead together. In the ash-furnace bay, BRICK can hold interact to brace and reflect incoming shots; ZIP shoots into the shield to charge BRICK’s next punch. Guards aim before firing and fall when their platforms break. Trigger the staggered drum chain, jump across the damaged walkway, and keep ZIP behind the shield. The lower route remains usable.
 4. If one character dies, stand within 50 pixels and hold interact to revive their hologram. If both die, the checkpoint restores terrain and players.
-5. Bring **both living players** inside the freight lift and press interact. The slice ends with WARDEN's downward-elevator reveal and run statistics.
+5. Bring **both living players** inside the freight lift and press interact. Then both hold interact for 1.2 seconds to descend into THE MACHINE. Follow the machinery hints, survive the transfer line and disable the magnetic heart together. Final results follow the Sector 02 archive exit.
 
 Normal masonry, dirt floors, and catwalk sections are destructible. Bolted puzzle supports and the lowest foundation are reinforced so explosions cannot permanently remove the required pressure plate, terminal, or approach steps. Hero-triggered blasts do not damage partners. The link limits separation to approximately one camera width.
+
+Machine room seeds are selectable in local orientation; online seeds come from the host server. There are four authored layout combinations. Hold interact at service ladders to climb. If a hologram is stranded in Sector 02, both hold interact for three seconds to recall the shared checkpoint.
 
 ## Included in this build
 
@@ -47,6 +51,7 @@ Normal masonry, dirt floors, and catwalk sections are destructible. Bolted puzzl
 - Pixel fireballs, sparks, bouncing debris, camera shake, local impact pauses, stepped explosion lighting, synthesized sound, mute and volume.
 - Original textured PNG tiles and sprite sheets, distant architecture, parallax windows, near steelwork, animated fans, cables, light shafts, airborne grit, and a custom pixel-lettered logo.
 - Electrical link, asymmetric plate/hack puzzle, gate, guards and projectiles, collapsing floor, checkpoint, ghost revival, and two-player exit.
+- THE MACHINE: six reusable templates, connected seeded room selection, cooperative lift/relay/ram, moving platforms, lasers, a telegraphed crusher, chase, recovery ladders and shared checkpoints.
 - Title, orientation, pause/settings, remapping, credits, results, fullscreen, resizing, and private online lobby.
 
 ## Real online co-op
@@ -76,6 +81,9 @@ npm test
 npm run test:network
 npm run test:network:action
 npm run test:browser
+npm run test:network:machine
+npm run test:browser:machine
+npm run test:browser:machine:online
 ```
 
 - Vitest covers movement, variable jump height, buffering, deterministic simulation, actual terrain removal, reinforced puzzle supports, plate/hack requirements, gate collision, revival/checkpoint reset, and two-player exit.

@@ -67,6 +67,8 @@ try {
    if(!shots.some(x=>x.name==='06-freight-lift')&&s.players.every(p=>p.x>1150))pending='06-freight-lift';
    if(Math.floor(elapsed)!==lastSample){lastSample=Math.floor(elapsed);samples.push({seconds:elapsed,...snapshot()});}
    if(elapsed>=16.5){release();recorder.stop();return;}
+   // Keep this Sector 01 recording at its completed lift; the campaign now continues.
+   if(s.won){release();requestAnimationFrame(frame);return;}
    if(elapsed<2.7){
     control(0,{right:t<8,special:t%36<3});control(1,{interact:true});
    }else if(!punched){

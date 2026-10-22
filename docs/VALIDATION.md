@@ -1,3 +1,21 @@
+# Sector 02 validation — THE MACHINE
+
+The current milestone continues `f6cdd58`; the older action-pass record below remains historical evidence. See [THE MACHINE guide and visual review](THE_MACHINE.md) for the new playable route and actual captures.
+
+- Production build: TypeScript and Vite pass. The existing Phaser bundle-size warning remains (~364 KB gzip); no new build error.
+- Gameplay: **32 tests across five suites**, including all original 20 tests. New checks cover both-sector progression, deterministic selection across 512 seeds, nine input-driven sector runs covering all four layouts, lift roles/recall, relay requirements, ram vulnerability/release, trap warning/reset, full demolition recovery, ladder recovery, stranded-hologram recall and snapshot continuation.
+- Networking: existing room/capacity/ready/input/reconnect/tamper tests and the original combat route pass. The new complete campaign uses two websocket clients, reconnects after powering the relay and verifies identical final snapshots. Reconnect preserves the layout seed, terrain, lift and relay; the room freezes while disconnected.
+- Browser: the original smoke suite checks local controls, remapping, destruction, pause, resize, two-browser lobby/movement/destruction and disconnect UI. The new local campaign capture starts in Cell Block Zero, transitions through the lift and finishes THE MACHINE using only keyboard events. Separate independent browser contexts play the complete online campaign and compare final snapshots.
+- Production browser: all 21 shipping PNG assets load, controls/pause work, and the development hook is absent. The complete campaign inspection/capture runs use the development build, not the production hook.
+- Art preservation: all **17 pre-existing PNG assets** remain byte-identical to `f6cdd58`. Four new original machine PNGs are added, retaining native character/tile scale.
+- Media: seven local sequence PNGs, two online client PNGs, a gameplay cover, continuous original WebM with game audio, and H.264/AAC MP4. `artifacts/machine/media-verification.json` records decoded dimensions/duration, frame count and SHA-256 hashes. Export is continuous, without compositing or speed changes; encoding at 30fps may repeat captured frames.
+
+Evidence is under `artifacts/machine/`; original regression captures are isolated in its `regression/` subdirectory so previously published action-pass media remains untouched. The extended two-browser run found and fixed a real cage-recall bug: riders could be carried into the lower floor. Riders now align exactly with the moving deck; a regression verifies free movement after recall. Test driver corrections addressed independent clients disagreeing on a narrowly sampled waypoint and input overshoot at an online punch and changed screenshot selection from a fire condition to the actual crusher/dust pursuit. A network test launched during server restart was rerun after the server was ready. Final visual inspection also caught blank online WebGL readbacks; online captures now wait for post-render and media export rejects low-color blank PNGs. These failed attempts are not counted as successful validation.
+
+The tests run against local Chromium and the dedicated local WebSocket server. Physical controllers, long-distance network latency, a deployed production multiplayer service and production load are not verified here. The room generator is a validated four-combination authored grammar, not a general arbitrary-map solver. Broforce commercial visual parity remains unproven.
+
+---
+
 # Validation record
 
 Target: the Cell Block Zero desktop slice, Node 24.19.0, Chromium, Phaser 3.90. Validation date: 22 October 2026.

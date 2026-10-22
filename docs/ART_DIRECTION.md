@@ -38,3 +38,8 @@ npm run export:showcase
 All 17 shipping PNGs reproduce byte-for-byte. Capture controls enter through ordinary keyboard events; the inspection hook only reads state. Showcase frames are collected immediately after rendering, without pausing the running recording. The separate single-explosion screenshot script briefly pauses an already rendered peak-fire frame for screenshot encoding, then resumes. Neither path manufactures game state or pixels.
 
 Important art direction note: it is okay to match Broforce's approximate character size, chunkiness, scene scale, and screen density. The goal is not subtle originality. The goal is a similarly impressive level of visual quality and arcade intensity, while still using original characters, original environments, and original assets.
+
+
+## Sector 02 continuation
+
+THE MACHINE retains the actor/world scale and all original animation sheets. Its original cage, dynamo, crusher, shuttle, magnetic ram, battery shells, stepped architecture and foreground silhouettes compile from `scripts/art/machine.py`. The new camera follows the pair vertically without scaling the actors. See [the sector review](THE_MACHINE.md) for real captures, external reference comparisons and remaining production-quality differences.

@@ -1,7 +1,8 @@
 import Phaser from 'phaser';
-import { Simulation, COLS, ROWS, TILE, WORLD_W, idleInput, type Input, type GameEvent } from './simulation';
+import { Simulation, COLS, TILE, WORLD_W, idleInput, type Input, type GameEvent } from './simulation';
 import { Sound } from './audio';
 import { PixelEffects } from './pixel-effects';
+import { MachineArt } from './machine-art';
 import { PrisonArt } from './prison-art';
 export type Binding = { left: string; right: string; jump: string; interact: string; special: string };
 export const defaults: Binding[] = [
@@ -14,7 +15,8 @@ export class PrisonScene extends Phaser.Scene {
  keys = new Set<string>(); pressed = new Set<string>(); bindings: Binding[] = structuredClone(defaults);
  sprites!: Phaser.GameObjects.Sprite[]; guardSprites!: Phaser.GameObjects.Sprite[]; barrelSprites!: Phaser.GameObjects.Image[];
  terrainLayer!: Phaser.Tilemaps.TilemapLayer; previousTerrain: number[] = [];
- effects!: PixelEffects; scenery!: PrisonArt;
+ effects!: PixelEffects; scenery!: PrisonArt; machineArt!:MachineArt;
+ sectorOneObjects:Phaser.GameObjects.GameObject[]=[];displaySector=1;
  fx!: Phaser.GameObjects.Graphics; link!: Phaser.GameObjects.Graphics; edges!: Phaser.GameObjects.Graphics;
  gateGraphics!: Phaser.GameObjects.Graphics; hud!: Phaser.GameObjects.Graphics;
  names!: Phaser.GameObjects.Text[]; objective!: Phaser.GameObjects.Text; dialog!: Phaser.GameObjects.Text; hackLabel!: Phaser.GameObjects.Text;
@@ -23,13 +25,14 @@ export class PrisonScene extends Phaser.Scene {
  private stride=[0,0];private guardHp=[2,2,2,2];private guardReaction=[0,0,0,0];private lastHint='';private hintUntil=0;private shotTrail=0;
  constructor() { super('prison'); }
  preload() {
-  for (const key of ['far', 'mid', 'fan','zip-portrait','brick-portrait','prison-composition']) this.load.image(key, `/assets/${key}.png`);
+  for (const key of ['far', 'mid', 'fan','zip-portrait','brick-portrait','prison-composition','machine-composition','machine-foreground','machine-depth']) this.load.image(key, `/assets/${key}.png`);
   for (const key of ['zip', 'brick', 'guard']) this.load.spritesheet(key, `/assets/${key}.png`, { frameWidth: 48, frameHeight: 48 });
   this.load.spritesheet('props', '/assets/props.png', { frameWidth: 64, frameHeight: 64 });
   this.load.spritesheet('explosion', '/assets/explosion.png', { frameWidth: 128, frameHeight: 128 });
   this.load.spritesheet('smoke', '/assets/smoke.png', { frameWidth: 96, frameHeight: 96 });
   this.load.spritesheet('debris', '/assets/debris.png', { frameWidth: 16, frameHeight: 16 });
   this.load.spritesheet('impact', '/assets/impact.png', { frameWidth: 64, frameHeight: 64 });
+  this.load.spritesheet('machine-props','/assets/machine-props.png',{frameWidth:96,frameHeight:96});
   this.load.image('tiles', '/assets/tiles.png');
  }
  create() {
@@ -38,19 +41,23 @@ export class PrisonScene extends Phaser.Scene {
   this.add.image(0, 0, 'mid').setOrigin(0).setScrollFactor(.6).setDepth(-15);
   this.add.image(0,0,'prison-composition').setOrigin(0).setDepth(-8);
   this.scenery=new PrisonArt(this);
+  this.sectorOneObjects=this.children.list.slice();
   this.effects=new PixelEffects(this);
-  const map = this.make.tilemap({ tileWidth: TILE, tileHeight: TILE, width: COLS, height: ROWS });
+  this.machineArt=new MachineArt(this);
+  const map = this.make.tilemap({ tileWidth: TILE, tileHeight: TILE, width: COLS, height: 40 });
   const tiles = map.addTilesetImage('tiles', 'tiles', TILE, TILE, 0, 0)!;
   this.terrainLayer = map.createBlankLayer('destructible', tiles, 0, 0)!.setDepth(2);
   this.edges=this.add.graphics().setDepth(3);
   this.syncTerrain();
   this.barrelSprites = this.sim.barrels.map(b => this.add.image(b.x, b.y, 'props', 0).setOrigin(.5, 1).setDepth(4));
+  const beforeProps=new Set(this.children.list);
   this.add.image(487, 224, 'props', 1).setOrigin(.5, 1).setDepth(3);
   this.add.image(110, 288, 'props', 8).setOrigin(.5, 1).setDepth(-1).setTint(0x7b8d98);
   this.add.image(548, 177, 'props', 9).setOrigin(.5, 1).setDepth(0);
   this.add.image(645, 273, 'props', 7).setOrigin(.5, 1).setDepth(0);
   for (const x of [287, 790, 945]) this.add.image(x, 211, 'props', 4).setDepth(-1).setTint(0xa9a7a1);
   for (const x of [590, 1159]) this.add.image(x, 153, 'props', 5).setDepth(0);
+  this.sectorOneObjects.push(...this.children.list.filter(o=>!beforeProps.has(o)));
   this.link = this.add.graphics().setDepth(6); this.gateGraphics = this.add.graphics().setDepth(5);
   this.sprites = ['zip', 'brick'].map(key => this.add.sprite(0, 0, key).setOrigin(.5, 1).setDepth(7));
   this.guardSprites = this.sim.guards.map(() => this.add.sprite(0, 0, 'guard').setOrigin(.5, 1).setDepth(6));
@@ -59,8 +66,8 @@ export class PrisonScene extends Phaser.Scene {
   this.anims.create({ key: 'impact', frames: this.anims.generateFrameNumbers('impact', { start: 0, end: 5 }), frameRate: 35, repeat: 0, hideOnComplete: true });
   this.names = this.sprites.map((_, i) => this.text(0, 0, i ? '2' : '1', i ? '#ffba68' : '#83fff3', 6).setDepth(12).setOrigin(.5));
   this.hackLabel = this.text(487, 164, '', '#91f3ec', 7).setOrigin(.5);
-  this.text(864, 248, 'CAUTION: LOAD LIMIT', '#c8995c', 6).setOrigin(.5);
-  this.text(1193, 195, 'FREIGHT 04', '#8a9caa', 7).setOrigin(.5);
+  this.sectorOneObjects.push(this.text(864, 248, 'CAUTION: LOAD LIMIT', '#c8995c', 6).setOrigin(.5));
+  this.sectorOneObjects.push(this.text(1193, 195, 'FREIGHT 04', '#8a9caa', 7).setOrigin(.5));
   this.hud = this.add.graphics().setScrollFactor(0).setDepth(29);
   this.objective = this.text(320, 15, '', '#859aa9', 7).setOrigin(.5).setScrollFactor(0).setDepth(30);
   this.dialog = this.text(320, 329, '', '#f7d6a0', 8).setOrigin(.5).setScrollFactor(0).setDepth(30);
@@ -80,8 +87,8 @@ export class PrisonScene extends Phaser.Scene {
   this.game.events.emit('prison-ready', this);
  }
  text(x:number,y:number,value:string,color:string,size=8) {return this.add.text(x,y,value,{fontFamily:'monospace',fontSize:`${size}px`,fontStyle:'bold',color,stroke:'#060e1b',strokeThickness:2,padding:{x:2,y:2}}).setDepth(3);}
- start(online=false,slot=0) {
-  this.sim=new Simulation();this.previousTerrain=[];this.lastEvent=0;this.activeRun=true;this.pausedRun=false;this.online=online;this.localSlot=slot;this.winSent=false;this.accumulator=0;
+ start(online=false,slot=0,seed=2026) {
+  this.sim=new Simulation(seed);this.previousTerrain=[];this.lastEvent=0;this.activeRun=true;this.pausedRun=false;this.online=online;this.localSlot=slot;this.winSent=false;this.accumulator=0;
   this.effects.clear();this.keys.clear();this.pressed.clear();this.stride=[0,0];this.guardHp=[2,2,2,2];this.guardReaction=[0,0,0,0];this.lastHint='';this.hintUntil=0;
   this.sfx.unlock();this.cameras.main.fadeIn(350,6,12,22);
  }
@@ -91,6 +98,18 @@ export class PrisonScene extends Phaser.Scene {
    const pad = pads[i]; const axis = pad?.axes[0] ?? 0; const down = (n: number) => !!pad?.buttons[n]?.pressed;
    return { left: this.keys.has(b.left) || axis < -.25 || down(14), right: this.keys.has(b.right) || axis > .25 || down(15), jump: this.keys.has(b.jump) || this.pressed.has(b.jump) || this.keys.has(i ? 'ArrowUp' : 'KeyW') || down(0), interact: this.keys.has(b.interact) || down(2), special: this.keys.has(b.special) || this.pressed.has(b.special) || down(1) };
   });
+ }
+ syncSector(){
+  if(this.displaySector===this.sim.sector)return;
+  this.displaySector=this.sim.sector;const machine=this.displaySector===2;
+  this.sectorOneObjects.forEach(o=>(o as Phaser.GameObjects.Image).setVisible(!machine));this.machineArt.visible(machine);
+  this.terrainLayer.fill(-1);this.previousTerrain=[];this.effects.clear();this.gateGraphics.clear();this.hackLabel.setVisible(false);
+  this.barrelSprites.forEach(s=>s.destroy());this.barrelSprites=this.sim.barrels.map(b=>this.add.image(b.x,b.y,'props',0).setOrigin(.5,1).setDepth(4));
+  this.guardSprites.forEach(s=>s.destroy());this.guardSprites=this.sim.guards.map(()=>this.add.sprite(0,0,'guard').setOrigin(.5,1).setDepth(6));
+  this.guardHp=this.sim.guards.map(g=>g.hp);this.guardReaction=this.sim.guards.map(()=>0);
+  this.cameras.main.setBounds(0,0,WORLD_W,machine?640:360);this.cameras.main.scrollY=machine?280:0;
+  this.winSent=false;this.machineArt.lastDialogue=-1;
+  this.say(machine?'WARDEN.exe: "Your sentence powers the city."':'ZIP: "I have a plan."',4);
  }
  syncTerrain() {
   let changed=false;
@@ -109,7 +128,7 @@ export class PrisonScene extends Phaser.Scene {
   this.previousTerrain=this.sim.terrain.slice();
   if(changed) {
    this.edges.clear();
-   for(let y=1;y<ROWS;y++)for(let x=0;x<COLS;x++){
+   for(let y=1;y<this.sim.height/TILE;y++)for(let x=0;x<COLS;x++){
     const i=y*COLS+x,t=this.sim.terrain[i];if(t<0)continue;
     const metal=[6,7,10,11].includes(t),light=metal?0xa5c7d2:t===8?0xe8c17e:0xb6a07b;
     if(this.sim.terrain[i-COLS]<0)this.edges.fillStyle(light,.9).fillRect(x*16,y*16,16,1);
@@ -155,9 +174,10 @@ export class PrisonScene extends Phaser.Scene {
   }
   if (this.online || (this.freeze <= 0 && this.accumulator < dt)) this.pressed.clear();
   this.freeze -= dt;
+  this.syncSector();
   this.syncTerrain();
   for (const e of this.sim.events) if (e.id > this.lastEvent) { this.event(e); this.lastEvent = e.id; }
-  if (this.sim.won && !this.winSent) { this.winSent = true; this.time.delayedCall(700, () => this.onWin?.()); }
+  if (this.sim.won && this.sim.sector===2 && !this.winSent) { this.winSent = true; this.time.delayedCall(700, () => this.onWin?.()); }
   this.drawWorld(dt);
  }
  drawWorld(dt:number) {
@@ -167,8 +187,17 @@ export class PrisonScene extends Phaser.Scene {
   const lead=Phaser.Math.Clamp((sim.players[0].vx+sim.players[1].vx)*.07,-16,16);
   const target=this.activeRun?mid-320+lead:60;
   this.cameras.main.scrollX=Math.round(Phaser.Math.Linear(this.cameras.main.scrollX,Phaser.Math.Clamp(target,0,WORLD_W-640),1-Math.exp(-dt*7)));
-  this.scenery.update(dt,this.effects,sim.plate);
-  this.barrelSprites.forEach((s,i)=>{const b=sim.barrels[i];s.setVisible(b.alive);if(b.fuse>=0&&Math.floor(t*32)%2)s.setTintFill(0xffe5a0);else s.clearTint();});
+  if(sim.machine){
+   const vertical=(sim.players[0].y+sim.players[1].y)/2-230;
+   this.cameras.main.scrollY=Math.round(Phaser.Math.Linear(this.cameras.main.scrollY,Phaser.Math.Clamp(vertical,0,280),1-Math.exp(-dt*5)));
+   this.machineArt.update(dt,sim,this.effects);
+   if(sim.machine.dialogue!==this.machineArt.lastDialogue){
+    this.machineArt.lastDialogue=sim.machine.dialogue;
+    const lines=['WARDEN.exe: "Your sentence powers the city."','ZIP: "That is a lot of batteries."','BRICK: "Those are prisoner numbers."','WARDEN.exe: "EXIT WAS A TYPO."','WARDEN.exe: "The heart needs two minds. Yours will do."','ZIP: "Those batteries have names."'];
+    this.say(lines[sim.machine.dialogue],3.5);
+   }
+  }else this.scenery.update(dt,this.effects,sim.plate);
+  this.barrelSprites.forEach((s,i)=>{const b=sim.barrels[i];s.setPosition(b.x,b.y).setVisible(b.alive);if(b.fuse>=0&&Math.floor(t*32)%2)s.setTintFill(0xffe5a0);else s.clearTint();});
   this.fx.clear();
   this.sprites.forEach((s,i)=>{
    const p=sim.players[i],running=Math.abs(p.vx)>15;
@@ -213,7 +242,7 @@ export class PrisonScene extends Phaser.Scene {
    if(sim.plate)this.link.lineStyle(3,0x2da9d4,.24).strokePoints(points);
    this.link.lineStyle(1,sim.plate?0xc4fff3:0x58a3bf,sim.plate?.9:.17).strokePoints(points);
   }
-  this.drawGate();
+  if(sim.sector===1)this.drawGate();
   for(const bolt of sim.bolts){
    const x=Math.round(bolt.x),y=Math.round(bolt.y),dir=Math.sign(bolt.vx);
    if(bolt.owner===0){
@@ -257,12 +286,14 @@ export class PrisonScene extends Phaser.Scene {
    for(let i=0;i<3;i++)g.fillStyle(p.hp>i?color:0x263245).fillRect(x+39+i*21,22,18,5);
    if(p.cooldown>0)g.fillStyle(0x8b9dac).fillRect(x+39,31,60*Math.max(0,1-p.cooldown/.65),1);
   }
-  this.objective.setText(this.sim.won?'SECTOR CLEAR':'CELL BLOCK ZERO');
+  this.objective.setText(this.sim.won?'SECTOR CLEAR':this.sim.sector===2?'02 / THE MACHINE':'CELL BLOCK ZERO');
   // Only short-lived dialogue and nearby actionable hints remain on the playfield.
   if(this.sim.elapsed<.1&&this.lastHint==='')this.say('ZIP: "I have a plan."  BRICK: "Make it loud."',3.5);
   let line=this.elapsedVisual<this.hintUntil?this.lastHint:'';
   const ghost=this.sim.players.find(p=>p.ghost);
-  if(ghost)line='GET CLOSE + HOLD INTERACT TO REVIVE';
+  if(ghost)line=this.sim.machine?'NEAR + HOLD TO REVIVE / BOTH HOLD INTERACT 3s TO RECALL':'GET CLOSE + HOLD INTERACT TO REVIVE';
+  else if(this.sim.sector===1&&this.sim.won)line='DESCEND TO THE MACHINE / BOTH HOLD INTERACT';
+  else if(this.sim.machine)line=this.elapsedVisual<this.hintUntil?this.lastHint:this.machineArt.hint(this.sim);
   else if(this.sim.players.every(p=>p.x>1120))line='BOTH IN THE LIFT. PRESS INTERACT.';
   else if(Math.abs(this.sim.players[0].x-this.sim.players[1].x)>490)line='LINK LIMIT / BRING YOUR PARTNER';
   if(line){

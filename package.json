@@ -17,7 +17,12 @@
     "capture:showcase": "node scripts/showcase.mjs",
     "capture:gameplay": "node scripts/capture-gameplay.mjs",
     "export:showcase": "node scripts/export-showcase.mjs",
-    "test:production": "node scripts/production-test.mjs"
+    "test:production": "node scripts/production-test.mjs",
+    "test:network:machine": "tsx scripts/machine-network.ts",
+    "test:browser:machine": "node scripts/machine-browser.mjs",
+    "capture:machine": "node scripts/machine-browser.mjs",
+    "test:browser:machine:online": "node scripts/machine-online-browser.mjs",
+    "export:machine": "node scripts/export-machine.mjs"
   },
   "dependencies": {
     "phaser": "3.90.0",

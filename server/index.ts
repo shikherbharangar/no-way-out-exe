@@ -35,7 +35,7 @@ wss.on('connection', ws => {
   if (m.type === 'create') {
    if (rooms.size >= 100) { error(ws, 'Server is full. Try later.'); return; }
    let code: string; do { code = Array.from({ length: 6 }, () => 'ABCDEFGHJKLMNPQRSTUVWXYZ'[randomInt(24)]).join(''); } while (rooms.has(code));
-   const room: Room = { code, slots: [newSlot(ws)], sim: new Simulation(), started: false, touched: Date.now() };
+   const room: Room = { code, slots: [newSlot(ws)], sim: new Simulation(randomInt(0x100000000)), started: false, touched: Date.now() };
    rooms.set(code, room); clients.set(ws, { room, slot: 0 }); lobby(room);
   } else if (m.type === 'join') {
    const room = rooms.get(String(m.code)); if (!room) { error(ws, 'Room not found. Check the code.'); return; }

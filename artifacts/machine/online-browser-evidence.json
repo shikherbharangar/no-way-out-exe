@@ -1,0 +1,11 @@
+{
+  "verifiedAt": "2026-10-22T16:27:51.228Z",
+  "method": "Two independent browser contexts; real lobby, normal keyboard events, full campaign; no world-state writes",
+  "duration": 49.525,
+  "browserErrors": [],
+  "sameFinalSnapshot": true,
+  "seed": 3979593671,
+  "finalTick": 2800,
+  "bossHp": 0,
+  "won": true
+}

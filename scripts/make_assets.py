@@ -120,3 +120,6 @@ from art.composition import generate as composition
 composition(OUT)
 Image.open(OUT/'zip-portrait.png').crop((13,0,38,25)).resize((50,50),Image.Resampling.NEAREST).save(OUT/'icon.png')
 print('Compiled pixel sources: 48px actors, drawn fire keyframes, material tiles and composed prison bays.')
+
+from art.machine import generate as machine
+machine(OUT)

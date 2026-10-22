@@ -1,6 +1,7 @@
 import WebSocket from 'ws';
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
+const output=process.env.CAPTURE_DIR||'artifacts/premium';
 const clients=[];
 async function connect(){
  const socket=new WebSocket('ws://127.0.0.1:2567'),client={socket,messages:[],states:new Map(),state:null};
@@ -45,6 +46,6 @@ try{
  assert.deepEqual(re.state.terrain,before.terrain);assert.deepEqual(re.state.barrels,before.barrels);
  assert.equal(re.state.gate,true);assert(re.state.players.every(p=>!p.ghost));
  const evidence={verifiedAt:new Date().toISOString(),method:'Two websocket clients; only input messages; no game-state writes',sameSnapshotTick:common,reconnectPreservedTerrain:true,gate:final.gate,barrelsDestroyed:final.barrels.filter(b=>!b.alive).length,guardsDefeated:final.guards.filter(g=>g.hp===0).length,events:final.events};
- await mkdir('artifacts/premium',{recursive:true});await writeFile('artifacts/premium/network-evidence.json',JSON.stringify(evidence,null,2)+'\n');
+ await mkdir(output,{recursive:true});await writeFile(`${output}/network-evidence.json`,JSON.stringify(evidence,null,2)+'\n');
  console.log('PASS identical combat snapshots and reconnect preserves destroyed terrain, barrels and gate');
 }finally{clients.forEach(c=>c.socket.close());}
