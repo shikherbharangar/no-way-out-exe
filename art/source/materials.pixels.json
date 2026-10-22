@@ -1,0 +1,166 @@
+{
+  "palettes": {
+    "stone": {
+      "d": "#473738",
+      "s": "#896547",
+      "m": "#b28d5c",
+      "h": "#e2c48a",
+      "l": "#f6dda0"
+    },
+    "steel": {
+      "d": "#14252e",
+      "s": "#375454",
+      "m": "#6e8b7d",
+      "h": "#a7b79b",
+      "l": "#e6d5a0"
+    },
+    "concrete": {
+      "d": "#343c3d",
+      "s": "#676e60",
+      "m": "#969881",
+      "h": "#c8c5a0",
+      "l": "#e1d8ac"
+    },
+    "earth": {
+      "d": "#27252b",
+      "s": "#453833",
+      "m": "#6e5340",
+      "h": "#9a7650",
+      "l": "#be9961"
+    }
+  },
+  "tiles": [
+    {
+      "index": 8,
+      "palette": "stone",
+      "pixels": [
+        "dddhhhhhhhdddddd",
+        "shllllhmmmdshhhs",
+        "smmmmmmmdmmsmmms",
+        "smmshmmmdmmsmhhm",
+        "smmssmmdhmmsmmms",
+        "smmmmmmdmmmsmmms",
+        "smmmmdhhmsssmmms",
+        "dddddddhdmdddddd",
+        "shhhhhhhmdhhhhhs",
+        "smmmmmmsmdhmmsms",
+        "smmmmmsmmmdhmmms",
+        "smhmmmsssmdmmmms",
+        "smmmmmmmmdhmmhms",
+        "smmmhhmmdhmmmsms",
+        "ssmmmmmmdmmmsssd",
+        "dddddddmmddddddd"
+      ]
+    },
+    {
+      "index": 7,
+      "palette": "steel",
+      "pixels": [
+        "hllhhhhhllhhhhhh",
+        "mmmmmmmmmmmmmmms",
+        "lldddllldddllldd",
+        "ldddllldddlllddd",
+        "dddllldddllldddl",
+        "ddllldddllldddll",
+        "ssssssssssssssss",
+        "sdmdssssssssdmds",
+        "smlhddddddddmlhs",
+        "sdmdssssssssdmds",
+        "smdssssssssssmds",
+        "smdsddddddddsmds",
+        "smdsmmmmmmmmsmds",
+        "smdssssssssssmds",
+        "ssssssssssssssss",
+        "dddddddddddddddd"
+      ]
+    },
+    {
+      "index": 9,
+      "palette": "concrete",
+      "pixels": [
+        "hllhhhhhhhhlllhl",
+        "mmmmmmmhmmmmmmmh",
+        "mmmmmmmmmmmmmmmm",
+        "ssssssssssssssss",
+        "mmmssmmmmmmmsmmm",
+        "mmmmmssmmmsmmmmm",
+        "mmmmmmssmsmmmmmm",
+        "mmhmmmmdsmmmmhmm",
+        "mmmmmmmdmmmmmmsm",
+        "mmmmmmmdsmmmmmmm",
+        "mmmmsmmdmmmmmmmm",
+        "mmmsmmdsmmmmmmmm",
+        "mmmmmmdsmmmmssmm",
+        "mmmmmmdmmmmmmmmm",
+        "smmmmmdmmmsmmmmm",
+        "ssssssdsssssssss"
+      ]
+    },
+    {
+      "index": 3,
+      "palette": "earth",
+      "pixels": [
+        "ddddssssdddddddd",
+        "dddsmhhhmsdddddd",
+        "ddsmmllhmmsddddd",
+        "ddssmmmmsmssdddd",
+        "ddddssmssdssdddd",
+        "ssdddssdssdddddd",
+        "mmsddddddssddddd",
+        "hmmsdddddsmmsddd",
+        "mmsddddssmhhmsdd",
+        "ssddddsmmlhmmmsd",
+        "ddddddssmmmmmssd",
+        "ddddddddssmssddd",
+        "ddssddddddssdddd",
+        "dsmmsddddddddddd",
+        "smmhmsdddddssddd",
+        "dsmmsdddddsmmssd"
+      ]
+    },
+    {
+      "index": 4,
+      "palette": "earth",
+      "pixels": [
+        "ddsddddddddddddd",
+        "dsmssddddddssddd",
+        "smmmssddddsmmsdd",
+        "mmhmmssddsmmhmsd",
+        "smllhmsdddssmmsd",
+        "dshmmmsddddssddd",
+        "ddssssdddddddddd",
+        "dddddddddddssddd",
+        "ddsssdddddsmmssd",
+        "dsmhmssdddsmhlms",
+        "smmllmssddssmmsd",
+        "dshhmmmsddddssdd",
+        "ddssmmssdddddddd",
+        "ddddsssdddssdddd",
+        "dddddddddsmmssdd",
+        "ddddddddddsssddd"
+      ]
+    },
+    {
+      "index": 5,
+      "palette": "earth",
+      "pixels": [
+        "ddddddddssssdddd",
+        "dddssddsmhhmssdd",
+        "ddsmssdsmmllhmsd",
+        "dsmmmsssmmhmmmsd",
+        "ddsmsdddssmmssdd",
+        "dddssdddddsssddd",
+        "dddddddddddddddd",
+        "ddddssdddddssddd",
+        "dddsmmsdddsmmssd",
+        "ddsmhhmsddsmhmsd",
+        "dddsmmsddddsssdd",
+        "ddddssdddddddddd",
+        "ssddddddsssddddd",
+        "mmssdddsmmmsdddd",
+        "mhmsddssmhhmsddd",
+        "ssssddddsssssddd"
+      ]
+    }
+  ]
+}

@@ -19,10 +19,6 @@ export class PrisonArt {
   roof.fillStyle(0x050b14).fillRect(0,0,1280,27);
   roof.fillStyle(0x28374a).fillRect(0,26,1280,4);roof.fillStyle(0x61727d).fillRect(0,27,1280,1);
   for(let x=0;x<1280;x+=48){roof.lineStyle(2,0x1b2b3c).lineBetween(x,2,x+30,23).lineBetween(x+30,2,x,23);roof.fillStyle(0x78908e).fillRect(x+3,28,2,1);}
-  // A cell cage occupies only the foreground edge of the first bay.
-  g.fillStyle(0x09111f,.5).fillRect(37,177,138,110);
-  for(let x=38;x<178;x+=13){g.fillStyle(0x081423).fillRect(x,176,4,110);g.fillStyle(0x3d5969).fillRect(x,178,1,108);}
-  for(const y of [176,225,283]){g.fillStyle(0x142638).fillRect(34,y,146,5);g.fillStyle(0x4e6572).fillRect(34,y,146,1);}
   // Heavy return-air duct: a distinctive diagonal silhouette above the breach.
   g.fillStyle(0x08111f).fillPoints([{x:210,y:58},{x:307,y:58},{x:343,y:95},{x:343,y:120},{x:314,y:120},{x:314,y:104},{x:295,y:84},{x:210,y:84}],true);
   g.fillStyle(0x2b3b4c).fillPoints([{x:212,y:60},{x:305,y:60},{x:339,y:96},{x:339,y:118},{x:317,y:118},{x:317,y:103},{x:297,y:81},{x:212,y:81}],true);
@@ -48,7 +44,7 @@ export class PrisonArt {
    for(let i=0;i<4;i++){glow.fillStyle(0xf49f4a,.018+i*.012).fillTriangle(x-10,67,x+10,67,x+61-i*8,284);glow.fillTriangle(x-10,67,x-61+i*8,284,x+61-i*8,284);}
    this.lamps.push(glow);
   }
-  for(const [x,y] of [[302,126],[775,173],[1070,116]]) {
+  for(const [x,y] of [[302,126],[1098,116]]) {
    scene.add.image(x,y,'props',3).setDepth(-2).setTint(0x7892a6);
    this.fans.push(scene.add.image(x,y,'fan').setDepth(-1).setTint(0x879da9).setAlpha(.75));
   }
@@ -62,10 +58,6 @@ export class PrisonArt {
   g.fillStyle(0x182b3e).fillRect(361,188,2,5);
   g.lineStyle(4,0x101d2c).lineBetween(376,198,400,198).lineBetween(400,198,400,269);
   g.lineStyle(1,0x516271).lineBetween(376,196,402,196).lineBetween(402,196,402,269);
-  scene.add.text(46,102,'CELL BLOCK',{fontFamily:'monospace',fontSize:'10px',fontStyle:'bold',color:'#526479',letterSpacing:2}).setDepth(-2);
-  scene.add.text(45,113,'ZERO',{fontFamily:'monospace',fontSize:'30px',fontStyle:'bold',color:'#3a4b60',letterSpacing:3}).setDepth(-2);
-  scene.add.text(404,76,'07',{fontFamily:'monospace',fontSize:'33px',fontStyle:'bold',color:'#414957'}).setDepth(-2);
-  scene.add.text(402,111,'NO RELEASE',{fontFamily:'monospace',fontSize:'7px',color:'#7b6651'}).setDepth(-2);
   // Freight lift and deep foundation; foreground clutter stays below the play line.
   g.fillStyle(0x060e1b).fillRect(1141,206,113,82);
   for(let x=1148;x<1254;x+=8)g.fillStyle(x%16?0x27374e:0x14233a).fillRect(x,209,3,77);

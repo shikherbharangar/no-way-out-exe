@@ -116,5 +116,7 @@ from art.environment import generate as environment
 actors(OUT)
 effects(OUT)
 environment(OUT)
+from art.composition import generate as composition
+composition(OUT)
 Image.open(OUT/'zip-portrait.png').crop((13,0,38,25)).resize((50,50),Image.Resampling.NEAREST).save(OUT/'icon.png')
 print('Generated art-direction v2: 48px actors, 128px fire, smoke, debris, materials and prison layers.')

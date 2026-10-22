@@ -18,7 +18,7 @@ describe('Cell Block Zero authoritative gameplay',()=>{
  it('blasts actual masonry and floors; foundations survive',()=>{
   const s=new Simulation();const count=s.terrain.filter(t=>t>=0).length;s.explode(250,280,58);
   expect(s.terrain.filter(t=>t>=0).length).toBeLessThan(count-10);expect(s.terrain[18*COLS+15]).toBe(-1);expect(s.terrain[21*COLS+15]).toBe(11);
-  expect(s.barrels[0].alive).toBe(false);
+  expect(s.barrels[0].fuse).toBeGreaterThan(0);steps(s,30);expect(s.barrels[0].alive).toBe(false);
  });
  it('preserves bolted puzzle machinery when nearby terrain is destroyed',()=>{
   const s=new Simulation();s.explode(369,280,80);s.explode(487,218,90);s.explode(410,250,70);
@@ -37,7 +37,7 @@ describe('Cell Block Zero authoritative gameplay',()=>{
  it('allows a living partner to revive a ghost; total death restores terrain',()=>{
   const s=new Simulation();s.players[0].hp=1;s.damage(s.players[0]);expect(s.players[0].ghost).toBe(true);
   s.players[1].x=s.players[0].x+20;steps(s,55,{}, {interact:true});expect(s.players[0].ghost).toBe(false);
-  s.explode(250,280);s.players.forEach(p=>{p.hurt=0;p.hp=1;s.damage(p);});steps(s,75);
+  s.explode(250,280);s.players.forEach(p=>{p.hurt=0;p.shield=0;p.hp=1;s.damage(p);});steps(s,75);
   expect(s.players.every(p=>p.hp===3&&!p.ghost)).toBe(true);expect(s.terrain).toEqual(makeTerrain());
  });
  it('requires both players inside the elevator',()=>{

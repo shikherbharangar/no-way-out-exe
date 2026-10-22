@@ -20,10 +20,10 @@ export class PrisonScene extends Phaser.Scene {
  names!: Phaser.GameObjects.Text[]; objective!: Phaser.GameObjects.Text; dialog!: Phaser.GameObjects.Text; hackLabel!: Phaser.GameObjects.Text;
  portraits: Phaser.GameObjects.Image[]=[]; healthLabels:Phaser.GameObjects.Text[]=[];
  lastEvent = 0; accumulator = 0; freeze = 0; elapsedVisual = 0; winSent = false;
- private stride=[0,0];private guardHp=[2,2];private guardReaction=[0,0];private lastHint='';private hintUntil=0;private shotTrail=0;
+ private stride=[0,0];private guardHp=[2,2,2,2];private guardReaction=[0,0,0,0];private lastHint='';private hintUntil=0;private shotTrail=0;
  constructor() { super('prison'); }
  preload() {
-  for (const key of ['far', 'mid', 'fan','zip-portrait','brick-portrait']) this.load.image(key, `/assets/${key}.png`);
+  for (const key of ['far', 'mid', 'fan','zip-portrait','brick-portrait','prison-composition']) this.load.image(key, `/assets/${key}.png`);
   for (const key of ['zip', 'brick', 'guard']) this.load.spritesheet(key, `/assets/${key}.png`, { frameWidth: 48, frameHeight: 48 });
   this.load.spritesheet('props', '/assets/props.png', { frameWidth: 64, frameHeight: 64 });
   this.load.spritesheet('explosion', '/assets/explosion.png', { frameWidth: 128, frameHeight: 128 });
@@ -36,6 +36,7 @@ export class PrisonScene extends Phaser.Scene {
   this.cameras.main.setBackgroundColor('#080f1c').setRoundPixels(true).setBounds(0, 0, WORLD_W, 360);
   this.add.image(0, 0, 'far').setOrigin(0).setScrollFactor(.16).setDepth(-20);
   this.add.image(0, 0, 'mid').setOrigin(0).setScrollFactor(.6).setDepth(-15);
+  this.add.image(0,0,'prison-composition').setOrigin(0).setDepth(-8);
   this.scenery=new PrisonArt(this);
   this.effects=new PixelEffects(this);
   const map = this.make.tilemap({ tileWidth: TILE, tileHeight: TILE, width: COLS, height: ROWS });
@@ -81,7 +82,7 @@ export class PrisonScene extends Phaser.Scene {
  text(x:number,y:number,value:string,color:string,size=8) {return this.add.text(x,y,value,{fontFamily:'monospace',fontSize:`${size}px`,fontStyle:'bold',color,stroke:'#060e1b',strokeThickness:2,padding:{x:2,y:2}}).setDepth(3);}
  start(online=false,slot=0) {
   this.sim=new Simulation();this.previousTerrain=[];this.lastEvent=0;this.activeRun=true;this.pausedRun=false;this.online=online;this.localSlot=slot;this.winSent=false;this.accumulator=0;
-  this.effects.clear();this.keys.clear();this.pressed.clear();this.stride=[0,0];this.guardHp=[2,2];this.guardReaction=[0,0];this.lastHint='';this.hintUntil=0;
+  this.effects.clear();this.keys.clear();this.pressed.clear();this.stride=[0,0];this.guardHp=[2,2,2,2];this.guardReaction=[0,0,0,0];this.lastHint='';this.hintUntil=0;
   this.sfx.unlock();this.cameras.main.fadeIn(350,6,12,22);
  }
  readInputs(): Input[] {
@@ -120,13 +121,16 @@ export class PrisonScene extends Phaser.Scene {
  event(e:GameEvent) {
   this.sfx.play(e.type);
   if(e.type==='blast') {
-   const power=e.power??1;this.effects.blast(e.x,e.y,power);this.cameras.main.shake(220,.008*Math.min(1.25,power),true);this.freeze=.055;
+   const power=e.power??1;this.effects.blast(e.x,e.y,power,e.material??'concrete',e.direction??0);this.cameras.main.shake(220,.008*Math.min(1.25,power),true);this.freeze=.055;
    const p=this.sim.players[1];if(Math.abs(p.x-e.x)<60)this.effects.impact(p.x+p.facing*23,p.y-25,p.facing);
   } else if(e.type==='death') {
    this.effects.burst(e.x,e.y,23,0xff9363,.8);this.effects.cloud(e.x,e.y,.65,1.3);this.cameras.main.shake(110,.004);
   } else if(e.type==='land') {
    this.effects.cloud(e.x-9,e.y,.42,.55);this.effects.cloud(e.x+9,e.y,.42,.55);
   } else if(e.type==='jump')this.effects.cloud(e.x,e.y,.36,.45);
+  else if(e.type==='charge'){this.effects.electric(e.x,e.y,34);this.say('LINK OVERCHARGE / BRICK: MAKE IT COUNT.',2);}
+  else if(e.type==='arc'||e.type==='deflect'){this.effects.electric(e.x,e.y,20);}
+  else if(e.type==='shot'){this.effects.muzzle(e.x,e.y,e.power??1);}
   else if(e.type==='spark'){this.effects.burst(e.x,e.y,9,0x7ff4ff,.65);}
   else if(e.type==='hurt'){this.effects.burst(e.x,e.y,10,0xffc49a,.6);this.freeze=.025;}
   else if(e.type==='gate'||e.type==='checkpoint'||e.type==='revive'){
@@ -164,7 +168,7 @@ export class PrisonScene extends Phaser.Scene {
   const target=this.activeRun?mid-320+lead:60;
   this.cameras.main.scrollX=Math.round(Phaser.Math.Linear(this.cameras.main.scrollX,Phaser.Math.Clamp(target,0,WORLD_W-640),1-Math.exp(-dt*7)));
   this.scenery.update(dt,this.effects,sim.plate);
-  this.barrelSprites.forEach((s,i)=>s.setVisible(sim.barrels[i].alive));
+  this.barrelSprites.forEach((s,i)=>{const b=sim.barrels[i];s.setVisible(b.alive);if(b.fuse>=0&&Math.floor(t*32)%2)s.setTintFill(0xffe5a0);else s.clearTint();});
   this.fx.clear();
   this.sprites.forEach((s,i)=>{
    const p=sim.players[i],running=Math.abs(p.vx)>15;
@@ -173,9 +177,10 @@ export class PrisonScene extends Phaser.Scene {
    if(running)frame=4+Math.floor(this.stride[i]/8)%8;
    if(!p.grounded)frame=p.vy<0?12:13;
    if(p.landed>0)frame=14;
+   if(i===1&&p.shield>0)frame=15;
    if(p.action>0){
-    const age=.32-p.action;
-    frame=i===0&&sim.plate&&Math.abs(p.x-487)<32?15+Math.floor(t*14)%4:age<.035?19:age<.11?20:age<.22?21:22;
+    const age=(i===1?.42:.32)-p.action;
+    frame=i===0&&sim.plate&&Math.abs(p.x-487)<32?15+Math.floor(t*14)%4:age<(i===1?.14:.035)?19:age<(i===1?.23:.11)?20:age<(i===1?.34:.22)?21:22;
    }
    if(p.hurt>.9)frame=23;
    if(p.reviving>0)frame=28+Math.floor(t*10)%2;
@@ -198,8 +203,9 @@ export class PrisonScene extends Phaser.Scene {
   this.guardSprites.forEach((s,i)=>{
    const g=sim.guards[i];if(g.hp<this.guardHp[i])this.guardReaction[i]=.2;this.guardHp[i]=g.hp;this.guardReaction[i]=Math.max(0,this.guardReaction[i]-dt);
    s.setPosition(Math.round(g.x)+(this.guardReaction[i]>0?-g.direction*3:0),Math.round(g.y)+2)
-    .setFrame(g.hp<=0?27:this.guardReaction[i]>0?23:4+Math.floor(t*8)%8).setFlipX(g.direction<0).setAlpha(g.hp>0?1:.65);
+    .setFrame(g.hp<=0?(g.reaction>0?24+Math.min(3,Math.floor((.35-g.reaction)*12)):27):g.stun>0?23:g.aim>0?15:g.reaction>0?21:g.cooldown>0&&sim.players.some(p=>Math.abs(p.x-g.x)<235)?0:4+Math.floor(t*8)%8).setFlipX(g.direction<0).setAlpha(g.hp>0?1:.65);
    if(this.guardReaction[i]>.13)s.setTintFill(0xffd9bd);else s.clearTint();
+   if(g.hp>0&&g.aim>0){const mx=g.x+g.direction*23,my=g.y-20;this.fx.fillStyle(0xff5949,.55).fillRect(mx,my,2,2);this.fx.lineStyle(1,0xff7059,.18).lineBetween(mx,my,mx+g.direction*70,my);}
   });
   this.link.clear();const a=this.sprites[0],b=this.sprites[1];
   if(Math.hypot(a.x-b.x,a.y-b.y)<540){
@@ -208,9 +214,20 @@ export class PrisonScene extends Phaser.Scene {
    this.link.lineStyle(1,sim.plate?0xc4fff3:0x58a3bf,sim.plate?.9:.17).strokePoints(points);
   }
   this.drawGate();
-  for(const bolt of sim.bolts){const x=Math.round(bolt.x),y=Math.round(bolt.y);this.fx.fillStyle(bolt.owner===0?0x31b1db:0xe95b32,.35).fillRect(x-4,y-2,14,5);this.fx.fillStyle(bolt.owner===0?0xcffff1:0xffdf94).fillRect(x,y,bolt.owner===0?8:5,1);}
-  for(const p of sim.players)if(p.shield>0){
-   const x=p.x+p.facing*20,y=p.y-24;this.fx.lineStyle(2,0xffc674,.7).strokePoints([{x:x-p.facing*5,y:y-19},{x,y:y-10},{x:x+p.facing*2,y:y+8},{x:x-p.facing*5,y:y+21}]);
+  for(const bolt of sim.bolts){
+   const x=Math.round(bolt.x),y=Math.round(bolt.y),dir=Math.sign(bolt.vx);
+   if(bolt.owner===0){
+    const pts=Array.from({length:8},(_,i)=>({x:x-dir*i*3,y:y+(i%2?1:-1)*(1+Math.floor((t*35+i)%3))}));
+    this.fx.lineStyle(3,0x268ba9,.35).strokePoints(pts);this.fx.lineStyle(1,0xbaffed,1).strokePoints(pts);
+    this.fx.fillStyle(0xffffff).fillRect(x-2,y-1,5,3);
+   }else {this.fx.fillStyle(0xe95b32,.35).fillRect(x-dir*12,y-1,12,3);this.fx.fillStyle(0xffe5ac).fillRect(x,y,dir*5,1);}
+  }
+  for(const p of sim.players)if(p.shield>0||p.charge>0){
+   const x=Math.round(p.x+p.facing*20),y=Math.round(p.y-24),color=p.charge>0?0x79ffec:0xffc674;
+   this.fx.lineStyle(p.charge>0?2:1,color,.85).strokePoints([{x:x-p.facing*5,y:y-19},{x,y:y-10},{x:x+p.facing*2,y:y+8},{x:x-p.facing*5,y:y+21}]);
+   if(p.charge>0){
+    for(let i=0;i<4;i++){const xx=Math.round(p.x-15+i*10),yy=Math.round(p.y-24+Math.sin(t*26+i*4)*16);this.fx.lineStyle(1,0xb8fff1).strokePoints([{x:xx,y:yy},{x:xx+4,y:yy-4},{x:xx+2,y:yy-7}]);}
+   }
   }
   this.effects.update(dt,sim);
   this.renderHud();

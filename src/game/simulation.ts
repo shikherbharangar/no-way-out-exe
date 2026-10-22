@@ -2,11 +2,11 @@
 export const TILE = 16, COLS = 80, ROWS = 22, WORLD_W = COLS * TILE, WORLD_H = ROWS * TILE;
 export type Input = { left: boolean; right: boolean; jump: boolean; interact: boolean; special: boolean };
 export const idleInput = (): Input => ({ left: false, right: false, jump: false, interact: false, special: false });
-export type Player = { id: number; x: number; y: number; vx: number; vy: number; facing: number; grounded: boolean; hp: number; ghost: boolean; coyote: number; buffer: number; cooldown: number; action: number; hurt: number; shield: number; wasJump: boolean; wasSpecial: boolean; wall: number; airDash: boolean; revive: number; landed: number; reviving: number };
-export type GameEvent = { id: number; type: 'blast' | 'jump' | 'land' | 'hurt' | 'death' | 'revive' | 'gate' | 'win' | 'spark' | 'checkpoint'; x: number; y: number; power?: number };
-export type Barrel = { x: number; y: number; alive: boolean };
-export type Guard = { x: number; y: number; hp: number; direction: number; cooldown: number; min: number; max: number };
-export type Bolt = { x: number; y: number; vx: number; owner: number; life: number };
+export type Player = { id: number; x: number; y: number; vx: number; vy: number; facing: number; grounded: boolean; hp: number; ghost: boolean; coyote: number; buffer: number; cooldown: number; action: number; hurt: number; shield: number; wasJump: boolean; wasSpecial: boolean; wall: number; airDash: boolean; revive: number; landed: number; reviving: number; charge: number; windup: number; attackFacing: number };
+export type GameEvent = { id: number; type: 'blast' | 'jump' | 'land' | 'hurt' | 'death' | 'revive' | 'gate' | 'win' | 'spark' | 'checkpoint' | 'charge' | 'arc' | 'shot' | 'deflect'; x: number; y: number; power?: number; material?: 'fuel' | 'concrete' | 'steel'; direction?: number };
+export type Barrel = { x: number; y: number; alive: boolean; fuse: number };
+export type Guard = { x: number; y: number; hp: number; direction: number; cooldown: number; min: number; max: number; vx: number; vy: number; aim: number; stun: number; reaction: number };
+export type Bolt = { x: number; y: number; vx: number; owner: number; life: number; charged?: boolean };
 export type Snapshot = { tick: number; players: Player[]; terrain: number[]; barrels: Barrel[]; guards: Guard[]; bolts: Bolt[]; gate: boolean; plate: boolean; hack: number; checkpoint: boolean; won: boolean; deaths: number; events: GameEvent[]; collapse: number; elapsed: number };
 export function makeTerrain(): number[] {
  const t = new Array(COLS * ROWS).fill(-1);
@@ -17,16 +17,22 @@ export function makeTerrain(): number[] {
  // Bolted machinery footings preserve the mandatory puzzle after arbitrary blasts.
  for (let x = 21; x < 25; x++) t[18 * COLS + x] = 6;
  for (let x = 25; x < 27; x++) t[16 * COLS + x] = 6;
- for (let x = 43; x < 48; x++) t[14 * COLS + x] = 7;
+ for (let x = 47; x < 51; x++) t[14 * COLS + x] = 7;
  for (let x = 51; x < 57; x++) { t[17 * COLS + x] = 7; t[18 * COLS + x] = -1; t[19 * COLS + x] = -1; }
  for (let x = 59; x < 64; x++) t[15 * COLS + x] = 7;
  return t;
 }
-function player(id: number): Player { return { id, x: 90 + id * 48, y: 288, vx: 0, vy: 0, facing: 1, grounded: true, hp: 3, ghost: false, coyote: .1, buffer: 0, cooldown: 0, action: 0, hurt: 0, shield: 0, wasJump: false, wasSpecial: false, wall: 0, airDash: false, revive: 0, landed: 0, reviving: 0 }; }
+function player(id: number): Player { return { id, x: 90 + id * 48, y: 288, vx: 0, vy: 0, facing: 1, grounded: true, hp: 3, ghost: false, coyote: .1, buffer: 0, cooldown: 0, action: 0, hurt: 0, shield: 0, wasJump: false, wasSpecial: false, wall: 0, airDash: false, revive: 0, landed: 0, reviving: 0, charge: 0, windup: 0, attackFacing: 1 }; }
 export class Simulation {
  tick = 0; elapsed = 0; players = [player(0), player(1)]; terrain = makeTerrain();
- barrels: Barrel[] = [{ x: 230, y: 288, alive: true }, { x: 754, y: 288, alive: true }, { x: 1000, y: 288, alive: true }];
- guards: Guard[] = [{ x: 730, y: 288, hp: 2, direction: -1, cooldown: 1.5, min: 666, max: 790 }, { x: 1030, y: 288, hp: 2, direction: -1, cooldown: 2, min: 930, max: 1100 }];
+ barrels: Barrel[] = [230, 754, 802, 850, 898, 1000].map(x => ({ x, y: x >= 816 && x <= 910 ? 272 : 288, alive: true, fuse: -1 }));
+ guards: Guard[] = this.makeGuards();
+ makeGuards(): Guard[] { return [
+  { x: 716, y: 288, min: 670, max: 746 },
+  { x: 785, y: 224, min: 760, max: 800 },
+  { x: 990, y: 240, min: 950, max: 1010 },
+  { x: 1090, y: 288, min: 1040, max: 1130 },
+ ].map((g,i) => ({ ...g, hp: 2, direction: -1, cooldown: 1.1 + i*.2, vx: 0, vy: 0, aim: 0, stun: 0, reaction: 0 })); }
  bolts: Bolt[] = []; events: GameEvent[] = []; eventId = 0;
  gate = false; plate = false; hack = 0; checkpoint = false; won = false; deaths = 0; collapse = -1; resetTimer = 0;
  emit(type: GameEvent['type'], x: number, y: number, power = 1) { this.events.push({ id: ++this.eventId, type, x, y, power }); if (this.events.length > 64) this.events.shift(); }
@@ -42,11 +48,33 @@ export class Simulation {
    for (let x = Math.max(0, Math.floor((cx - radius) / TILE)); x <= Math.min(COLS - 1, Math.floor((cx + radius) / TILE)); x++)
     if (this.terrain[y * COLS + x] !== 6 && this.terrain[y * COLS + x] !== 11 && Math.hypot(x * TILE + 8 - cx, y * TILE + 8 - cy) < radius) this.terrain[y * COLS + x] = -1;
  }
- explode(x: number, y: number, radius = 51) {
+ visible(x: number, y: number, tx: number, ty: number) {
+  const distance = Math.hypot(tx-x,ty-y), steps = Math.ceil(distance/6);
+  for(let i=1;i<steps;i++) if(this.solid(x+(tx-x)*i/steps,y+(ty-y)*i/steps)) return false;
+  return true;
+ }
+ hitGuard(g: Guard, damage: number, direction: number, force = 120) {
+  if(g.hp<=0)return;
+  g.hp=Math.max(0,g.hp-damage);g.stun=.55;g.reaction=.35;g.aim=0;
+  g.vx=direction*force;g.vy=-130;
+  this.emit(g.hp?'hurt':'death',g.x,g.y-18);
+ }
+ explode(x: number, y: number, radius = 51, material: GameEvent['material'] = 'concrete', direction = 0) {
   this.destroy(x, y, radius); this.emit('blast', x, y, radius / 50);
-  for (const g of this.guards) if (g.hp > 0 && Math.hypot(g.x - x, g.y - 14 - y) < radius + 14) { g.hp = 0; this.emit('death', g.x, g.y - 15); }
-  // Explosive chain reactions are deterministic; mark first to prevent recursion.
-  for (const b of this.barrels) if (b.alive && Math.hypot(b.x - x, b.y - 15 - y) < radius + 15) { b.alive = false; this.explode(b.x, b.y - 16, 58); }
+  Object.assign(this.events[this.events.length-1], {material,direction});
+  for (const g of this.guards) if (g.hp > 0 && Math.hypot(g.x-x,g.y-14-y)<radius+14) this.hitGuard(g,2,Math.sign(g.x-x)||direction||1,240);
+  // A visible fuse staggers the chain. The host owns every detonation and tile cut.
+  for (const b of this.barrels) if (b.alive && Math.hypot(b.x-x,b.y-15-y)<radius+15) {
+   if(b.fuse<0)b.fuse=.10+Math.abs(b.x-x)/500;
+  }
+ }
+ punch(p: Player) {
+  const charged=p.charge>0;p.charge=0;
+  this.explode(p.x+p.attackFacing*29,p.y-16,charged?67:39,charged?'steel':'concrete',p.attackFacing);
+  if(charged){
+   this.emit('arc',p.x+p.attackFacing*29,p.y-20,1.5);
+   for(const g of this.guards)if(g.hp>0&&Math.hypot(g.x-p.x,g.y-p.y)<130&&this.visible(p.x,p.y-18,g.x,g.y-18))this.hitGuard(g,1,p.attackFacing,200);
+  }
  }
  damage(p: Player) {
   if (p.ghost || p.hurt > 0 || p.shield > 0) return;
@@ -58,8 +86,10 @@ export class Simulation {
   this.tick++; this.elapsed += dt;
   for (const p of this.players) {
    const input = inputs[p.id] ?? idleInput();
-   for (const k of ['cooldown', 'action', 'hurt', 'shield', 'landed', 'reviving'] as const) p[k] = Math.max(0, p[k] - dt);
-   if (p.ghost) continue;
+   for (const k of ['cooldown', 'action', 'hurt', 'shield', 'landed', 'reviving', 'charge'] as const) p[k] = Math.max(0, p[k] - dt);
+   if (p.ghost) {p.windup=0;continue;}
+   if(p.windup>0){p.windup=Math.max(0,p.windup-dt);if(p.windup===0)this.punch(p);}
+   if(p.id===1&&input.interact&&p.grounded)p.shield=Math.max(p.shield,.08);
    p.coyote = p.grounded ? .11 : Math.max(0, p.coyote - dt);
    p.buffer = input.jump && !p.wasJump ? .12 : Math.max(0, p.buffer - dt);
    const axis = Number(input.right) - Number(input.left), speed = p.id === 0 ? 148 : 115;
@@ -74,8 +104,8 @@ export class Simulation {
    }
    if (!input.jump && p.wasJump && p.vy < -100) p.vy *= .48;
    if (input.special && !p.wasSpecial && p.cooldown === 0) {
-    p.action = .32;
-    if (p.id === 1) { p.cooldown = .65; p.shield = .4; this.explode(p.x + p.facing * 29, p.y - 16, 39); }
+    p.action = p.id===1?.42:.32;
+    if (p.id === 1) { p.cooldown = .65; p.shield = .52; p.windup=.14; p.attackFacing=p.facing; }
     else {
      p.cooldown = .55;
      this.bolts.push({ x: p.x + p.facing * 12, y: p.y - 16, vx: p.facing * 350, owner: 0, life: 1.5 });
@@ -116,22 +146,56 @@ export class Simulation {
    this.collapse -= dt;
    if (this.collapse <= 0) { this.destroy(864, 275, 48); this.emit('blast', 864, 275, .7); this.collapse = -2; }
   }
+  for(const barrel of this.barrels) if(barrel.alive&&barrel.fuse>=0){
+   barrel.fuse-=dt;
+   if(barrel.fuse<=0){barrel.alive=false;barrel.fuse=-1;this.explode(barrel.x,barrel.y-16,58,'fuel',1);}
+  }
   for (const g of this.guards) {
-   if (g.hp <= 0) continue;
-   g.x += g.direction * 24 * dt;
-   if (g.x < g.min || g.x > g.max || this.solid(g.x + g.direction * 10, g.y - 12) || !this.solid(g.x + g.direction * 10, g.y + 2)) g.direction *= -1;
-   if (!this.solid(g.x, g.y + 1)) g.y = Math.min(336, g.y + 150 * dt);
-   g.cooldown -= dt;
-   const target = this.players.find(p => !p.ghost && Math.abs(p.x - g.x) < 190 && Math.abs(p.y - g.y) < 45 && (this.gate || p.x > 624));
-   if (target && g.cooldown <= 0) { g.direction = Math.sign(target.x - g.x); g.cooldown = 1.4; this.bolts.push({ x: g.x + g.direction * 12, y: g.y - 15, vx: g.direction * 170, life: 2, owner: 2 }); this.emit('spark', g.x, g.y - 15); }
+   g.reaction=Math.max(0,g.reaction-dt);g.stun=Math.max(0,g.stun-dt);
+   // Corpses and living guards share gravity: removing a catwalk changes the fight.
+   g.vy=Math.min(420,g.vy+860*dt);
+   let dy=g.vy*dt;
+   while(Math.abs(dy)>.001){const d=Math.sign(dy)*Math.min(1,Math.abs(dy));if(this.solid(g.x,g.y+d-1)){g.vy=0;break;}g.y+=d;dy-=d;}
+   let dx=g.vx*dt;
+   while(Math.abs(dx)>.001){const d=Math.sign(dx)*Math.min(1,Math.abs(dx));if(this.solid(g.x+d+Math.sign(d)*7,g.y-12)){g.vx=0;break;}g.x+=d;dx-=d;}
+   g.vx*=Math.max(0,1-dt*5);
+   if(g.hp<=0||g.stun>0||g.y>352)continue;
+   g.cooldown-=dt;
+   const target=this.players.filter(p=>!p.ghost&&Math.abs(p.x-g.x)<235&&Math.abs(p.y-g.y)<34&&this.visible(g.x,g.y-16,p.x,p.y-16)).sort((a,b)=>Math.abs(a.x-g.x)-Math.abs(b.x-g.x))[0];
+   if(target&&g.cooldown<=0){
+    g.direction=Math.sign(target.x-g.x)||1;g.aim+=dt;
+    if(g.aim>=.42){g.aim=0;g.cooldown=1.25;g.reaction=.10;this.bolts.push({x:g.x+g.direction*17,y:g.y-16,vx:g.direction*190,life:2,owner:2});this.emit('shot',g.x+g.direction*18,g.y-16,g.direction);}
+   } else {
+    g.aim=0;
+    if(!target){const nx=g.x+g.direction*26*dt;
+     if(nx<g.min||nx>g.max||this.solid(nx+g.direction*9,g.y-12)||!this.solid(nx+g.direction*10,g.y+2))g.direction*=-1;
+     else g.x=nx;
+    }
+   }
   }
   for (const b of this.bolts) {
-   b.x += b.vx * dt; b.life -= dt;
-   if (this.solid(b.x, b.y)) { b.life = 0; this.emit('spark', b.x, b.y); }
-   if (b.owner === 0) {
-    for (const g of this.guards) if (g.hp > 0 && Math.abs(b.x - g.x) < 12 && Math.abs(b.y - g.y + 14) < 16) { g.hp--; b.life = 0; this.emit(g.hp ? 'hurt' : 'death', g.x, g.y - 15); break; }
-    for (const barrel of this.barrels) if (barrel.alive && Math.abs(b.x - barrel.x) < 14 && Math.abs(b.y - barrel.y + 15) < 18) { barrel.alive = false; this.explode(barrel.x, barrel.y - 16, 58); b.life = 0; break; }
-   } else for (const p of this.players) if (!p.ghost && Math.abs(b.x - p.x) < 9 && Math.abs(b.y - p.y + 14) < 14) { this.damage(p); b.life = 0; break; }
+   b.life-=dt;
+   // Swept projectile collision prevents tunnelling through thin walls or shields.
+   const steps=Math.max(1,Math.ceil(Math.abs(b.vx*dt)/3));
+   for(let step=0;step<steps&&b.life>0;step++){
+    b.x+=b.vx*dt/steps;
+    if(this.solid(b.x,b.y)){b.life=0;this.emit('spark',b.x,b.y);break;}
+    const brick=this.players[1];
+    if(!brick.ghost&&brick.shield>0&&Math.abs(b.x-brick.x)<23&&Math.abs(b.y-brick.y+18)<23){
+     if(b.owner===0&&!b.charged){brick.charge=3;b.life=0;this.emit('charge',brick.x,brick.y-22);break;}
+     if(b.owner===2&&Math.sign(b.vx)===-brick.facing){b.owner=0;b.charged=true;b.vx=-b.vx*1.7;b.x=brick.x+brick.facing*25;this.emit('deflect',b.x,b.y);continue;}
+    }
+    if(b.owner===0){
+     for(const g of this.guards)if(g.hp>0&&Math.abs(b.x-g.x)<12&&Math.abs(b.y-g.y+16)<18){
+      this.hitGuard(g,b.charged?2:1,Math.sign(b.vx),b.charged?200:100);b.life=0;this.emit('arc',g.x,g.y-18);
+      // Arc contact briefly stuns a second nearby guard with clear line of sight.
+      for(const other of this.guards)if(other!==g&&other.hp>0&&Math.hypot(other.x-g.x,other.y-g.y)<72&&this.visible(g.x,g.y-18,other.x,other.y-18)){other.stun=.5;this.emit('arc',other.x,other.y-18,.6);}
+      break;
+     }
+     if(b.life<=0)break;
+     for(const barrel of this.barrels)if(barrel.alive&&Math.abs(b.x-barrel.x)<14&&Math.abs(b.y-barrel.y+15)<18){if(barrel.fuse<0)barrel.fuse=.06;b.life=0;this.emit('spark',b.x,b.y);break;}
+    }else for(const p of this.players)if(!p.ghost&&Math.abs(b.x-p.x)<9&&Math.abs(b.y-p.y+16)<16){this.damage(p);b.life=0;break;}
+   }
   }
   this.bolts = this.bolts.filter(b => b.life > 0);
   if (this.players.every(p => p.ghost)) {
@@ -144,7 +208,7 @@ export class Simulation {
  respawn() {
   this.players = [player(0), player(1)]; this.terrain = makeTerrain(); this.bolts = []; this.collapse = -1; this.resetTimer = 0;
   if (this.checkpoint) { this.players[0].x = 658; this.players[1].x = 688; }
-  this.barrels.forEach(b => b.alive = true); this.guards.forEach(g => { g.hp = 2; g.y = 288; g.cooldown = 2; });
+  this.barrels.forEach(b => {b.alive=true;b.fuse=-1;}); this.guards=this.makeGuards();
   this.emit('revive', this.players[0].x, 270);
  }
  snapshot(): Snapshot { return { tick: this.tick, players: this.players, terrain: this.terrain, barrels: this.barrels, guards: this.guards, bolts: this.bolts, gate: this.gate, plate: this.plate, hack: this.hack, checkpoint: this.checkpoint, won: this.won, deaths: this.deaths, events: this.events.slice(-24), collapse: this.collapse, elapsed: this.elapsed }; }
