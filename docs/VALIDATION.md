@@ -1,21 +1,35 @@
 # Validation record
 
-Current target: the Cell Block Zero vertical slice on desktop Chromium.
+Target: the Cell Block Zero desktop slice, Node 24.19.0, Chromium, Phaser 3.90. Validation date: 22 October 2026.
 
-Executed on 2026-10-21 using Node 24.19.0 and desktop Chromium:
+## Recovery
 
-- `npm run build`: TypeScript check and production bundle passed. Phaser produces a documented bundle-size warning (~354 KB gzip JS).
-- `npm test`: **12 tests passed**, two files, zero failures/skips. Includes a complete input-driven route from spawn to cooperative exit.
-- `npm run test:network`: room capacity, ready/start, authoritative movement, reconnect, duplicate-token rejection, and client-state tamper rejection passed.
-- `npm run test:browser`: local controls/remapping, live tile destruction, pause, resize, and two independent online browser contexts passed. Both characters moved; terrain agreed; partner-disconnect UI appeared; zero unhandled browser exceptions.
-- Production bundle served with `npm run preview -- --port 4173`: title and game started; 13 successful PNG requests; pause/resume passed; no HTTP errors or browser exceptions; development inspection hook absent.
+The environment outage did not establish a code failure. Once the workspace returned, the branch was `work` at `6abd192` with 24 modified tracked files, eight untracked source/asset/test files, and the ignored showcase directory. All were inspected, then committed unchanged as `bc0beac` on `recovery/premium-action-2026-10-22` and pushed before further changes. No reset, clean, force push or discarded working-tree data was used. Further work was performed on `premium-action-validated`.
 
-These checks validate this running machine and its production build, not an external deployment. The full-route regression operates the fixed-step simulation directly; browser tests exercise controls and destruction but do not automate the entire escape through browser input. Screenshots are generated in `artifacts/` and are intentionally not shipping assets.
+The recovered source recording was 16.428 seconds and contained the complete escape. Its earlier companion named `gameplay-15s.webm` was not an exact 15-second export. Both remain preserved in `artifacts/showcase/`. Fresh captures are separate in `artifacts/premium/`.
 
-Reference comparison: the Steam reference API and the two Vercel documentation URLs returned proxy `403 Forbidden`. Screenshot-based visual inspection was performed on the game's own rendered title, prison, explosion, and multiplayer screens; a direct Broforce reference comparison was not possible.
+## Checks
 
-Unverified capabilities: public deployment, actual internet latency, multiple physical computers, physical controllers, mobile play, Docker image build, multi-instance backend operation, and full narrative/endless content.
+- `npm run build`: TypeScript and production bundle pass. The expected Phaser chunk-size warning remains (~359 KB gzip JavaScript).
+- `npm test`: 20 tests in three files pass, including the unchanged complete input-driven escape route. New cases cover punch wind-up, real projectile-to-shield charge, charge consumption, directional reflection, staggered chain damage, platform removal/guard falling, knockback, aim/line of sight, arc collision, snapshot state and wall occlusion.
+- Two existing assertions were adapted to deliberate new behavior: barrel destruction is checked after its fuse, and a test forcing total death clears the newly held brace shield first. Neither test was removed or skipped.
+- `npm run test:browser`: local UI/remapping/movement/jump, actual terrain destruction, pause/resume, resizing and two independent online browser contexts pass. Both slots move; terrain snapshots agree; disconnection UI appears; no unhandled browser exceptions.
+- `npm run test:network`: capacity, ready/start, authoritative movement, reconnect, duplicate-token rejection and client state-tamper rejection pass.
+- `npm run test:network:action`: two websocket clients use input messages to breach, solve the original puzzle, enter the encounter, charge BRICK, trigger the shock punch and four-barrel chain, and defeat guards. Both receive exactly equal snapshots at the same tick. Disconnect freezes state; reconnect preserves destroyed terrain, barrel state and the open gate. Evidence: `artifacts/premium/network-evidence.json`.
+- All 17 shipping PNGs regenerate byte-for-byte. The hero/world scale and player colliders remain unchanged from `6abd192`.
+- `npm run capture:showcase`: uses real keyboard input from spawn through the puzzle and encounter. Assertions require hero movement frames, evolving fire frames, guard shooting, enemy defeat, charge, charged punch, a chain screenshot, a crossing screenshot, unique filenames and both players escaping within the video excerpt. State, animation frames, render count and events are saved in `artifacts/premium/evidence.json`.
+- `npm run capture:gameplay`: six real screenshots show characters, destruction, aftermath, environment, the active co-op hack and the completed gate. The single peak-explosion capture pauses only after an actual rendered frame; the video sequence never pauses its render loop.
+- `npm run export:showcase`: FFmpeg decodes and exports a continuous 15.000-second H.264/AAC clip at 640 × 360 and 30fps (450 encoded frames), then decodes it again to check for errors. A SHA-256 media manifest accompanies the export. No compositing or playback speed change is used.
+- `npm run test:production` against `npm run preview -- --port 4173`: real production title/game/input/pause/resume, original PNG asset loading, no HTTP/browser errors and absence of the development inspection hook. Evidence: `artifacts/premium/production-evidence.json`.
 
-## Art-direction overhaul regression
+## Regressions caught during validation
 
-The original 12 gameplay tests and complete escape route passed after the visual overhaul. Local and two-browser co-op smoke checks, reconnect/capacity checks, and production asset-loading/pause checks also passed. The simulation, server and network client have no changes in this pass. All 16 generated art PNGs were regenerated and compared byte-for-byte. Six fresh captures include characters, the environment, peak fire, smoke/fracture aftermath, active cooperation and the completed gate puzzle. See `artifacts/visual-review.md` for original, unedited before/after images.
+The capture driver could finish its approach facing ZIP away from BRICK, so its first bolts missed the shield. It now explicitly aims through normal movement input. It also keeps ZIP behind the braced partner and uses normal revival controls if needed, instead of assuming the guards cannot defeat a player. Failed capture evidence was retained separately; it is not used as a passing result.
+
+Animation inspection found that the shield pose overrode BRICK's run and jump frames. The pose is now limited to a stationary, grounded brace, preserving movement animation while the shield remains visible. Screenshot naming now captures the first charged strike once, so a later counterattack cannot silently replace its image. Small light-spill layers skip non-positive radii.
+
+## Limits
+
+The real Broforce screenshots and remaining visual differences are documented in [the direct comparison](PREMIUM_ACTION_REVIEW.md). The available reference stills do not prove animation or explosion-quality parity, and commercial visual parity is not claimed.
+
+These checks cover a local production build and one authoritative server with independent browser/websocket clients. Public deployment, real internet latency, physical controllers, multiple physical machines, mobile play, Docker build and multi-instance hosting remain unverified. A 30fps video export may duplicate frames from a slower source renderer; actual rendered-frame counts are recorded independently. No further sectors or full-game completion is claimed.

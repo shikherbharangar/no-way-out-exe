@@ -1,43 +1,40 @@
-# Cell Block Zero: action-first visual pass
+# Cell Block Zero art and action pipeline
 
-This pass changes presentation while retaining the existing authoritative simulation and multiplayer protocol. No sectors, puzzle mechanics, enemies, or collision rules were added. [The visual review](../artifacts/visual-review.md) contains the real before/after captures.
+The current pass keeps the existing 48 × 48 actor cells, 16px tile grid and 640 × 360 internal canvas. It replaces generated anatomy with editable original pixel parts and explicit key poses, adds the ash-furnace composition, and integrates the combat encounter with the authoritative simulation.
 
-## Actors and animation
+See the [source editing guide](../art/README.md), [actual captures and reference comparison](PREMIUM_ACTION_REVIEW.md), and [validation record](VALIDATION.md).
 
-Original 48 × 48 sheets replace the previous 32 × 40 sheets. Each actor still has 32 frames, now with articulated elbows/knees, contrasting run contacts, a crouched landing, distinct jump/fall shapes, attack wind-up/extension/recoil/recovery, collapse poses, and revival/victory gestures. ZIP uses a spiked head silhouette, angular scarf, cyan jacket, pale shoulder guard, and lit gauntlet. BRICK uses a broader orange tank/harness, heavy limbs, and a large riveted power glove. Guards use armored gray-blue shapes, a red visor, and a visible carbine.
+## Source assets
 
-Run-frame selection follows distance traveled. Guard damage produces a brief visual recoil and hit flash. ZIP's dash leaves short-lived copies of the actual sprite frame. Hero feet and contact shadows anchor the new silhouettes to existing collision surfaces. Larger artwork does not change the tested player collider.
+`art/source/actors.pixels.json` contains palette-indexed rows and deliberately placed body/face/weapon parts. Each row symbol is one pixel. ZIP has a spiked head/scarf, pale cyan shoulder guard and electrical glove; BRICK has orange prison straps, a heavier torso and riveted gauntlet; guards have helmets, red visors, armor and carbines. A small set of explicit poses produces the 32-frame timeline. Reused parts and rotated corpse in-betweens remain documented limitations.
 
-## Fire, smoke and fracture
+`art/source/materials.pixels.json` defines hand-composed concrete, masonry, steel and earth clusters. `art/source/fire-keyframes.json` defines six asymmetric flame outlines and internal curls; the compiler adds exposure/scale in-betweens and nested shading. Existing original smoke/debris/fan/prop assets remain in use.
 
-`scripts/art/effects.py` creates original 128-pixel fire frames, 96-pixel smoke frames, and a 12-frame debris atlas. Fire progresses from ignition through white/yellow-hot overlapping lobes to orange/red curling flame and dark embers. Smoke expands independently and outlives the fire.
+`scripts/art/composition.py` composes the worn plaster cells, green paint, bunk, chalk tallies, observation opening, rust furnace, exhaust stack and freight recess as one original backdrop. It sits between the far/mid parallax and world fixtures. Quiet dark openings separate the recognizable masses; the floor plane retains bright edges. The backdrop is cosmetic, while the tilemap platforms and walls are genuinely destructible.
 
-`PixelEffects` receives removed tile positions and their previous material. Masonry emits fractured stone, catwalks emit metal shards, and dirt emits darker clods. Fragments rotate, fall, bounce, and fade. Surviving tiles get visible cut edges. Temporary scorch, dust, streaking sparks, a short light flash, controlled shake, and impact pause complete the sequence. Cosmetic effects never mutate simulation state.
+## Gameplay and presentation
 
-Effect budgets are bounded: at most 150 fragment sprites, 55 smoke clouds, 260 sparks, and 12 scorch records. Restarting a run clears these effects.
+Guard patrol, line of sight, aiming, firing, stun, recoil, gravity and defeat are authoritative. BRICK's wind-up, braced shield, reflected projectiles, ZIP-to-BRICK charge, larger shock punch, barrel fuses and chain damage are also authoritative and serialized in online snapshots. The existing collision, movement, puzzle, revival, checkpoint and exit systems remain active.
 
-## Prison, camera and HUD
+The renderer selects actual run/jump/attack/aim/recoil frames from state. Electrical bolts have stepped trails and contact arcs. Concrete emits dust and stone; fuel emits directional fire and smoke; the charged punch emits cyan arcs and a broad impact. Material fragments launch on staggered beats, fall and bounce. Local hit-stop and camera shake accompany impact; online clients never pause the server simulation.
 
-Cold navy architecture provides a darker resting background. Pale concrete/steel tops mark playable surfaces. Orange alarms/fire/drums and cyan technology supply selective saturation. Unequal cable loops, turbine shutters, diagonal ductwork, localized wear, and interrupted catwalks break up the repeated cell-window pattern. Fans, steam, maintenance sparks, and alarm lamps animate the environment.
+At most 150 fragments, 55 smoke clouds, 260 sparks and 12 scorch records are retained. Compact health/portraits, contextual terminal instructions and short dialogue remain. No zoom or larger hero scale was added.
 
-The camera uses frame-rate-independent follow damping and capped velocity look-ahead while retaining room for both players. No zoom was added: a stable internal pixel scale keeps the art crisp.
-
-Health bars and hero portraits replace the large HUD boxes. Controls stay in orientation/settings. The hack prompt appears near the terminal, only when relevant. Short timed dialogue replaces permanent bottom-of-screen instructions. The sound/fullscreen/menu controls are small and subdued until hovered or focused.
-
-## Reproduce and verify
+## Regeneration and capture
 
 ```bash
 npm run assets
 npm run build
 npm test
-# With npm run dev and npm run server already running:
+# Start npm run dev and npm run server in separate terminals.
 npm run test:browser
 npm run test:network
-node scripts/capture-gameplay.mjs
+npm run test:network:action
+npm run capture:showcase
+npm run capture:gameplay
+npm run export:showcase
 ```
 
-Asset generation was run twice; all 16 PNGs reproduced byte-for-byte. The 12 gameplay tests, complete input-driven simulation route, local/two-browser co-op smoke tests, and reconnect protocol tests passed. The production build loaded the new fire/smoke/debris/portrait sheets, supported pause/resume, and had no missing HTTP assets or unhandled browser exceptions.
-
-The capture script uses normal keyboard input and observes game state. For the explosion image, it temporarily stops the render loop immediately after a real peak-fire frame is drawn, captures that canvas, and resumes. This avoids a slow screenshot encoder advancing past the fireball. It does not modify textures, game positions, terrain, or pixels to construct the picture.
+All 17 shipping PNGs reproduce byte-for-byte. Capture controls enter through ordinary keyboard events; the inspection hook only reads state. Showcase frames are collected immediately after rendering, without pausing the running recording. The separate single-explosion screenshot script briefly pauses an already rendered peak-fire frame for screenshot encoding, then resumes. Neither path manufactures game state or pixels.
 
 Important art direction note: it is okay to match Broforce's approximate character size, chunkiness, scene scale, and screen density. The goal is not subtle originality. The goal is a similarly impressive level of visual quality and arcade intensity, while still using original characters, original environments, and original assets.

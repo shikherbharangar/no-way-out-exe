@@ -1,0 +1,26 @@
+{
+  "verifiedAt": "2026-10-22T04:27:42.356Z",
+  "browserErrors": [],
+  "badResponses": [],
+  "assets": [
+    "/assets/far.png",
+    "/assets/mid.png",
+    "/assets/fan.png",
+    "/assets/zip-portrait.png",
+    "/assets/brick-portrait.png",
+    "/assets/prison-composition.png",
+    "/assets/zip.png",
+    "/assets/brick.png",
+    "/assets/guard.png",
+    "/assets/props.png",
+    "/assets/explosion.png",
+    "/assets/smoke.png",
+    "/assets/debris.png",
+    "/assets/impact.png",
+    "/assets/tiles.png",
+    "/assets/icon.png",
+    "/assets/logo.png"
+  ],
+  "developmentHookAbsent": true,
+  "pauseResume": true
+}

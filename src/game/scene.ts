@@ -177,7 +177,7 @@ export class PrisonScene extends Phaser.Scene {
    if(running)frame=4+Math.floor(this.stride[i]/8)%8;
    if(!p.grounded)frame=p.vy<0?12:13;
    if(p.landed>0)frame=14;
-   if(i===1&&p.shield>0)frame=15;
+   if(i===1&&p.shield>0&&p.grounded&&!running)frame=15;
    if(p.action>0){
     const age=(i===1?.42:.32)-p.action;
     frame=i===0&&sim.plate&&Math.abs(p.x-487)<32?15+Math.floor(t*14)%4:age<(i===1?.14:.035)?19:age<(i===1?.23:.11)?20:age<(i===1?.34:.22)?21:22;

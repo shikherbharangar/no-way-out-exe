@@ -3,6 +3,7 @@ import { mkdir, writeFile, chmod } from 'node:fs/promises';
 
 // Capture the running game through its UI and keyboard controls. The development
 // inspection hook is read only: no teleportation, altered terrain, or mocked art.
+const output = process.env.CAPTURE_DIR || 'artifacts/premium';
 const browser = await chromium.launch({
   executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium',
   headless: true,
@@ -12,7 +13,7 @@ const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
 const errors = [];
 const captures = [];
 page.on('pageerror', error => errors.push(error.message));
-await mkdir('artifacts', { recursive: true });
+await mkdir(output, { recursive: true });
 
 async function capture(name, description) {
   const state = await page.evaluate(() => {
@@ -27,7 +28,7 @@ async function capture(name, description) {
         .map(o => ({ x: o.x, y: o.y, frame: o.frame.name })),
     };
   });
-  const path = `artifacts/${name}.png`;
+  const path = `${output}/${name}.png`;
   await page.screenshot({ path });
   await chmod(path, 0o644);
   captures.push({ path, description, stateBeforeScreenshot: state });
@@ -109,7 +110,7 @@ try {
   await capture('gameplay', 'Both prisoners in the rendered scene immediately after completing the cooperative gate puzzle.');
 
   expect(errors).toEqual([]);
-  await writeFile('artifacts/capture-evidence.json', JSON.stringify({
+  await writeFile(`${output}/capture-evidence.json`, JSON.stringify({
     capturedAt: new Date().toISOString(), renderer: 'Phaser in Chromium via Playwright',
     viewport: { width: 1280, height: 720 }, controls: 'Keyboard input; game state observed, never overwritten',
     browserErrors: errors, captures,

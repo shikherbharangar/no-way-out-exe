@@ -1,0 +1,102 @@
+{
+  "source": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "codec_name": "opus"
+      }
+    ],
+    "format": {
+      "duration": "16.207951"
+    }
+  },
+  "export": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 640,
+        "height": 360,
+        "nb_frames": "450"
+      },
+      {
+        "codec_name": "aac",
+        "nb_frames": "373"
+      }
+    ],
+    "format": {
+      "duration": "15.000000"
+    }
+  },
+  "continuousClip": true,
+  "edit": "First 15 seconds; constant 30fps encoding; source audio retained",
+  "files": {
+    "01-encounter.png": {
+      "bytes": 77553,
+      "sha256": "49af13dad5c2089dce44004ec0f70dac8122ede2101964e0facc93db30773ac4"
+    },
+    "02-cooperative-charge.png": {
+      "bytes": 76869,
+      "sha256": "ee288d459cb48e9a4a0bfb59b4ca423fe23ed1471e11db7ca1d594ef8b602513"
+    },
+    "03-shock-punch.png": {
+      "bytes": 82533,
+      "sha256": "ba5967d790110c4c41a7e917f656b21d411648268d6d83fa84881fb2ae1b409f"
+    },
+    "04-chain-explosion.png": {
+      "bytes": 86605,
+      "sha256": "d233b1946493e95b4c380500c25730e816a7cd67463d41e187d13fa971b38eb3"
+    },
+    "05-narrow-escape.png": {
+      "bytes": 96906,
+      "sha256": "f95d8c1b5431f23b917b82904beba4d608640425ca50b6937badffa9918b0010"
+    },
+    "06-freight-lift.png": {
+      "bytes": 66655,
+      "sha256": "39769b17628d1a1df6945af265860247aea45f5a56384152a112061eb10a14e5"
+    },
+    "aftermath.png": {
+      "bytes": 71562,
+      "sha256": "d3d1da17a22726ad3d3a81adc75beb04aa0170ec201909bcf126b8d4524608b5"
+    },
+    "characters.png": {
+      "bytes": 58518,
+      "sha256": "576b17c5d3f71ddcdd141fdb4e4acad25c24d34a119dd5eedec7c3c030fcb98d"
+    },
+    "cooperative.png": {
+      "bytes": 58934,
+      "sha256": "280739768a723e2af444a184f4a0512dbd62e9b26f2db1948b4f09ff2ccb8455"
+    },
+    "environment.png": {
+      "bytes": 59834,
+      "sha256": "fd9d0dec09a1f32a3dcb4232a534fa4ced411d4cf316aba8f520f9368e5a759e"
+    },
+    "explosions.png": {
+      "bytes": 69397,
+      "sha256": "b6fedd3d030be2f9a20c6ec1c23a1f76a3b2f9b8a0f86ab5670f0585c2843ca5"
+    },
+    "gameplay-15s.mp4": {
+      "bytes": 1764930,
+      "sha256": "43606b19d8ffa71bbc57104f3649b2fa4336cfee0a61ae2e44e0c07aaf18be92"
+    },
+    "gameplay-source.webm": {
+      "bytes": 2894713,
+      "sha256": "657d908cddf4c37e54ae7112c951f973b354994ed06d4129b4edb414d48b2261"
+    },
+    "gameplay.png": {
+      "bytes": 63028,
+      "sha256": "925cd18d300355e6961557b2bd8c7568c356689aa5c3929675efe43f4d7a7a44"
+    },
+    "production.png": {
+      "bytes": 62465,
+      "sha256": "4c646db97e6bb1288f26e4eaa8759184fa03250b449d1a4f56d0f7fe8a06c38a"
+    }
+  }
+}

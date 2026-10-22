@@ -12,7 +12,12 @@
     "assets": "python scripts/make_assets.py",
     "server": "tsx server/index.ts",
     "test:network": "node scripts/network-test.mjs",
-    "inspect": "node scripts/inspect.mjs"
+    "inspect": "node scripts/inspect.mjs",
+    "test:network:action": "node scripts/network-action-test.mjs",
+    "capture:showcase": "node scripts/showcase.mjs",
+    "capture:gameplay": "node scripts/capture-gameplay.mjs",
+    "export:showcase": "node scripts/export-showcase.mjs",
+    "test:production": "node scripts/production-test.mjs"
   },
   "dependencies": {
     "phaser": "3.90.0",

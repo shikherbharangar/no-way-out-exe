@@ -13,12 +13,14 @@ it('charges the braced partner through a real ZIP projectile, then consumes char
  advance(s,1,{special:true},{interact:true});advance(s,12,{}, {interact:true});
  expect(s.players[1].charge).toBeGreaterThan(2);expect(s.events.some(e=>e.type==='charge')).toBe(true);
  advance(s,1,{}, {special:true});advance(s,10);
- expect(s.players[1].charge).toBe(0);expect(s.events.some(e=>e.type==='blast'&&e.material==='steel'&&e.power!>1.3)).toBe(true);
+ expect(s.players[1].charge).toBe(0);expect(s.events.some(e=>e.type==='blast'&&e.material==='steel'&&(e.power??0)>1.3)).toBe(true);
 });
 it('reflects an incoming guard shot only when shield faces it',()=>{
  const s=new Simulation();s.players[1].x=150;
  s.bolts.push({x:179,y:272,vx:-190,owner:2,life:2});advance(s,6,{}, {interact:true});
  expect(s.events.some(e=>e.type==='deflect')).toBe(true);expect(s.bolts.some(b=>b.owner===0&&b.charged&&b.vx>0)).toBe(true);expect(s.players[1].hp).toBe(3);
+ const rear=new Simulation();rear.players[1].x=150;rear.bolts.push({x:121,y:272,vx:190,owner:2,life:2});advance(rear,6,{}, {interact:true});
+ expect(rear.events.some(e=>e.type==='deflect')).toBe(false);
 });
 it('staggers the four-barrel chain and removes a combat platform',()=>{
  const s=new Simulation();s.explode(754,272,39);expect(s.barrels[1].alive).toBe(true);
@@ -43,4 +45,10 @@ it('a snapshot carries charge, aim, fuse, recoil, and projectile authority to an
  const a=new Simulation();a.players[1].charge=2;a.players[1].windup=.1;a.guards[0].aim=.2;a.guards[0].vx=110;a.barrels[2].fuse=.12;
  const b=new Simulation();b.apply(structuredClone(a.snapshot()));b.eventId=a.eventId;
  advance(a,90);advance(b,90);expect(b.snapshot()).toEqual(a.snapshot());
+});
+
+it('an arc stopped by a wall cannot damage the guard behind it',()=>{
+ const s=new Simulation(),g=s.guards[0];g.x=290;g.y=272;
+ s.bolts.push({x:230,y:256,vx:3500,owner:0,life:1});advance(s,1);
+ expect(g.hp).toBe(2);expect(s.bolts).toHaveLength(0);
 });

@@ -125,6 +125,7 @@ export class PixelEffects {
    // Stepped light spill illuminates silhouettes without a smooth radial particle.
    for(let i=0;i<3;i++){
     const rr=r-i*17,xx=Math.round(f.x),yy=Math.round(f.y);
+    if(rr<=0)continue;
     this.light.fillStyle(f.color,Math.max(0,f.life)*.33).fillPoints([{x:xx-rr,y:yy-rr*.4},{x:xx-rr*.6,y:yy-rr*.8},{x:xx+rr*.4,y:yy-rr},{x:xx+rr,y:yy-rr*.5},{x:xx+rr,y:yy+rr*.4},{x:xx+rr*.5,y:yy+rr*.7},{x:xx-rr*.6,y:yy+rr*.6}],true);
    }
   }

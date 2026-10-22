@@ -4,7 +4,7 @@
 
 A playable, original pixel-art prison escape built with Phaser 3, TypeScript, and Vite. This release deliberately concentrates on **Cell Block Zero**, the visual and gameplay acceptance slice. It is not the complete three-sector game described in the master brief.
 
-The current art pass redesigns the heroes/guards, explosions, debris, prison layers and HUD while preserving gameplay. See the [real before/after screenshots](artifacts/visual-review.md) and [art-direction implementation notes](docs/ART_DIRECTION.md).
+The premium action pass adds editable pixel drawings, a composed ash-furnace encounter, guard aiming/recoil, shield charging and timed barrel chains. Watch the [15-second real gameplay showcase](artifacts/premium/gameplay-15s.mp4), browse the [captured sequence and Broforce comparison](docs/PREMIUM_ACTION_REVIEW.md), or read the [art pipeline notes](docs/ART_DIRECTION.md). The original co-op puzzle, escape route and authoritative online server are preserved.
 
 ## Play locally
 
@@ -24,6 +24,7 @@ Vite prints its local address. Choose **BREAK OUT**, read the orientation, and s
 | Jump | Space or W | Right Shift or Up | A |
 | Interact / revive | F | Enter | X |
 | Ability | G: arc bolt; air dash when airborne | Right Ctrl: blast punch and brief shield | B |
+| Brace / charge | Fire G into BRICK’s shield | Hold Enter; then Right Ctrl for a charged punch | Hold X; partner presses B |
 | Pause | Escape | Escape | On-screen menu |
 
 Controls can be remapped in Settings. For a solo rehearsal, operate the two keyboard control groups in turn. This is still a two-character puzzle, with no AI partner. Two controllers are supported by the Gamepad API; physical controller hardware has not been tested in this environment. Keyboard ghosting varies by hardware; remapping or controllers can help.
@@ -32,7 +33,7 @@ Controls can be remapped in Settings. For a solo rehearsal, operate the two keyb
 
 1. Move BRICK beside the explosive drum at the cracked partition. Blast punch the route open; both characters can jump out of the crater. ZIP's arc bolt also detonates drums.
 2. Put BRICK on the brass pressure plate. ZIP climbs the two steel steps to the terminal and holds interact for 1.5 seconds. Both characters are needed: the electrical link supplies the terminal.
-3. Pass the unlocked bulkhead together to activate the checkpoint. Shoot guards, detonate drums, and watch the visibly warned collapsing walkway. The lower route remains usable.
+3. Pass the unlocked bulkhead together. In the ash-furnace bay, BRICK can hold interact to brace and reflect incoming shots; ZIP shoots into the shield to charge BRICK’s next punch. Guards aim before firing and fall when their platforms break. Trigger the staggered drum chain, jump across the damaged walkway, and keep ZIP behind the shield. The lower route remains usable.
 4. If one character dies, stand within 50 pixels and hold interact to revive their hologram. If both die, the checkpoint restores terrain and players.
 5. Bring **both living players** inside the freight lift and press interact. The slice ends with WARDEN's downward-elevator reveal and run statistics.
 
@@ -73,28 +74,29 @@ With both `npm run dev` and `npm run server` running:
 npm run build
 npm test
 npm run test:network
+npm run test:network:action
 npm run test:browser
 ```
 
 - Vitest covers movement, variable jump height, buffering, deterministic simulation, actual terrain removal, reinforced puzzle supports, plate/hack requirements, gate collision, revival/checkpoint reset, and two-player exit.
-- The complete-route regression drives the simulation from the original spawn with normal inputs, without teleporting players or overriding the gate. It completes the escape, including revival.
-- The WebSocket test covers ready states, room capacity, authoritative movement, reconnect, duplicate-slot rejection, and rejected client state changes.
+- The complete-route regression drives the simulation from the original spawn with normal inputs, without teleporting players or overriding the gate. It completes the escape; revival is covered separately.
+- The WebSocket tests cover ready states, capacity, authoritative movement, reconnect, duplicate-slot rejection, and rejected client state changes. A full input-driven online combat route checks shield charging, shock punch, the barrel chain, identical snapshots, and destruction preserved through reconnect.
 - Playwright runs two independent browser contexts. It exercises local controls/remapping, pause, live destruction, resizing, real lobby join/ready, each online character, synchronized terrain, and disconnection UI. It checks unhandled browser exceptions.
 
-Browser scripts use `/usr/bin/chromium`. Set `CHROMIUM_PATH` to a compatible installed executable if needed. Alternatively install Playwright's Chromium and adapt the launch path. Temporary validation screenshots are ignored; the six verified screenshots linked in [artifacts/README.md](artifacts/README.md) are committed. `node scripts/capture-gameplay.mjs` reproduces this set through real keyboard gameplay. `npm run inspect` captures additional title and gameplay screenshots. Browser checks target the development server because their assertions read a development-only inspection hook; the hook is absent from production builds.
+Browser scripts use `/usr/bin/chromium`; override `CHROMIUM_PATH` if needed. `npm run capture:gameplay` captures the six scene/puzzle images and `npm run capture:showcase` records the live combat sequence with its actual game audio. `npm run export:showcase` uses FFmpeg to encode and verify a continuous 15-second MP4. Captures default to `artifacts/premium/`; override `CAPTURE_DIR` to retain another run. Run captures after asset generation/build checks, without concurrent CPU-heavy browser jobs. Browser automation observes a development-only inspection hook, which is absent from production builds.
 
 The production bundle is large because it includes Phaser (~355 KB gzip for the JS bundle). Vite's size warning is expected. A separate production-build asset-loading check is described in `docs/VALIDATION.md`.
 
 ## Assets and art direction
 
-`public/assets/` contains original PNGs. `scripts/make_assets.py` reproducibly generates them from integer-coordinate pixel shapes, authored animation poses, constrained palettes, and seeded texture. Regeneration is optional and needs Python with Pillow:
+`public/assets/` contains original PNGs. `scripts/make_assets.py` compiles editable pixel grids, explicit pose layouts and drawn fire contours from `art/source/`, together with the independently composed prison backdrop. See [the source editing guide](art/README.md). Regeneration is optional and needs Python with Pillow:
 
 ```bash
 python -m pip install Pillow
 npm run assets
 ```
 
-No Broforce sprites, maps, textures, audio, or UI were extracted, traced, or redistributed. The direction targets its small character scale, layered industrial scenery, and explosive arcade readability. Screenshot comparison against an externally retrieved Broforce image remains **unverified**: this environment's network proxy rejected the Steam reference destination. Do not treat this slice as having passed a side-by-side Broforce-quality acceptance review.
+No Broforce sprites, maps, textures, audio, or UI were extracted, traced, or redistributed. The direction targets its small character scale, layered industrial scenery, and explosive arcade readability. The [direct visual review](docs/PREMIUM_ACTION_REVIEW.md) compares real captures with accessible Broforce community screenshots, identifies source limitations, and documents remaining differences. Commercial visual parity is not claimed.
 
 ## GitHub and Vercel
 
@@ -143,7 +145,7 @@ public/assets/          Committed original game assets
 
 ## Next priorities
 
-1. Obtain the reference screenshots and conduct the requested direct visual review; further refine silhouettes, environment variety, debris, and lighting based on it.
+1. Address the documented visual gaps: more distinct full-body animation, less repetitive surface borders, richer irregular terrain silhouettes and less repetitive smoke.
 2. Test WSS online play between actual remote computers; add input prediction, server monitoring, and production room routing (preferably Colyseus before multiple instances).
 3. Add pushable objects, throwing, vents, moving platforms, lasers, richer link interactions, and authored sound/music.
 4. Build The Machine and The False Exit, including the pursuit, boss, complete narrative, and ending.

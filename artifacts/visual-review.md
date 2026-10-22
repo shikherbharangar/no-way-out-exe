@@ -1,3 +1,5 @@
+> Historical gallery. See the [current premium action review](../docs/PREMIUM_ACTION_REVIEW.md) for the validated video, new frames and direct reference comparison.
+
 # Cell Block Zero — visual overhaul
 
 Both columns contain real browser screenshots of the running game. The **before** files are byte-for-byte copies of the screenshots committed in `69be5a6`; the **after** files were captured through keyboard gameplay with the revised renderer. No screenshot artwork was painted over or replaced.
