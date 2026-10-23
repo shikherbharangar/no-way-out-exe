@@ -45,7 +45,7 @@ try {
   function rendered(){
    renderedFrames++;scene.sprites.forEach((sprite,i)=>playerFrames[i].add(Number(sprite.frame.name)));
    scene.guardSprites.forEach(sprite=>guardFrames.add(Number(sprite.frame.name)));
-   scene.children.list.filter(o=>o.texture?.key==='explosion'&&o.visible).forEach(o=>fireFrames.add(Number(o.frame.name)));
+   scene.children.list.filter(o=>o.texture?.key?.endsWith('explosion')&&o.visible).forEach(o=>fireFrames.add(Number(o.frame.name)));
    if(!pending)return;
    shots.push({name:pending,seconds:(performance.now()-start)/1000,state:snapshot(),png:scene.game.canvas.toDataURL('image/png').split(',')[1]});pending='';
   }
@@ -62,7 +62,7 @@ try {
     if(e.type==='charge'&&chargedAt<0){chargedAt=elapsed;pending='02-cooperative-charge';}
     if(e.type==='blast'&&e.material==='steel'&&!shots.some(shot=>shot.name==='03-shock-punch'))pending='03-shock-punch';
    }
-   if(!shots.some(x=>x.name==='04-chain-explosion')&&scene.children.list.filter(o=>o.texture?.key==='explosion'&&o.visible&&Number(o.frame.name)<13).length>=2)pending='04-chain-explosion';
+   if(!shots.some(x=>x.name==='04-chain-explosion')&&scene.children.list.filter(o=>o.texture?.key?.endsWith('explosion')&&o.visible&&Number(o.frame.name)<13).length>=2)pending='04-chain-explosion';
    if(!shots.some(x=>x.name==='05-narrow-escape')&&s.players.every(p=>p.x>800)&&s.players.some(p=>!p.grounded)&&s.barrels.slice(1,5).every(b=>!b.alive))pending='05-narrow-escape';
    if(!shots.some(x=>x.name==='06-freight-lift')&&s.players.every(p=>p.x>1150))pending='06-freight-lift';
    if(Math.floor(elapsed)!==lastSample){lastSample=Math.floor(elapsed);samples.push({seconds:elapsed,...snapshot()});}

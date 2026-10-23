@@ -1,3 +1,25 @@
+# Art-direction reboot validation — Cell Block Zero
+
+Review branch: `art-direction-reboot`, based on `69eba18`. Validated 23 October 2026. See [the before/after review](ART_REBOOT.md), [editable asset specification](../art/reboot/README.md), and [capture evidence](../artifacts/reboot/README.md). The records below this section describe earlier milestones.
+
+| Check | Final result |
+|---|---|
+| Production build | TypeScript and Vite pass; existing Phaser bundle-size warning remains. |
+| Gameplay | 34 tests in five suites pass, retaining all 32 previous tests and adding two input-driver recovery regressions. |
+| Network, action and Machine campaigns | All pass: authority, capacity, readiness, tamper rejection, disconnect freeze, reconnect, preserved terrain/puzzle state and equal final snapshots. |
+| Browser smoke | Local controls, remapping, destruction, pause, resize and two-browser online controls/disconnect pass. |
+| Local full campaign | Both sectors complete; original Machine textures restore on transition and replacement prison textures restore through the actual replay button. |
+| Two-browser full campaign | Normal keyboard inputs complete both sectors and the boss; final authoritative snapshots match, with no browser exceptions. |
+| Production browser | All 33 PNG assets load; input/pause work, with no browser or HTTP errors and no development inspection hook. |
+| Asset preservation | All 21 previously shipped PNGs remain byte-identical. Simulation, collision and server source are unchanged. |
+| Replacement asset validation | 12 runtime assets match editable masters; palette, binary alpha, 96 populated character frames and contact baselines pass. |
+| Actual media | Six before/after screenshot pairs plus a complete action capture; all showcase assertions pass. H.264/AAC export decodes as 640 × 360, 15.000 seconds and 450 encoded frames. |
+| Review page | Local images, scene selector, comparison slider and actual MP4 playback pass in Chromium. External reference images were inspected separately. |
+
+Evidence is under `artifacts/reboot/`; failed and interrupted attempts are described in [the art review](ART_REBOOT.md#validation), not counted as passes. The source action run recorded 331 rendered frames over 17.503 wall-clock seconds; a 30fps export can repeat frames and does not establish 60fps performance. Tests use local Chromium and a local authoritative server, not production internet latency or physical controllers. Artistic quality remains a visual-review decision: source illustrations are AI-assisted, and native-pixel cleanup and animation continuity still fall short of the reference benchmark.
+
+---
+
 # Sector 02 validation — THE MACHINE
 
 The current milestone continues `f6cdd58`; the older action-pass record below remains historical evidence. See [THE MACHINE guide and visual review](THE_MACHINE.md) for the new playable route and actual captures.

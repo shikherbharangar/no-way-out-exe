@@ -24,7 +24,7 @@ async function capture(name, description) {
       plate: s.plate, hack: s.hack, gate: s.gate,
       remainingTiles: s.terrain.filter(t => t >= 0).length,
       activeExplosions: window.__prison.children.list
-        .filter(o => o.texture?.key === 'explosion' && o.visible)
+        .filter(o => o.texture?.key?.endsWith('explosion') && o.visible)
         .map(o => ({ x: o.x, y: o.y, frame: o.frame.name })),
     };
   });
@@ -84,7 +84,7 @@ try {
   await page.evaluate(() => new Promise(resolve => {
     const game = window.__prison.game;
     const afterRender = () => {
-      if (!window.__prison.children.list.some(o => o.texture?.key === 'explosion'
+      if (!window.__prison.children.list.some(o => o.texture?.key?.endsWith('explosion')
           && o.visible && Number(o.frame.name) >= 4 && Number(o.frame.name) <= 7)) return;
       game.events.off('postrender', afterRender);
       game.loop.sleep();
@@ -95,7 +95,7 @@ try {
   await capture('explosions', 'A live blast-punch/barrel explosion removing masonry and floor tiles.');
   await page.evaluate(() => window.__prison.game.loop.wake());
   await page.keyboard.up('ControlRight');
-  await page.waitForFunction(() => !window.__prison.children.list.some(o => o.texture?.key === 'explosion' && o.visible));
+  await page.waitForFunction(() => !window.__prison.children.list.some(o => o.texture?.key?.endsWith('explosion') && o.visible));
   await capture('aftermath', 'Actual expanding smoke, falling material fragments, exposed fracture edges and scorch residue after the blast.');
 
   await drive(1, 369);

@@ -1,0 +1,74 @@
+{
+  "source": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "opus"
+      },
+      {
+        "codec_name": "vp9",
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "format": {
+      "duration": "16.222355"
+    }
+  },
+  "export": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 640,
+        "height": 360,
+        "nb_frames": "450"
+      },
+      {
+        "codec_name": "aac",
+        "nb_frames": "390"
+      }
+    ],
+    "format": {
+      "duration": "15.000000"
+    }
+  },
+  "continuousClip": true,
+  "edit": "First 15 seconds; constant 30fps encoding with first actual frame held from t=0 if canvas starts after audio; source audio retained",
+  "files": {
+    "01-encounter.png": {
+      "bytes": 223220,
+      "sha256": "4418620ad14f5832cd94016e95bbe5b6960dc235d26b62db740f86989f464364"
+    },
+    "02-cooperative-charge.png": {
+      "bytes": 223693,
+      "sha256": "1537607de54c6dd33419582181f0aa641b4c613691308cb6167a3106b6dc2594"
+    },
+    "03-shock-punch.png": {
+      "bytes": 228946,
+      "sha256": "78a7d5b8f9d08e9ee8aa1725d6e80138c3eb9fc1c4e8bf4d8bc701032c06c0a9"
+    },
+    "04-chain-explosion.png": {
+      "bytes": 241274,
+      "sha256": "c3004e9801c26892fa46254aa6cc63f77cfea419a6b758c6a3fe1d23b6c15eec"
+    },
+    "05-narrow-escape.png": {
+      "bytes": 262110,
+      "sha256": "75f0699f8f0d81a387b3f3bca81067696594e231a148a85c5f997da496842d7d"
+    },
+    "06-freight-lift.png": {
+      "bytes": 252854,
+      "sha256": "469948ddccf3338ebcd7b608c25d62462fad52e568340748530a6b0225a073df"
+    },
+    "gameplay-15s.mp4": {
+      "bytes": 2565821,
+      "sha256": "62b33576c12e8634c443034cea1b3b084a32072d1639c5be5b6999ce3027ac81"
+    },
+    "gameplay-source.webm": {
+      "bytes": 3340240,
+      "sha256": "edfd9dd51b574fb079ebc839523ec14041ccfe6706b74a11bc6502d28185a658"
+    }
+  }
+}

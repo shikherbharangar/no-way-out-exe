@@ -7,6 +7,7 @@ type Spark = { x: number; y: number; vx: number; vy: number; life: number; color
 
 /** Cosmetic effects only. No client-side mutation of the authoritative world. */
 export class PixelEffects {
+ prisonArt=true;
  fragments: Fragment[] = []; clouds: Cloud[] = []; sparks: Spark[] = [];
  scorch: { x: number; y: number; life: number; radius: number }[] = [];
  private glow: {x:number;y:number;life:number;radius:number;color:number}[] = [];
@@ -55,7 +56,7 @@ export class PixelEffects {
  }
  blast(x: number, y: number, power: number, material='fuel', direction=0) {
   if(material==='fuel'){
-   const fire=this.scene.add.sprite(x,y-6,'explosion').setDepth(12).setScale(power).setFlipX(direction<0).play('boom');
+   const fire=this.scene.add.sprite(x,y-6,this.prisonArt?'reboot-explosion':'explosion').setDepth(12).setScale(power).setFlipX(direction<0).play(this.prisonArt?'reboot-boom':'boom');
    fire.once('animationcomplete',()=>fire.destroy());
    // Each cloud emerges on a different beat as the flame tears apart.
    for(let i=0;i<4;i++){this.cloud(x+(i-1)*16*power,y-18-i*8,.8+power*.3,1.5+i*.15);this.clouds[this.clouds.length-1].age=-i*.065;}

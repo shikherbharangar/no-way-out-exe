@@ -123,3 +123,5 @@ print('Compiled pixel sources: 48px actors, drawn fire keyframes, material tiles
 
 from art.machine import generate as machine
 machine(OUT)
+from art.reboot import generate as reboot
+reboot(OUT)

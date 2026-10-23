@@ -52,6 +52,11 @@ try{
  for(const shot of shots)await writeFile(`${output}/${shot.name}.png`,Buffer.from(shot.png,'base64'));
  evidence.shots=shots.map(({png,...rest})=>rest);evidence.browserErrors=errors;await writeFile(`${output}/browser-evidence.json`,JSON.stringify(evidence,null,2)+'\n');
  assert.deepEqual(errors,[]);assert.equal(result.final.won,true);assert.equal(result.final.sector,2);assert.equal(shots.length,7);
+ // Crossing from the reboot review scene must restore the existing sector's art.
+ assert.deepEqual(await page.evaluate(()=>({actors:window.__prison.sprites.map(s=>s.texture.key),guards:window.__prison.guardSprites.map(s=>s.texture.key),prisonFire:window.__prison.effects.prisonArt})),{actors:['zip','brick'],guards:['guard','guard','guard'],prisonFire:false});
  for(const f of result.frames)assert(f.some(n=>n>=4&&n<=11)&&f.some(n=>n>=19&&n<=22),'Moving and attacking animations');
+ await page.click('#again');await page.waitForFunction(()=>window.__prison.displaySector===1);
+ assert.deepEqual(await page.evaluate(()=>({actors:window.__prison.sprites.map(s=>s.texture.key),fire:window.__prison.effects.prisonArt,gate:window.__prison.prisonShutter.visible})),{actors:['reboot-zip','reboot-brick'],fire:true,gate:true});
  console.log('PASS full two-sector browser campaign, seven real frames, video/audio, actor animations, no browser errors');
+ console.log('PASS replay restores prison actors, native gate and fire after THE MACHINE');
 }finally{await browser.close();}

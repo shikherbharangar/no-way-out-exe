@@ -1,0 +1,69 @@
+{
+  "checks": [
+    "65-color palette",
+    "binary alpha",
+    "96 populated runtime frames",
+    "contact baselines",
+    "editable/runtime equality",
+    "12 nonblank 1280x720 before/after screenshots",
+    "recorded combat, co-op and victory"
+  ],
+  "files": {
+    "artifacts/reboot/after/action/01-encounter.png": {
+      "bytes": 223220,
+      "sha256": "4418620ad14f5832cd94016e95bbe5b6960dc235d26b62db740f86989f464364"
+    },
+    "artifacts/reboot/after/action/02-cooperative-charge.png": {
+      "bytes": 223693,
+      "sha256": "1537607de54c6dd33419582181f0aa641b4c613691308cb6167a3106b6dc2594"
+    },
+    "artifacts/reboot/after/action/03-shock-punch.png": {
+      "bytes": 228946,
+      "sha256": "78a7d5b8f9d08e9ee8aa1725d6e80138c3eb9fc1c4e8bf4d8bc701032c06c0a9"
+    },
+    "artifacts/reboot/after/action/04-chain-explosion.png": {
+      "bytes": 241274,
+      "sha256": "c3004e9801c26892fa46254aa6cc63f77cfea419a6b758c6a3fe1d23b6c15eec"
+    },
+    "artifacts/reboot/after/action/05-narrow-escape.png": {
+      "bytes": 262110,
+      "sha256": "75f0699f8f0d81a387b3f3bca81067696594e231a148a85c5f997da496842d7d"
+    },
+    "artifacts/reboot/after/action/06-freight-lift.png": {
+      "bytes": 252854,
+      "sha256": "469948ddccf3338ebcd7b608c25d62462fad52e568340748530a6b0225a073df"
+    },
+    "artifacts/reboot/after/action/gameplay-15s.mp4": {
+      "bytes": 2565821,
+      "sha256": "62b33576c12e8634c443034cea1b3b084a32072d1639c5be5b6999ce3027ac81"
+    },
+    "artifacts/reboot/after/action/gameplay-source.webm": {
+      "bytes": 3340240,
+      "sha256": "edfd9dd51b574fb079ebc839523ec14041ccfe6706b74a11bc6502d28185a658"
+    },
+    "artifacts/reboot/after/aftermath.png": {
+      "bytes": 243175,
+      "sha256": "99acf6be9d47bfe3de45c042791a381c86e610bb28a9d90ac595c2bcc31b3f88"
+    },
+    "artifacts/reboot/after/characters.png": {
+      "bytes": 236298,
+      "sha256": "857f3977d76fe08de49fb3ee89a2c7fc81a41e35aca6ef920d0a3b61b6cfc24e"
+    },
+    "artifacts/reboot/after/cooperative.png": {
+      "bytes": 221819,
+      "sha256": "d3cdce32360055cc8d8dc55ebafa623ec8547f942f77e9de5536e13f0b162d34"
+    },
+    "artifacts/reboot/after/environment.png": {
+      "bytes": 222673,
+      "sha256": "a3e0b7bc3f26bfcd27e37cd6f6c4dc8cffcdd096aa2690c9e1146ad327aef4ec"
+    },
+    "artifacts/reboot/after/explosions.png": {
+      "bytes": 241596,
+      "sha256": "9167dac4a80493547e2711584e2b0c9068edb0aa607f98689049567504d83ddd"
+    },
+    "artifacts/reboot/after/gameplay.png": {
+      "bytes": 229944,
+      "sha256": "38920680816e26d2917cc776de26121664577ca07b305743dc755ce5d1651d4f"
+    }
+  }
+}

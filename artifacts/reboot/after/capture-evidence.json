@@ -1,0 +1,174 @@
+{
+  "capturedAt": "2026-10-23T05:33:48.933Z",
+  "renderer": "Phaser in Chromium via Playwright",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "controls": "Keyboard input; game state observed, never overwritten",
+  "browserErrors": [],
+  "captures": [
+    {
+      "path": "artifacts/reboot/after/characters.png",
+      "description": "ZIP and BRICK in the actual playable prison scene.",
+      "stateBeforeScreenshot": {
+        "tick": 61,
+        "players": [
+          {
+            "id": 0,
+            "x": 90,
+            "y": 288.9555555555555,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 138,
+            "y": 288.9555555555555,
+            "grounded": true
+          }
+        ],
+        "plate": false,
+        "hack": 0,
+        "gate": false,
+        "remainingTiles": 350,
+        "activeExplosions": []
+      }
+    },
+    {
+      "path": "artifacts/reboot/after/explosions.png",
+      "description": "A live blast-punch/barrel explosion removing masonry and floor tiles.",
+      "stateBeforeScreenshot": {
+        "tick": 140,
+        "players": [
+          {
+            "id": 0,
+            "x": 90,
+            "y": 288.9555555555555,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 216.58333333333303,
+            "y": 310.6944444444444,
+            "grounded": false
+          }
+        ],
+        "plate": false,
+        "hack": 0,
+        "gate": false,
+        "remainingTiles": 325,
+        "activeExplosions": [
+          {
+            "x": 230,
+            "y": 266,
+            "frame": 4
+          }
+        ]
+      }
+    },
+    {
+      "path": "artifacts/reboot/after/aftermath.png",
+      "description": "Actual expanding smoke, falling material fragments, exposed fracture edges and scorch residue after the blast.",
+      "stateBeforeScreenshot": {
+        "tick": 173,
+        "players": [
+          {
+            "id": 0,
+            "x": 90,
+            "y": 288.9555555555555,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 216.58333333333303,
+            "y": 336.8222222222222,
+            "grounded": true
+          }
+        ],
+        "plate": false,
+        "hack": 0,
+        "gate": false,
+        "remainingTiles": 325,
+        "activeExplosions": []
+      }
+    },
+    {
+      "path": "artifacts/reboot/after/environment.png",
+      "description": "The scrolled prison environment, machinery, damaged masonry, and puzzle platforms.",
+      "stateBeforeScreenshot": {
+        "tick": 620,
+        "players": [
+          {
+            "id": 0,
+            "x": 492.22222222221984,
+            "y": 224.8999999999999,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 374.95555555555586,
+            "y": 288.9144444444444,
+            "grounded": true
+          }
+        ],
+        "plate": true,
+        "hack": 0,
+        "gate": false,
+        "remainingTiles": 317,
+        "activeExplosions": []
+      }
+    },
+    {
+      "path": "artifacts/reboot/after/cooperative.png",
+      "description": "BRICK holds the power plate while ZIP actively hacks the linked terminal.",
+      "stateBeforeScreenshot": {
+        "tick": 662,
+        "players": [
+          {
+            "id": 0,
+            "x": 493.8722222222199,
+            "y": 224.8999999999999,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 374.95555555555586,
+            "y": 288.9144444444444,
+            "grounded": true
+          }
+        ],
+        "plate": true,
+        "hack": 0.2555555555555554,
+        "gate": false,
+        "remainingTiles": 317,
+        "activeExplosions": []
+      }
+    },
+    {
+      "path": "artifacts/reboot/after/gameplay.png",
+      "description": "Both prisoners in the rendered scene immediately after completing the cooperative gate puzzle.",
+      "stateBeforeScreenshot": {
+        "tick": 733,
+        "players": [
+          {
+            "id": 0,
+            "x": 493.8722222222199,
+            "y": 224.8999999999999,
+            "grounded": true
+          },
+          {
+            "id": 1,
+            "x": 374.95555555555586,
+            "y": 288.9144444444444,
+            "grounded": true
+          }
+        ],
+        "plate": true,
+        "hack": 1,
+        "gate": true,
+        "remainingTiles": 317,
+        "activeExplosions": []
+      }
+    }
+  ]
+}

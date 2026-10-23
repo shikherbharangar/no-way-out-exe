@@ -1,0 +1,14 @@
+{
+  "verifiedAt": "2026-10-23T12:20:11.281Z",
+  "localImagesLoaded": true,
+  "sceneSelector": true,
+  "comparisonSlider": true,
+  "video": {
+    "width": 640,
+    "height": 360,
+    "duration": 15,
+    "played": true
+  },
+  "browserErrors": [],
+  "externalReferences": "Excluded from this local UI check; separately downloaded and visually inspected"
+}

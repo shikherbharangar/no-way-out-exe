@@ -2,6 +2,8 @@
 
 **Two idiots. One prison. Infinite bad decisions.**
 
+This review branch replaces **Cell Block Zero's art direction** while preserving the two-sector game. See the [actual before/after comparison and limitations](docs/ART_REBOOT.md), [new gameplay capture](artifacts/reboot/after/action/gameplay-15s.mp4), and [editable sprite/palette specification](art/reboot/README.md). Visual approval is pending; no further content is being added.
+
 A playable, original pixel-art prison escape built with Phaser 3, TypeScript, and Vite. This build contains **Cell Block Zero and Sector 02: THE MACHINE**, a complete two-sector cooperative chapter. The remaining sectors from the master brief are future work.
 
 The premium action pass adds editable pixel drawings, a composed ash-furnace encounter, guard aiming/recoil, shield charging and timed barrel chains. Watch the [15-second real gameplay showcase](artifacts/premium/gameplay-15s.mp4), browse the [captured sequence and Broforce comparison](docs/PREMIUM_ACTION_REVIEW.md), or read the [art pipeline notes](docs/ART_DIRECTION.md). The original co-op puzzle, escape route and authoritative online server are preserved.
