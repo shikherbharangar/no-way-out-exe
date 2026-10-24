@@ -40,11 +40,11 @@ try {
   const shots=[],events=[],samples=[],playerFrames=[new Set(),new Set()],guardFrames=new Set(),fireFrames=new Set();let renderedFrames=0;let last=s.eventId,lastSample=-1,chargedAt=-1,punched=false;
   const start=performance.now(),startTick=s.tick,startEvent=s.eventId;
   let pending='01-encounter';
-  const snapshot=()=>({tick:s.tick,players:s.players.map(p=>({id:p.id,x:p.x,y:p.y,hp:p.hp,charge:p.charge,shield:p.shield,ghost:p.ghost})),guards:s.guards.map(g=>({...g})),barrels:s.barrels.map(b=>({...b})),remainingTiles:s.terrain.filter(t=>t>=0).length,won:s.won});
+  const snapshot=()=>({tick:s.tick,players:s.players.map(p=>({id:p.id,x:p.x,y:p.y,hp:p.hp,charge:p.charge,shield:p.shield,ghost:p.ghost})),guards:s.guards.map(g=>({...g})),barrels:s.barrels.map(b=>({...b})),rescued:s.rescued,rescueProgress:s.rescueProgress,checkpoint:s.checkpoint,remainingTiles:s.terrain.filter(t=>t>=0).length,won:s.won});
   const initial=snapshot();
   function rendered(){
-   renderedFrames++;scene.sprites.forEach((sprite,i)=>playerFrames[i].add(Number(sprite.frame.name)));
-   scene.guardSprites.forEach(sprite=>guardFrames.add(Number(sprite.frame.name)));
+   renderedFrames++;scene.sprites.forEach((sprite,i)=>playerFrames[i].add(String(sprite.frame.name)));
+   scene.guardSprites.forEach(sprite=>guardFrames.add(String(sprite.frame.name)));
    scene.children.list.filter(o=>o.texture?.key==='explosion'&&o.visible).forEach(o=>fireFrames.add(Number(o.frame.name)));
    if(!pending)return;
    shots.push({name:pending,seconds:(performance.now()-start)/1000,state:snapshot(),png:scene.game.canvas.toDataURL('image/png').split(',')[1]});pending='';
@@ -59,6 +59,7 @@ try {
   function frame(){
    const elapsed=(performance.now()-start)/1000,t=s.tick-startTick;
    for(const e of s.events)if(e.id>last){events.push({...e,seconds:elapsed});last=e.id;
+    if(e.type==='rescue')pending='02b-prisoner-rescue';
     if(e.type==='charge'&&chargedAt<0){chargedAt=elapsed;pending='02-cooperative-charge';}
     if(e.type==='blast'&&e.material==='steel'&&!shots.some(shot=>shot.name==='03-shock-punch'))pending='03-shock-punch';
    }
@@ -99,9 +100,11 @@ try {
  result.browserErrors=errors;result.capturedAt=new Date().toISOString();
  await writeFile(`${output}/evidence.json`,JSON.stringify(result,null,2)+'\n');
  console.log(JSON.stringify({duration:result.duration,shots:result.shots.map(s=>s.name),eventTypes:[...new Set(result.events.map(e=>e.type))],initial:result.initial.players,final:result.final.players,won:result.final.won,errors}));
- assert(result.animationFrames.players.every(frames=>frames.length>=5&&frames.some(f=>f>=4&&f<=11)),'Missing moving hero animation');
+ assert(result.animationFrames.players.every(frames=>frames.length>=4&&frames.includes('run')),'Missing moving hero animation');
  assert.equal(new Set(result.shots.map(shot=>shot.name)).size,result.shots.length,'Duplicate screenshot filename');
  assert(result.events.some(e=>e.type==='win'&&e.seconds<15),'Escape must be visible in the 15-second excerpt');
+ assert(result.events.some(e=>e.type==='rescue'),'No actual cage rescue');
+ assert(result.final.rescued,'Rescue state missing');
  assert(result.animationFrames.fire.length>=8,'Missing evolving fire animation');
  assert(result.events.some(e=>e.type==='shot'),'Guards did not shoot');
  assert(result.events.some(e=>e.type==='death'),'No enemy defeat');

@@ -1,5 +1,7 @@
 # NO WAY OUT.exe
 
+**Supplied-art integration review:** [Actual screenshots/video and remaining issues](docs/SUPPLIED_ART_INTEGRATION.md) · [Asset inventory](docs/SUPPLIED_ART_INVENTORY.md) · [Validation](docs/SUPPLIED_ART_VALIDATION.md). Branch `approved-art-integration`; not merged into main.
+
 **Two idiots. One prison. Infinite bad decisions.**
 
 A playable, original pixel-art prison escape built with Phaser 3, TypeScript, and Vite. This build contains **Cell Block Zero and Sector 02: THE MACHINE**, a complete two-sector cooperative chapter. The remaining sectors from the master brief are future work.

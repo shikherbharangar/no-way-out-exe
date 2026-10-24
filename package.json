@@ -22,7 +22,11 @@
     "test:browser:machine": "node scripts/machine-browser.mjs",
     "capture:machine": "node scripts/machine-browser.mjs",
     "test:browser:machine:online": "node scripts/machine-online-browser.mjs",
-    "export:machine": "node scripts/export-machine.mjs"
+    "export:machine": "node scripts/export-machine.mjs",
+    "assets:supplied": "python scripts/import-supplied.py",
+    "test:art": "node scripts/test-supplied-render.mjs",
+    "capture:supplied": "node scripts/capture-supplied.mjs",
+    "verify:supplied": "python scripts/verify-supplied.py"
   },
   "dependencies": {
     "phaser": "3.90.0",

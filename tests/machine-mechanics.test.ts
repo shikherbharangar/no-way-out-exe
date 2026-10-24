@@ -6,6 +6,27 @@ const hold=()=>({...idleInput(),interact:true});
 const run=(s:Simulation,n:number,inputs=[idleInput(),idleInput()])=>{for(let t=0;t<n;t++)s.step(inputs);};
 const machine=()=>{const s=new Simulation();s.enterMachine();return s;};
 describe('authoritative machinery rules and recovery',()=>{
+ it('the normal-input campaign pilot wall-jumps back after missing the terminal platform',()=>{
+  const s=new Simulation();s.players[0].x=487;s.players[1].x=369;
+  const pilot=new CampaignPilot();let roundedOverhang=false;
+  for(let t=0;t<900&&!s.gate;t++){
+   s.step(pilot.controls(s.snapshot()));roundedOverhang ||= s.players[0].x>540;
+  }
+  expect(roundedOverhang).toBe(true);expect(s.gate).toBe(true);
+ });
+ it('the normal-input test pilot can reboard a partially raised cage after an online overshoot',()=>{
+  for(const [height,x] of [[545,263],[558.9,263],[559.9,263],[476,316]]){
+  const s=machine();s.machine!.liftY=height;
+  Object.assign(s.players[0],{x,y:560,grounded:true});
+  Object.assign(s.players[1],{x:200,y:height,grounded:true});
+  const pilot=new MachinePilot();let jumped=false;
+  for(let t=0;t<900&&!s.machine!.liftSolved;t++){
+   const inputs=pilot.controls(s.snapshot());jumped ||= inputs[0].jump;s.step(inputs);
+  }
+  expect(jumped).toBe(true);expect(s.machine!.liftSolved).toBe(true);
+  expect(s.players.every(p=>!p.ghost&&p.hp===3)).toBe(true);
+  }
+ });
  it('transitions only after both living players have escaped and jointly hold interact',()=>{
   const s=new Simulation();run(s,100,[hold(),hold()]);expect(s.sector).toBe(1);
   s.players.forEach((p,i)=>{p.x=1190+i*25;});s.step([hold(),idleInput()]);expect(s.won).toBe(true);

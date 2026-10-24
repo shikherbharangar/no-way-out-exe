@@ -20,3 +20,6 @@ __pycache__/
 !artifacts/premium/
 
 !artifacts/machine/
+
+!artifacts/supplied/
+artifacts/supplied/regression/**/*.webm

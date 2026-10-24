@@ -37,7 +37,7 @@ try{
    }
    function render(){
     const s=scene.sim,m=s.machine;if(!m||!recorder||scene.displaySector!==2)return;recorded++;
-    scene.sprites.forEach((sprite,i)=>frames[i].add(Number(sprite.frame.name)));
+    scene.sprites.forEach((sprite,i)=>frames[i].add(String(sprite.frame.name)));
     for(const e of s.events)if(e.id>lastEvent){lastEvent=e.id;events.push({...e,seconds:(performance.now()-machineStart)/1000});}
     const activeFire=scene.children.list.some(o=>o.texture?.key==='explosion'&&o.visible&&Number(o.frame.name)>=4&&Number(o.frame.name)<=8);
     const candidates=[['01-counterweight',m.liftY<510&&m.liftY>410],['02-relay',m.relayCharge===1],['03-trap',m.trap>.2&&m.trap<1.5],['04-chase',m.trap>1.7&&!m.chaseDone&&m.chaseX>560],['05-cooperative-ram',m.bossPhase==='caught'&&m.bossHp<6&&m.bossHp>0],['06-heart-explosion',m.bossHp===0&&activeFire],['07-sector-clear',s.won]];
@@ -52,6 +52,10 @@ try{
  for(const shot of shots)await writeFile(`${output}/${shot.name}.png`,Buffer.from(shot.png,'base64'));
  evidence.shots=shots.map(({png,...rest})=>rest);evidence.browserErrors=errors;await writeFile(`${output}/browser-evidence.json`,JSON.stringify(evidence,null,2)+'\n');
  assert.deepEqual(errors,[]);assert.equal(result.final.won,true);assert.equal(result.final.sector,2);assert.equal(shots.length,7);
- for(const f of result.frames)assert(f.some(n=>n>=4&&n<=11)&&f.some(n=>n>=19&&n<=22),'Moving and attacking animations');
+ for(const f of result.frames)assert(f.includes('run')&&f.some(n=>['shoot','punch','charge'].includes(n)),'Moving and attacking animations');
+ const art=await page.evaluate(()=>window.__prison.sprites.map(s=>s.texture.key));assert.deepEqual(art,['supplied-zip','supplied-brick']);
+ await page.click('#again');await page.waitForFunction(()=>window.__prison.sim.sector===1&&window.__prison.displaySector===1);
+ assert.deepEqual(await page.evaluate(()=>({actors:window.__prison.sprites.map(s=>s.texture.key),rescued:window.__prison.sim.rescued})),{actors:['supplied-zip','supplied-brick'],rescued:false});
+ console.log('PASS supplied heroes across both sectors and real replay resets rescue');
  console.log('PASS full two-sector browser campaign, seven real frames, video/audio, actor animations, no browser errors');
 }finally{await browser.close();}

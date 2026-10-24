@@ -1,0 +1,524 @@
+{
+  "capturedAt": "2026-10-24T07:51:03.880Z",
+  "method": "Real Phaser canvas; normal keyboard input. Paused scene only to hide/restore cosmetic background for same-tick readability pairs; no simulation writes.",
+  "resolution": [
+    640,
+    360
+  ],
+  "browserErrors": [],
+  "captures": [
+    {
+      "name": "01-idle",
+      "state": {
+        "tick": 72,
+        "players": [
+          {
+            "x": 90,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          },
+          {
+            "x": 138,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": false,
+        "hack": 0,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 350
+      },
+      "restoredState": {
+        "tick": 72,
+        "players": [
+          {
+            "x": 90,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          },
+          {
+            "x": 138,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": false,
+        "hack": 0,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 350
+      }
+    },
+    {
+      "name": "02-running",
+      "state": {
+        "tick": 76,
+        "players": [
+          {
+            "x": 91.91666666666666,
+            "y": 288.9555555555555,
+            "vx": 57.5,
+            "grounded": true,
+            "action": 0,
+            "frame": "run"
+          },
+          {
+            "x": 138.95833333333334,
+            "y": 288.9555555555555,
+            "vx": 38.333333333333336,
+            "grounded": true,
+            "action": 0,
+            "frame": "run"
+          }
+        ],
+        "gate": false,
+        "hack": 0,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 350
+      },
+      "restoredState": {
+        "tick": 76,
+        "players": [
+          {
+            "x": 91.91666666666666,
+            "y": 288.9555555555555,
+            "vx": 57.5,
+            "grounded": true,
+            "action": 0,
+            "frame": "run"
+          },
+          {
+            "x": 138.95833333333334,
+            "y": 288.9555555555555,
+            "vx": 38.333333333333336,
+            "grounded": true,
+            "action": 0,
+            "frame": "run"
+          }
+        ],
+        "gate": false,
+        "hack": 0,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 350
+      }
+    },
+    {
+      "name": "03-electric-attack",
+      "state": {
+        "tick": 85,
+        "players": [
+          {
+            "x": 94.79166666666664,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0.30333333333333334,
+            "frame": "shoot"
+          },
+          {
+            "x": 143.11111111111114,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": false,
+        "hack": 0,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 350
+      },
+      "restoredState": {
+        "tick": 85,
+        "players": [
+          {
+            "x": 94.79166666666664,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0.30333333333333334,
+            "frame": "shoot"
+          },
+          {
+            "x": 143.11111111111114,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": false,
+        "hack": 0,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 350
+      }
+    },
+    {
+      "name": "04-explosion",
+      "state": {
+        "tick": 151,
+        "players": [
+          {
+            "x": 94.79166666666664,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          },
+          {
+            "x": 215.9444444444442,
+            "y": 314.03888888888883,
+            "vx": 0,
+            "grounded": false,
+            "action": 0.0533333333333334,
+            "frame": "punch"
+          }
+        ],
+        "gate": false,
+        "hack": 0,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 325
+      },
+      "restoredState": {
+        "tick": 151,
+        "players": [
+          {
+            "x": 94.79166666666664,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          },
+          {
+            "x": 215.9444444444442,
+            "y": 314.03888888888883,
+            "vx": 0,
+            "grounded": false,
+            "action": 0.0533333333333334,
+            "frame": "punch"
+          }
+        ],
+        "gate": false,
+        "hack": 0,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 325
+      }
+    },
+    {
+      "name": "05-destroyed-wall",
+      "state": {
+        "tick": 237,
+        "players": [
+          {
+            "x": 94.79166666666664,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          },
+          {
+            "x": 215.9444444444442,
+            "y": 336.8222222222222,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": false,
+        "hack": 0,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 325
+      },
+      "restoredState": {
+        "tick": 237,
+        "players": [
+          {
+            "x": 94.79166666666664,
+            "y": 288.9555555555555,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          },
+          {
+            "x": 215.9444444444442,
+            "y": 336.8222222222222,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": false,
+        "hack": 0,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 325
+      }
+    },
+    {
+      "name": "06-cooperative-terminal",
+      "state": {
+        "tick": 685,
+        "players": [
+          {
+            "x": 491.4277777777755,
+            "y": 224.76600000000002,
+            "vx": 0,
+            "grounded": true,
+            "action": 0.1,
+            "frame": "hack"
+          },
+          {
+            "x": 374.9138888888893,
+            "y": 288.9828888888888,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": false,
+        "hack": 0.2888888888888888,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 314
+      },
+      "restoredState": {
+        "tick": 685,
+        "players": [
+          {
+            "x": 491.4277777777755,
+            "y": 224.76600000000002,
+            "vx": 0,
+            "grounded": true,
+            "action": 0.1,
+            "frame": "hack"
+          },
+          {
+            "x": 374.9138888888893,
+            "y": 288.9828888888888,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": false,
+        "hack": 0.2888888888888888,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 314
+      }
+    },
+    {
+      "name": "07-rescue-cage",
+      "state": {
+        "tick": 987,
+        "players": [
+          {
+            "x": 614.3888888888878,
+            "y": 288.9215555555556,
+            "vx": 90.5,
+            "grounded": true,
+            "action": 0,
+            "frame": "run"
+          },
+          {
+            "x": 642.0416666666654,
+            "y": 288.9551111111109,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": true,
+        "hack": 1,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 314
+      },
+      "restoredState": {
+        "tick": 987,
+        "players": [
+          {
+            "x": 614.3888888888878,
+            "y": 288.9215555555556,
+            "vx": 90.5,
+            "grounded": true,
+            "action": 0,
+            "frame": "run"
+          },
+          {
+            "x": 642.0416666666654,
+            "y": 288.9551111111109,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": true,
+        "hack": 1,
+        "rescued": false,
+        "rescueProgress": 0,
+        "checkpoint": false,
+        "remainingTiles": 314
+      }
+    },
+    {
+      "name": "08-rescue-interaction",
+      "state": {
+        "tick": 1005,
+        "players": [
+          {
+            "x": 617.2277777777766,
+            "y": 288.9215555555556,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          },
+          {
+            "x": 642.0416666666654,
+            "y": 288.9551111111109,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "shield"
+          }
+        ],
+        "gate": true,
+        "hack": 1,
+        "rescued": false,
+        "rescueProgress": 0.33333333333333326,
+        "checkpoint": false,
+        "remainingTiles": 314
+      },
+      "restoredState": {
+        "tick": 1005,
+        "players": [
+          {
+            "x": 617.2277777777766,
+            "y": 288.9215555555556,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          },
+          {
+            "x": 642.0416666666654,
+            "y": 288.9551111111109,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "shield"
+          }
+        ],
+        "gate": true,
+        "hack": 1,
+        "rescued": false,
+        "rescueProgress": 0.33333333333333326,
+        "checkpoint": false,
+        "remainingTiles": 314
+      }
+    },
+    {
+      "name": "09-checkpoint",
+      "state": {
+        "tick": 1094,
+        "players": [
+          {
+            "x": 669.027777777777,
+            "y": 288.9215555555556,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          },
+          {
+            "x": 693.7916666666647,
+            "y": 288.9551111111109,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": true,
+        "hack": 1,
+        "rescued": true,
+        "rescueProgress": 1,
+        "checkpoint": true,
+        "remainingTiles": 314
+      },
+      "restoredState": {
+        "tick": 1094,
+        "players": [
+          {
+            "x": 669.027777777777,
+            "y": 288.9215555555556,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          },
+          {
+            "x": 693.7916666666647,
+            "y": 288.9551111111109,
+            "vx": 0,
+            "grounded": true,
+            "action": 0,
+            "frame": "idle"
+          }
+        ],
+        "gate": true,
+        "hack": 1,
+        "rescued": true,
+        "rescueProgress": 1,
+        "checkpoint": true,
+        "remainingTiles": 314
+      }
+    }
+  ]
+}

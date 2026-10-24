@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdir,writeFile} from 'node:fs/promises';
 import {CampaignPilot} from '../tests/helpers/machine-pilot';
 import {idleInput,type Snapshot} from '../src/game/simulation';
+const output=process.env.CAPTURE_DIR||'artifacts/machine';
 const clients:Client[]=[];
 type Message={type:string;[key:string]:any};
 type Client={socket:WebSocket;messages:Message[];states:Map<number,Snapshot>;state?:Snapshot};
@@ -39,6 +40,6 @@ try{
  }
  assert.equal(a.state?.sector,2);assert.equal(a.state?.won,true,JSON.stringify(a.state?.players));assert(reconnected);
  await pause(100);const common=[...a.states.keys()].filter(t=>b.states.has(t)).sort((a,b)=>b-a)[0];assert(common);assert.deepEqual(a.states.get(common),b.states.get(common));
- await mkdir('artifacts/machine',{recursive:true});await writeFile('artifacts/machine/network-evidence.json',JSON.stringify({verifiedAt:new Date().toISOString(),method:'Two websocket clients; ordinary bounded inputs only; full campaign from prison spawn',seed:a.state!.seed,sameSnapshotTick:common,reconnectFrozen:true,reconnectPreserved:true,checkpoints,final:a.state},null,2)+'\n');
+ await mkdir(output,{recursive:true});await writeFile(`${output}/network-evidence.json`,JSON.stringify({verifiedAt:new Date().toISOString(),method:'Two websocket clients; ordinary bounded inputs only; full campaign from prison spawn',seed:a.state!.seed,sameSnapshotTick:common,reconnectFrozen:true,reconnectPreserved:true,checkpoints,final:a.state},null,2)+'\n');
  console.log('PASS full authoritative campaign, both co-op mechanisms, trap/chase, boss, two-player exit and identical snapshots');
 }finally{clients.forEach(c=>c.socket.close());}

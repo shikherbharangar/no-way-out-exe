@@ -1,0 +1,17 @@
+{
+  "verifiedAt": "2026-10-24T08:05:32.759Z",
+  "localImagesLoaded": true,
+  "sceneSelection": true,
+  "neutralRestoredSelection": true,
+  "exact2xDisplay": true,
+  "fiveSourceAtlasGroups": true,
+  "variableCellSizes": true,
+  "video": {
+    "duration": 15,
+    "width": 640,
+    "height": 360,
+    "played": true
+  },
+  "browserErrors": [],
+  "badResponses": []
+}

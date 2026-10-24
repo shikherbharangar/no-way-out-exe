@@ -1,0 +1,414 @@
+{
+  "format": "96x96 RGBA frame grid 4 columns",
+  "animations": {
+    "zip": {
+      "idle": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "run": {
+        "index": 1,
+        "atlas_x": 96,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "jump": {
+        "index": 2,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "fall": {
+        "index": 3,
+        "atlas_x": 288,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "shoot": {
+        "index": 4,
+        "atlas_x": 0,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "melee": {
+        "index": 5,
+        "atlas_x": 96,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "dash": {
+        "index": 6,
+        "atlas_x": 192,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "wall_jump": {
+        "index": 7,
+        "atlas_x": 288,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "slide": {
+        "index": 8,
+        "atlas_x": 0,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "hack": {
+        "index": 9,
+        "atlas_x": 96,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "electric": {
+        "index": 10,
+        "atlas_x": 192,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "hurt": {
+        "index": 11,
+        "atlas_x": 288,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "death": {
+        "index": 12,
+        "atlas_x": 0,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96
+      }
+    },
+    "brick": {
+      "idle": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "run": {
+        "index": 1,
+        "atlas_x": 96,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "jump": {
+        "index": 2,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "fall": {
+        "index": 3,
+        "atlas_x": 288,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "punch": {
+        "index": 4,
+        "atlas_x": 0,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "aim": {
+        "index": 5,
+        "atlas_x": 96,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "slam": {
+        "index": 6,
+        "atlas_x": 192,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "shield": {
+        "index": 7,
+        "atlas_x": 288,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "charge": {
+        "index": 8,
+        "atlas_x": 0,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "special": {
+        "index": 9,
+        "atlas_x": 96,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "hurt": {
+        "index": 10,
+        "atlas_x": 192,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "death": {
+        "index": 11,
+        "atlas_x": 288,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      }
+    },
+    "enemies": {
+      "guard": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "shotgunner": {
+        "index": 1,
+        "atlas_x": 96,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "shield_trooper": {
+        "index": 2,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "sniper": {
+        "index": 3,
+        "atlas_x": 288,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "heavy_trooper": {
+        "index": 4,
+        "atlas_x": 0,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "jetpack_trooper": {
+        "index": 5,
+        "atlas_x": 96,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "riot_trooper": {
+        "index": 6,
+        "atlas_x": 192,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "drone": {
+        "index": 7,
+        "atlas_x": 288,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "turret": {
+        "index": 8,
+        "atlas_x": 0,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "combat_dog": {
+        "index": 9,
+        "atlas_x": 96,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "mutant_prisoner": {
+        "index": 10,
+        "atlas_x": 192,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "bio_soldier": {
+        "index": 11,
+        "atlas_x": 288,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "alien_runner": {
+        "index": 12,
+        "atlas_x": 0,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "alien_spitter": {
+        "index": 13,
+        "atlas_x": 96,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96
+      },
+      "armored_brute": {
+        "index": 14,
+        "atlas_x": 192,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96
+      }
+    },
+    "pickups": {
+      "health": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "ammo": {
+        "index": 1,
+        "atlas_x": 64,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "extra_life": {
+        "index": 2,
+        "atlas_x": 128,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "shield": {
+        "index": 3,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "speed": {
+        "index": 4,
+        "atlas_x": 256,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "invulnerability": {
+        "index": 5,
+        "atlas_x": 320,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "electric": {
+        "index": 6,
+        "atlas_x": 0,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "explosive": {
+        "index": 7,
+        "atlas_x": 64,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "double_damage": {
+        "index": 8,
+        "atlas_x": 128,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "drone": {
+        "index": 9,
+        "atlas_x": 192,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "random": {
+        "index": 10,
+        "atlas_x": 256,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64
+      },
+      "alien_artifact": {
+        "index": 11,
+        "atlas_x": 320,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64
+      }
+    },
+    "props": {
+      "checkpoint_flag": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128
+      },
+      "rescue_cage": {
+        "index": 1,
+        "atlas_x": 128,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128
+      },
+      "terminal": {
+        "index": 2,
+        "atlas_x": 256,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128
+      },
+      "reactor": {
+        "index": 3,
+        "atlas_x": 384,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128
+      },
+      "exit_beacon": {
+        "index": 4,
+        "atlas_x": 512,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128
+      }
+    }
+  }
+}

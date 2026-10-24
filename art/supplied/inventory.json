@@ -1,0 +1,2495 @@
+{
+  "files": {
+    "README.md": {
+      "bytes": 3919,
+      "sha256": "33c7d2d92f8e389c1d61b4640cedc9722ae5aae9a067fc4da25065d2537d285e"
+    },
+    "START_HERE.png": {
+      "bytes": 203408,
+      "sha256": "38ab72e61cb699d7cc3fe8b39dcdd660f8ad1af2b73683dceee0ef14b2a7bad9",
+      "size": [
+        1250,
+        850
+      ],
+      "mode": "RGB",
+      "alphaValues": 1,
+      "bounds": [
+        0,
+        0,
+        1250,
+        850
+      ]
+    },
+    "brick_preview.png": {
+      "bytes": 94349,
+      "sha256": "f7f046f0eeae1a7595a42ea3b5d31f15ea01d33c99d915c2d895d5037333d973",
+      "size": [
+        640,
+        490
+      ],
+      "mode": "RGB",
+      "alphaValues": 1,
+      "bounds": [
+        0,
+        0,
+        640,
+        490
+      ]
+    },
+    "enemies/alien_runner.png": {
+      "bytes": 9510,
+      "sha256": "f16ce8f84a0f66559c94d234b2a54f8f5fa60044415de92c790decb8e470ceb8",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        7,
+        13,
+        89,
+        82
+      ]
+    },
+    "enemies/alien_spitter.png": {
+      "bytes": 9940,
+      "sha256": "f3db3dd06280137fc82059972f4ff6b08c2534cd72f669a4c045d659abecd39c",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        2,
+        19,
+        94,
+        77
+      ]
+    },
+    "enemies/armored_brute.png": {
+      "bytes": 11452,
+      "sha256": "c3347ea6a71392db44ee56b74b8018d3d382ea291f1edf81167959dd5d764645",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        2,
+        19,
+        94,
+        85
+      ]
+    },
+    "enemies/atlas.png": {
+      "bytes": 127529,
+      "sha256": "3a58f86a939067942920db4e7541d0679d6dd24ffff2cbef4782ab40eecc0231",
+      "size": [
+        384,
+        384
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        7,
+        15,
+        378,
+        373
+      ]
+    },
+    "enemies/bio_soldier.png": {
+      "bytes": 9351,
+      "sha256": "8959a8e186668e87c0a38783c0bc698b6ad5180b68c4949ebe5f74540373e35f",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        5,
+        16,
+        90,
+        80
+      ]
+    },
+    "enemies/combat_dog.png": {
+      "bytes": 5925,
+      "sha256": "3a11631bd66a442414990dba7de24af5b40021d81d3b64c885338d8ed550e39d",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        2,
+        28,
+        68,
+        67
+      ]
+    },
+    "enemies/drone.png": {
+      "bytes": 6312,
+      "sha256": "b4fcb670e9c3f43533610fc186fe245c1290327a840d4bc46d12035261c3c50c",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        13,
+        24,
+        82,
+        72
+      ]
+    },
+    "enemies/guard.png": {
+      "bytes": 7064,
+      "sha256": "e24ea023ebcf4240e57e26345d25511ecdd03b9ad9afcf20fe959997035ec224",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        19,
+        15,
+        77,
+        81
+      ]
+    },
+    "enemies/heavy_trooper.png": {
+      "bytes": 10033,
+      "sha256": "36a363ada74fae85f2241ef08f94ce623ab8fb500c37d34947142bbefb1695df",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        9,
+        14,
+        87,
+        82
+      ]
+    },
+    "enemies/jetpack_trooper.png": {
+      "bytes": 11759,
+      "sha256": "fcf680c36c1dda2b01e81f321e61800ca8003804bcd4c4151d63a9372a3599bc",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        13,
+        10,
+        82,
+        86
+      ]
+    },
+    "enemies/mutant_prisoner.png": {
+      "bytes": 11210,
+      "sha256": "decaa6611b7774f7c92877855349c191022e404b2058ce95c4007d9da994ca48",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        2,
+        19,
+        94,
+        77
+      ]
+    },
+    "enemies/riot_trooper.png": {
+      "bytes": 7463,
+      "sha256": "36265fa6aed3ddd7db2089aecc109a2eed36f6ded49acfbacefe65c2193a85a1",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        21,
+        15,
+        74,
+        80
+      ]
+    },
+    "enemies/shield_trooper.png": {
+      "bytes": 9977,
+      "sha256": "dc70211942a220eaabf9c0b07f02054cab4ca13c002897034689523bce7f59bb",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        15,
+        15,
+        81,
+        81
+      ]
+    },
+    "enemies/shotgunner.png": {
+      "bytes": 6637,
+      "sha256": "e64a2081608f1f44edf7f31dc790098ce27ed748c2404316af9f868ff73aa663",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        16,
+        16,
+        79,
+        80
+      ]
+    },
+    "enemies/sniper.png": {
+      "bytes": 7445,
+      "sha256": "2f84162c67e45add4f3195c08df306b1e6e618dd22af302d77b85bff583266f3",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        11,
+        15,
+        84,
+        81
+      ]
+    },
+    "enemies/turret.png": {
+      "bytes": 6171,
+      "sha256": "25d309b2728ade09618601b39a0ca9b97f1237e045f15e7164dd219e19a47fb5",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        17,
+        16,
+        79,
+        80
+      ]
+    },
+    "enemies_preview.png": {
+      "bytes": 123739,
+      "sha256": "5b5960fb26127f95c750ef6a6ca9ca7c1c8902921f29407eba1438eaaedc0043",
+      "size": [
+        560,
+        566
+      ],
+      "mode": "RGB",
+      "alphaValues": 1,
+      "bounds": [
+        0,
+        0,
+        560,
+        566
+      ]
+    },
+    "import_into_repo/public/assets/arcade-rebirth/brick_atlas.png": {
+      "bytes": 95174,
+      "sha256": "bfd40307689d19a9961563258ee638d202ada32abaa2371429d8af3a99b1a55e",
+      "size": [
+        384,
+        288
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        10,
+        8,
+        365,
+        283
+      ]
+    },
+    "import_into_repo/public/assets/arcade-rebirth/enemies_atlas.png": {
+      "bytes": 127529,
+      "sha256": "3a58f86a939067942920db4e7541d0679d6dd24ffff2cbef4782ab40eecc0231",
+      "size": [
+        384,
+        384
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        7,
+        15,
+        378,
+        373
+      ]
+    },
+    "import_into_repo/public/assets/arcade-rebirth/pickups_atlas.png": {
+      "bytes": 47178,
+      "sha256": "f2a6063854c51d89d3f1dfeb2ac07cce7668032b8943a5b89db47cd018307967",
+      "size": [
+        384,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        10,
+        8,
+        377,
+        123
+      ]
+    },
+    "import_into_repo/public/assets/arcade-rebirth/props_atlas.png": {
+      "bytes": 76311,
+      "sha256": "c64c62d53dd3b445b85fad849adb4ab6ff62420ed46a95d61ee813d5edf62d3c",
+      "size": [
+        640,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        22,
+        6,
+        626,
+        122
+      ]
+    },
+    "import_into_repo/public/assets/arcade-rebirth/sprite_metadata.json": {
+      "bytes": 8679,
+      "sha256": "38567d7d3e0bcdcc9046d2eba7bcbc6898ad2a41c42f2380ec6543bc5df68c80"
+    },
+    "import_into_repo/public/assets/arcade-rebirth/zip_atlas.png": {
+      "bytes": 91560,
+      "sha256": "ea602e9ed24bb74b8c239580fd4650223e7e981328c30755e684cd499cc695ef",
+      "size": [
+        384,
+        384
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        12,
+        17,
+        372,
+        379
+      ]
+    },
+    "index.html": {
+      "bytes": 9760,
+      "sha256": "dc2075886cc32eae1ca1be98e829d3ba62e196a504964bfec8723300d5ad4daa"
+    },
+    "pickups/alien_artifact.png": {
+      "bytes": 6379,
+      "sha256": "17cefc619310d052c1dc3c8dd2373ec29e0610e03248d8796c4418f3a6bdc2de",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        6,
+        5,
+        57,
+        59
+      ]
+    },
+    "pickups/ammo.png": {
+      "bytes": 2044,
+      "sha256": "5e6c010cac507f6a624ffffb9f065dc2d8bf8e79c064da8e02210eb8a7c27c0d",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        21,
+        16,
+        43,
+        47
+      ]
+    },
+    "pickups/atlas.png": {
+      "bytes": 47178,
+      "sha256": "f2a6063854c51d89d3f1dfeb2ac07cce7668032b8943a5b89db47cd018307967",
+      "size": [
+        384,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        10,
+        8,
+        377,
+        123
+      ]
+    },
+    "pickups/double_damage.png": {
+      "bytes": 3654,
+      "sha256": "61ef65a84570ef24f453afcd2639deae832e6647eb28329a74f395ac0becf425",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        11,
+        7,
+        52,
+        57
+      ]
+    },
+    "pickups/drone.png": {
+      "bytes": 5305,
+      "sha256": "fbb4c8049eda742712c70f2ba4249bc410368e877be480b3dd4c420af75392d4",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        6,
+        6,
+        57,
+        57
+      ]
+    },
+    "pickups/electric.png": {
+      "bytes": 6113,
+      "sha256": "2bebb55b59e3922bdef6fb5248040bcfe9a4e3a478e2d55b6f7a11f5b50793b4",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        10,
+        5,
+        53,
+        59
+      ]
+    },
+    "pickups/explosive.png": {
+      "bytes": 3899,
+      "sha256": "d0e383195aa4b02b9f9ea11c63961dcf58925afd0be32576c58862b7128b69eb",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        12,
+        6,
+        52,
+        57
+      ]
+    },
+    "pickups/extra_life.png": {
+      "bytes": 3309,
+      "sha256": "b4233d3498790c5c2d1f7a59875c9038db1ea9e6fbeabe667455ba3454d9a230",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        7,
+        17,
+        56,
+        47
+      ]
+    },
+    "pickups/health.png": {
+      "bytes": 2927,
+      "sha256": "e5c4faa6f75b904cda239d41b66af557b9c4fcd5e0bd6537389fc6628a0e50a8",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        16,
+        10,
+        47,
+        53
+      ]
+    },
+    "pickups/invulnerability.png": {
+      "bytes": 2651,
+      "sha256": "399f8dfd032e28fe31f2e8e2b0f01367afd20150200a5afc88951c82dc6d8247",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        16,
+        8,
+        47,
+        56
+      ]
+    },
+    "pickups/random.png": {
+      "bytes": 4267,
+      "sha256": "d0d008a9d9c2ecd276093714ecca716a56d91228139f3c1de99b64083411552e",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        13,
+        4,
+        50,
+        59
+      ]
+    },
+    "pickups/shield.png": {
+      "bytes": 4259,
+      "sha256": "d4e33c0fff442066bbf26062b675b2d8fe3e3a5da18d34c5033315664b055143",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        14,
+        8,
+        49,
+        56
+      ]
+    },
+    "pickups/speed.png": {
+      "bytes": 3679,
+      "sha256": "2bbe7607fd21d2f24f0199c1a864b33ccd338c2218cf2b1aea0ad9e5d8aed730",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        12,
+        15,
+        52,
+        49
+      ]
+    },
+    "pickups_preview.png": {
+      "bytes": 49173,
+      "sha256": "cc171e9001e5083364319fabc50233fb4f54d062a3961be0f81cc6c2e28cb80c",
+      "size": [
+        840,
+        234
+      ],
+      "mode": "RGB",
+      "alphaValues": 1,
+      "bounds": [
+        0,
+        0,
+        840,
+        234
+      ]
+    },
+    "props/atlas.png": {
+      "bytes": 76311,
+      "sha256": "c64c62d53dd3b445b85fad849adb4ab6ff62420ed46a95d61ee813d5edf62d3c",
+      "size": [
+        640,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        22,
+        6,
+        626,
+        122
+      ]
+    },
+    "props/checkpoint_flag.png": {
+      "bytes": 12320,
+      "sha256": "18f5bc35ad6620b8557e171106d3e956f55d7326e7f5f8056fd826529e6d9d69",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        22,
+        9,
+        106,
+        118
+      ]
+    },
+    "props/exit_beacon.png": {
+      "bytes": 18910,
+      "sha256": "12d995cf52fc190c6430efe3a4df0df8f3ba082cc1b758c5dfe7db59a2643923",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        13,
+        8,
+        114,
+        119
+      ]
+    },
+    "props/reactor.png": {
+      "bytes": 15606,
+      "sha256": "0207dc54414cbdcb97239fb4122351827a8bb0a9512a0012eb36d04ddde28f9f",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        24,
+        6,
+        103,
+        122
+      ]
+    },
+    "props/rescue_cage.png": {
+      "bytes": 18094,
+      "sha256": "3f9e139d689a363544b5e27f729059284f733c4581261bd7a2786bb972ab4623",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        26,
+        9,
+        102,
+        119
+      ]
+    },
+    "props/terminal.png": {
+      "bytes": 11480,
+      "sha256": "d9d73e4eb28300f364e26cb9bc6c690b1e75d50daedbe9caaadd7e1c6a7c5f93",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        26,
+        24,
+        101,
+        104
+      ]
+    },
+    "props_preview.png": {
+      "bytes": 70729,
+      "sha256": "5c4f25af5844940eb032d93613f14caf048e72cbb9799141ae1f6b9413138512",
+      "size": [
+        700,
+        196
+      ],
+      "mode": "RGB",
+      "alphaValues": 1,
+      "bounds": [
+        0,
+        0,
+        700,
+        196
+      ]
+    },
+    "reference/a_detailed_pixel_art_concept_sheet_sprite_atlas.png": {
+      "bytes": 3170381,
+      "sha256": "a769e5fa0e74d06eb26675e84e8270febdd970f4ce9554a90b4d9d94ccfe79ae",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaValues": 254,
+      "bounds": [
+        0,
+        0,
+        1536,
+        1024
+      ]
+    },
+    "reference/a_large_dense_pixel_art_game_asset_sheet_and_mock.png": {
+      "bytes": 3183397,
+      "sha256": "91fa9afc54d355dac27141a93909df8bb4a87fc293dd3a2cf600b64982e7f4f8",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaValues": 244,
+      "bounds": [
+        0,
+        0,
+        1536,
+        1024
+      ]
+    },
+    "reference/environment_material_reference.png": {
+      "bytes": 316742,
+      "sha256": "0b18090fd43ee735204683d1348749a3906682355e1b6ff94de091a796ae3897",
+      "size": [
+        940,
+        184
+      ],
+      "mode": "RGB",
+      "alphaValues": 1,
+      "bounds": [
+        0,
+        0,
+        940,
+        184
+      ]
+    },
+    "reference/pixel_prison_break_heroes_sheet.png": {
+      "bytes": 2599032,
+      "sha256": "697b3a2b059e1a413b51d2f1558180e553a923820762fcfd8746deb99af1cc94",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGB",
+      "alphaValues": 1,
+      "bounds": [
+        0,
+        0,
+        1448,
+        1086
+      ]
+    },
+    "reference/support_heroes_reference.png": {
+      "bytes": 252270,
+      "sha256": "d2d5954a907ace87b91794c6fc5727004b1d45722972c43dcbf6fc98e94b0674",
+      "size": [
+        588,
+        252
+      ],
+      "mode": "RGB",
+      "alphaValues": 1,
+      "bounds": [
+        0,
+        0,
+        588,
+        252
+      ]
+    },
+    "reference/vfx_reference.png": {
+      "bytes": 124212,
+      "sha256": "b66c39f83eca08338d906ed09867c9c4e9993fa2a671ea49ca1251485acac5d2",
+      "size": [
+        916,
+        97
+      ],
+      "mode": "RGB",
+      "alphaValues": 1,
+      "bounds": [
+        0,
+        0,
+        916,
+        97
+      ]
+    },
+    "sprite_metadata.json": {
+      "bytes": 8679,
+      "sha256": "38567d7d3e0bcdcc9046d2eba7bcbc6898ad2a41c42f2380ec6543bc5df68c80"
+    },
+    "sprites/brick/00_idle.png": {
+      "bytes": 12015,
+      "sha256": "6ea9abf14070413453690ec70459efd433c101a9e9cafd483926bbe26b96e5c9",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        10,
+        10,
+        86,
+        91
+      ]
+    },
+    "sprites/brick/01_run.png": {
+      "bytes": 9663,
+      "sha256": "7f913dea4d78548b736c61deabe4d5168cfa9a6b57b4a360d1ecf46acc9dbe36",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        12,
+        20,
+        84,
+        91
+      ]
+    },
+    "sprites/brick/02_jump.png": {
+      "bytes": 8264,
+      "sha256": "6a7fa9ca89f9bd30f1a4f68aa34dd593be10a0f66b721174beb23ab21b49fa4e",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        21,
+        8,
+        74,
+        89
+      ]
+    },
+    "sprites/brick/03_fall.png": {
+      "bytes": 7253,
+      "sha256": "3506438d8ed973960d3f4a6a845b07d34438166d5b25c138611e435ca79a5fb6",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        18,
+        23,
+        77,
+        91
+      ]
+    },
+    "sprites/brick/04_punch.png": {
+      "bytes": 6626,
+      "sha256": "f5bfc538536bd3a0b4ff0922ca692484e1080c790d141aa05706f9814d1c1a56",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        10,
+        26,
+        85,
+        91
+      ]
+    },
+    "sprites/brick/05_aim.png": {
+      "bytes": 6099,
+      "sha256": "511817fb88ffa624795f40ef10aa70b6b78554af2ca2f2f3c8e90b78c8dae646",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        17,
+        25,
+        64,
+        91
+      ]
+    },
+    "sprites/brick/06_slam.png": {
+      "bytes": 13358,
+      "sha256": "74fdff02eaf6e7fa096da7018576f055197fcc14ea5cc6e5869064316b3d39fa",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        4,
+        25,
+        92,
+        91
+      ]
+    },
+    "sprites/brick/07_shield.png": {
+      "bytes": 7155,
+      "sha256": "748f20ed8f0316a440ed754dd84e273bce7bb64e34cab37e4040697fbc9eb501",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        19,
+        27,
+        77,
+        91
+      ]
+    },
+    "sprites/brick/08_charge.png": {
+      "bytes": 7867,
+      "sha256": "7c1daaa1c563e555e51c14edc250e472a5e4babe96d066c9d942cee0716c02f1",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        12,
+        31,
+        84,
+        91
+      ]
+    },
+    "sprites/brick/09_special.png": {
+      "bytes": 13146,
+      "sha256": "d1127911e59a4be27b2b136f452b01a207b531866fdb35a474788b017556a7de",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        4,
+        21,
+        92,
+        91
+      ]
+    },
+    "sprites/brick/10_hurt.png": {
+      "bytes": 5179,
+      "sha256": "5f7fa54f145604b27bc4ffdc3651e2e587204eaa9b43e960b21982eccb7eb3b0",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        14,
+        42,
+        82,
+        91
+      ]
+    },
+    "sprites/brick/11_death.png": {
+      "bytes": 3108,
+      "sha256": "1940f5ea0b0c55da16f9682970d606828e126af0153598444a6e68ed7c34cf7d",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        20,
+        64,
+        75,
+        91
+      ]
+    },
+    "sprites/brick_atlas.png": {
+      "bytes": 95174,
+      "sha256": "bfd40307689d19a9961563258ee638d202ada32abaa2371429d8af3a99b1a55e",
+      "size": [
+        384,
+        288
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        10,
+        8,
+        365,
+        283
+      ]
+    },
+    "sprites/zip/00_idle.png": {
+      "bytes": 7822,
+      "sha256": "3234fd0008e33e1f0948a15448eb7375e687581e9cd180370f5d8b5fbd58f48d",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        20,
+        21,
+        75,
+        91
+      ]
+    },
+    "sprites/zip/01_run.png": {
+      "bytes": 7006,
+      "sha256": "1c7d579d016fce27778dd2e48b7936b073f81c33d11a62d026109963f1717aaa",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        19,
+        27,
+        76,
+        91
+      ]
+    },
+    "sprites/zip/02_jump.png": {
+      "bytes": 6575,
+      "sha256": "4964d66832c9f3a440d49bdef66cd75d5cc28c6f8532fe0ffcf0486c0a30550a",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        23,
+        17,
+        72,
+        89
+      ]
+    },
+    "sprites/zip/03_fall.png": {
+      "bytes": 4200,
+      "sha256": "ea07b30bbb478d4641527ef91d8bfc92767dab42c061a93a9ca426706e57afeb",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        23,
+        39,
+        72,
+        91
+      ]
+    },
+    "sprites/zip/04_shoot.png": {
+      "bytes": 4930,
+      "sha256": "ecdeb9723bea17be382c59b174cbf3890e5568f4cdbc99a3d6537263c620da14",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        12,
+        14,
+        83,
+        91
+      ]
+    },
+    "sprites/zip/05_melee.png": {
+      "bytes": 11319,
+      "sha256": "81258b962e109ef4ccb6dfb8cad05c5cd9d6c48863cacb8739643c7561161801",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        12,
+        12,
+        83,
+        91
+      ]
+    },
+    "sprites/zip/06_dash.png": {
+      "bytes": 11801,
+      "sha256": "b83b8663a88b40447b49e328377f7a4a12fd9237ad35509eb7bc6add651ce89b",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        5,
+        21,
+        90,
+        89
+      ]
+    },
+    "sprites/zip/07_wall_jump.png": {
+      "bytes": 5487,
+      "sha256": "f04ac48e90d66bcc8d5553025bcb2891f604d1ce6f16d33fc5f42e1875f2b4f9",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        28,
+        22,
+        67,
+        89
+      ]
+    },
+    "sprites/zip/08_slide.png": {
+      "bytes": 5159,
+      "sha256": "5a9052dd1b6a1a8babc164684531d71401e3c2b193e3e03f2fd8d895a29c1a67",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        28,
+        18,
+        68,
+        91
+      ]
+    },
+    "sprites/zip/09_hack.png": {
+      "bytes": 5532,
+      "sha256": "2935fc220eb1f3d0e7969bb59161b7e6590785ec2602ce7e60b6697166b5eaeb",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        24,
+        31,
+        71,
+        91
+      ]
+    },
+    "sprites/zip/10_electric.png": {
+      "bytes": 8230,
+      "sha256": "0704ee3944534104c232aa02f41a70e3457833cf1bc1f95fe8ccd2c92d50ebbb",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        15,
+        30,
+        81,
+        91
+      ]
+    },
+    "sprites/zip/11_hurt.png": {
+      "bytes": 12674,
+      "sha256": "be9091fd5ed05f6f3069beb9f50f77288b00c7618adb175bddcb1d60223121cc",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        11,
+        13,
+        84,
+        91
+      ]
+    },
+    "sprites/zip/12_death.png": {
+      "bytes": 8428,
+      "sha256": "1c2c9b9c5ce3ba5bb247a73054f29382139a1303df8f12a74dad5afe3deee927",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        16,
+        11,
+        79,
+        91
+      ]
+    },
+    "sprites/zip_atlas.png": {
+      "bytes": 91560,
+      "sha256": "ea602e9ed24bb74b8c239580fd4650223e7e981328c30755e684cd499cc695ef",
+      "size": [
+        384,
+        384
+      ],
+      "mode": "RGBA",
+      "alphaValues": 2,
+      "bounds": [
+        12,
+        17,
+        372,
+        379
+      ]
+    },
+    "zip_preview.png": {
+      "bytes": 92365,
+      "sha256": "889e529b9665e70b2f584c24f5c37f56128dfcb8fea524336410deceb5b121df",
+      "size": [
+        640,
+        634
+      ],
+      "mode": "RGB",
+      "alphaValues": 1,
+      "bounds": [
+        0,
+        0,
+        640,
+        634
+      ]
+    }
+  },
+  "frames": {
+    "zip": {
+      "idle": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          20,
+          21,
+          75,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "run": {
+        "index": 1,
+        "atlas_x": 96,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          19,
+          27,
+          76,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "jump": {
+        "index": 2,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          23,
+          17,
+          72,
+          89
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          89
+        ],
+        "sourceFacing": 1
+      },
+      "fall": {
+        "index": 3,
+        "atlas_x": 288,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          23,
+          39,
+          72,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          44,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "shoot": {
+        "index": 4,
+        "atlas_x": 0,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          12,
+          14,
+          83,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          43,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "melee": {
+        "index": 5,
+        "atlas_x": 96,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          12,
+          12,
+          83,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 2265,
+        "anchor": [
+          43,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "dash": {
+        "index": 6,
+        "atlas_x": 192,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          5,
+          21,
+          90,
+          89
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          47,
+          89
+        ],
+        "sourceFacing": 1
+      },
+      "wall_jump": {
+        "index": 7,
+        "atlas_x": 288,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          28,
+          22,
+          67,
+          89
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          89
+        ],
+        "sourceFacing": 1
+      },
+      "slide": {
+        "index": 8,
+        "atlas_x": 0,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          28,
+          18,
+          68,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "hack": {
+        "index": 9,
+        "atlas_x": 96,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          24,
+          31,
+          71,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "electric": {
+        "index": 10,
+        "atlas_x": 192,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          15,
+          30,
+          81,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          46,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "hurt": {
+        "index": 11,
+        "atlas_x": 288,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          11,
+          13,
+          84,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "death": {
+        "index": 12,
+        "atlas_x": 0,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          16,
+          11,
+          79,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          49,
+          91
+        ],
+        "sourceFacing": 1
+      }
+    },
+    "brick": {
+      "idle": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          10,
+          10,
+          86,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          45,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "run": {
+        "index": 1,
+        "atlas_x": 96,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          12,
+          20,
+          84,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          43,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "jump": {
+        "index": 2,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          21,
+          8,
+          74,
+          89
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          47,
+          89
+        ],
+        "sourceFacing": 1
+      },
+      "fall": {
+        "index": 3,
+        "atlas_x": 288,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          18,
+          23,
+          77,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          49,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "punch": {
+        "index": 4,
+        "atlas_x": 0,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          10,
+          26,
+          85,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          69,
+          91
+        ],
+        "sourceFacing": -1
+      },
+      "aim": {
+        "index": 5,
+        "atlas_x": 96,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          17,
+          25,
+          64,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 145,
+        "anchor": [
+          39,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "slam": {
+        "index": 6,
+        "atlas_x": 192,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          4,
+          25,
+          92,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          49,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "shield": {
+        "index": 7,
+        "atlas_x": 288,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          19,
+          27,
+          77,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          38,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "charge": {
+        "index": 8,
+        "atlas_x": 0,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          12,
+          31,
+          84,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          46,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "special": {
+        "index": 9,
+        "atlas_x": 96,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          4,
+          21,
+          92,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "hurt": {
+        "index": 10,
+        "atlas_x": 192,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          14,
+          42,
+          82,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          43,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "death": {
+        "index": 11,
+        "atlas_x": 288,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          20,
+          64,
+          75,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      }
+    },
+    "enemies": {
+      "guard": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          19,
+          15,
+          77,
+          81
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          47,
+          80
+        ],
+        "sourceFacing": 1
+      },
+      "shotgunner": {
+        "index": 1,
+        "atlas_x": 96,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          16,
+          16,
+          79,
+          80
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          46,
+          80
+        ],
+        "sourceFacing": 1
+      },
+      "shield_trooper": {
+        "index": 2,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          15,
+          15,
+          81,
+          81
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          42,
+          81
+        ],
+        "sourceFacing": 1
+      },
+      "sniper": {
+        "index": 3,
+        "atlas_x": 288,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          11,
+          15,
+          84,
+          81
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          45,
+          81
+        ],
+        "sourceFacing": 1
+      },
+      "heavy_trooper": {
+        "index": 4,
+        "atlas_x": 0,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          9,
+          14,
+          87,
+          82
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          45,
+          82
+        ],
+        "sourceFacing": 1
+      },
+      "jetpack_trooper": {
+        "index": 5,
+        "atlas_x": 96,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          13,
+          10,
+          82,
+          86
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          86
+        ],
+        "sourceFacing": 1
+      },
+      "riot_trooper": {
+        "index": 6,
+        "atlas_x": 192,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          21,
+          15,
+          74,
+          80
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          46,
+          80
+        ],
+        "sourceFacing": 1
+      },
+      "drone": {
+        "index": 7,
+        "atlas_x": 288,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          13,
+          24,
+          82,
+          72
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          72
+        ],
+        "sourceFacing": 1
+      },
+      "turret": {
+        "index": 8,
+        "atlas_x": 0,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          17,
+          16,
+          79,
+          80
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          80
+        ],
+        "sourceFacing": 1
+      },
+      "combat_dog": {
+        "index": 9,
+        "atlas_x": 96,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          2,
+          28,
+          68,
+          67
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 174,
+        "anchor": [
+          48,
+          67
+        ],
+        "sourceFacing": 1
+      },
+      "mutant_prisoner": {
+        "index": 10,
+        "atlas_x": 192,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          2,
+          19,
+          94,
+          77
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          77
+        ],
+        "sourceFacing": 1
+      },
+      "bio_soldier": {
+        "index": 11,
+        "atlas_x": 288,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          5,
+          16,
+          90,
+          80
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          80
+        ],
+        "sourceFacing": 1
+      },
+      "alien_runner": {
+        "index": 12,
+        "atlas_x": 0,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          7,
+          13,
+          89,
+          82
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          82
+        ],
+        "sourceFacing": 1
+      },
+      "alien_spitter": {
+        "index": 13,
+        "atlas_x": 96,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          2,
+          19,
+          94,
+          77
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          77
+        ],
+        "sourceFacing": 1
+      },
+      "armored_brute": {
+        "index": 14,
+        "atlas_x": 192,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          2,
+          19,
+          94,
+          85
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 75,
+        "anchor": [
+          48,
+          85
+        ],
+        "sourceFacing": 1
+      }
+    },
+    "pickups": {
+      "health": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          16,
+          10,
+          47,
+          53
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          53
+        ],
+        "sourceFacing": 1
+      },
+      "ammo": {
+        "index": 1,
+        "atlas_x": 64,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          21,
+          16,
+          43,
+          47
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          47
+        ],
+        "sourceFacing": 1
+      },
+      "extra_life": {
+        "index": 2,
+        "atlas_x": 128,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          7,
+          17,
+          56,
+          47
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          47
+        ],
+        "sourceFacing": 1
+      },
+      "shield": {
+        "index": 3,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          14,
+          8,
+          49,
+          56
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          56
+        ],
+        "sourceFacing": 1
+      },
+      "speed": {
+        "index": 4,
+        "atlas_x": 256,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          12,
+          15,
+          52,
+          49
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          49
+        ],
+        "sourceFacing": 1
+      },
+      "invulnerability": {
+        "index": 5,
+        "atlas_x": 320,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          16,
+          8,
+          47,
+          56
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          56
+        ],
+        "sourceFacing": 1
+      },
+      "electric": {
+        "index": 6,
+        "atlas_x": 0,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          10,
+          5,
+          53,
+          59
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          59
+        ],
+        "sourceFacing": 1
+      },
+      "explosive": {
+        "index": 7,
+        "atlas_x": 64,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          12,
+          6,
+          52,
+          57
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          57
+        ],
+        "sourceFacing": 1
+      },
+      "double_damage": {
+        "index": 8,
+        "atlas_x": 128,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          11,
+          7,
+          52,
+          57
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          57
+        ],
+        "sourceFacing": 1
+      },
+      "drone": {
+        "index": 9,
+        "atlas_x": 192,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          6,
+          6,
+          57,
+          57
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          57
+        ],
+        "sourceFacing": 1
+      },
+      "random": {
+        "index": 10,
+        "atlas_x": 256,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          13,
+          4,
+          50,
+          59
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          59
+        ],
+        "sourceFacing": 1
+      },
+      "alien_artifact": {
+        "index": 11,
+        "atlas_x": 320,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          6,
+          5,
+          57,
+          59
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          59
+        ],
+        "sourceFacing": 1
+      }
+    },
+    "props": {
+      "checkpoint_flag": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128,
+        "alphaBounds": [
+          22,
+          9,
+          106,
+          118
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          31,
+          118
+        ],
+        "sourceFacing": 1
+      },
+      "rescue_cage": {
+        "index": 1,
+        "atlas_x": 128,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128,
+        "alphaBounds": [
+          26,
+          9,
+          102,
+          119
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          64,
+          119
+        ],
+        "sourceFacing": 1
+      },
+      "terminal": {
+        "index": 2,
+        "atlas_x": 256,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128,
+        "alphaBounds": [
+          26,
+          24,
+          101,
+          104
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          64,
+          104
+        ],
+        "sourceFacing": 1
+      },
+      "reactor": {
+        "index": 3,
+        "atlas_x": 384,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128,
+        "alphaBounds": [
+          24,
+          6,
+          103,
+          122
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          64,
+          122
+        ],
+        "sourceFacing": 1
+      },
+      "exit_beacon": {
+        "index": 4,
+        "atlas_x": 512,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128,
+        "alphaBounds": [
+          13,
+          8,
+          114,
+          119
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          64,
+          119
+        ],
+        "sourceFacing": 1
+      }
+    }
+  },
+  "sourceFiles": 83,
+  "sourceUnchanged": true
+}

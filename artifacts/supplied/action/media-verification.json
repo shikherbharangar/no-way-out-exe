@@ -1,0 +1,78 @@
+{
+  "source": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "codec_name": "opus"
+      }
+    ],
+    "format": {
+      "duration": "16.363469"
+    }
+  },
+  "export": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 640,
+        "height": 360,
+        "nb_frames": "450"
+      },
+      {
+        "codec_name": "aac",
+        "nb_frames": "398"
+      }
+    ],
+    "format": {
+      "duration": "15.000000"
+    }
+  },
+  "continuousClip": true,
+  "edit": "First 15 seconds; constant 30fps encoding with first actual frame held from t=0 if canvas starts after audio; source audio retained",
+  "files": {
+    "01-encounter.png": {
+      "bytes": 139317,
+      "sha256": "ec0ad2d33a5417e554b986124b152e314ff2f88a53e9a1fd35148529fc650f15"
+    },
+    "02-cooperative-charge.png": {
+      "bytes": 138014,
+      "sha256": "7fc2553b79149bd6c93791a4301e77c304faf385c1ad92be336b06d286d0c12f"
+    },
+    "02b-prisoner-rescue.png": {
+      "bytes": 136433,
+      "sha256": "e00e29c9d0595b2555a7a69769918c723a5660fb92ffff4d1761299ddb47efab"
+    },
+    "03-shock-punch.png": {
+      "bytes": 133039,
+      "sha256": "f81850016983fda607bdeca49200bcc74de80c5e62b2f7f3e59b935cdeb3151c"
+    },
+    "04-chain-explosion.png": {
+      "bytes": 127914,
+      "sha256": "1af6cc5916877d5831ce2892cec08ae95864810b2b74ae2aa2a878e0cddff110"
+    },
+    "05-narrow-escape.png": {
+      "bytes": 142985,
+      "sha256": "c16859b23542cf4f85dbceec5ad9e5380de26985f092d6fa1a40fe8600d5e492"
+    },
+    "06-freight-lift.png": {
+      "bytes": 115231,
+      "sha256": "06f413305728aa50809a4d0b6f6a4071493c9ed8170152f2b090eac69025a03e"
+    },
+    "gameplay-15s.mp4": {
+      "bytes": 2117000,
+      "sha256": "8f2201f22d74dbefd4b9af1c21af51e78f316ac29935eb2d8d35267502383a9e"
+    },
+    "gameplay-source.webm": {
+      "bytes": 3214048,
+      "sha256": "291bf7a37318b8e8de5c99477a8ee00c621f61a2b5233a7794d37324093e3b7d"
+    }
+  }
+}

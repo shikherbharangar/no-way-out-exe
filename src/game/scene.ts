@@ -4,6 +4,8 @@ import { Sound } from './audio';
 import { PixelEffects } from './pixel-effects';
 import { MachineArt } from './machine-art';
 import { PrisonArt } from './prison-art';
+import { SuppliedArt, ART_GROUPS, GUARD_POSES, heroPose } from './supplied-art';
+import { RESCUE_CAGE } from './simulation';
 export type Binding = { left: string; right: string; jump: string; interact: string; special: string };
 export const defaults: Binding[] = [
  { left: 'KeyA', right: 'KeyD', jump: 'Space', interact: 'KeyF', special: 'KeyG' },
@@ -15,6 +17,7 @@ export class PrisonScene extends Phaser.Scene {
  keys = new Set<string>(); pressed = new Set<string>(); bindings: Binding[] = structuredClone(defaults);
  sprites!: Phaser.GameObjects.Sprite[]; guardSprites!: Phaser.GameObjects.Sprite[]; barrelSprites!: Phaser.GameObjects.Image[];
  terrainLayer!: Phaser.Tilemaps.TilemapLayer; previousTerrain: number[] = [];
+ supplied!:SuppliedArt; rescueCage!:Phaser.GameObjects.Image; checkpointFlag!:Phaser.GameObjects.Image; rescueHint!:Phaser.GameObjects.Text; rescueVisual=0;
  effects!: PixelEffects; scenery!: PrisonArt; machineArt!:MachineArt;
  sectorOneObjects:Phaser.GameObjects.GameObject[]=[];displaySector=1;
  fx!: Phaser.GameObjects.Graphics; link!: Phaser.GameObjects.Graphics; edges!: Phaser.GameObjects.Graphics;
@@ -26,7 +29,8 @@ export class PrisonScene extends Phaser.Scene {
  constructor() { super('prison'); }
  preload() {
   for (const key of ['far', 'mid', 'fan','zip-portrait','brick-portrait','prison-composition','machine-composition','machine-foreground','machine-depth']) this.load.image(key, `/assets/${key}.png`);
-  for (const key of ['zip', 'brick', 'guard']) this.load.spritesheet(key, `/assets/${key}.png`, { frameWidth: 48, frameHeight: 48 });
+  for(const group of ART_GROUPS)this.load.image('supplied-'+group,`/assets/supplied/${group}.png`);
+  this.load.json('supplied-metadata','/assets/supplied/runtime.json');
   this.load.spritesheet('props', '/assets/props.png', { frameWidth: 64, frameHeight: 64 });
   this.load.spritesheet('explosion', '/assets/explosion.png', { frameWidth: 128, frameHeight: 128 });
   this.load.spritesheet('smoke', '/assets/smoke.png', { frameWidth: 96, frameHeight: 96 });
@@ -36,6 +40,7 @@ export class PrisonScene extends Phaser.Scene {
   this.load.image('tiles', '/assets/tiles.png');
  }
  create() {
+  this.supplied=new SuppliedArt(this);
   this.cameras.main.setBackgroundColor('#080f1c').setRoundPixels(true).setBounds(0, 0, WORLD_W, 360);
   this.add.image(0, 0, 'far').setOrigin(0).setScrollFactor(.16).setDepth(-20);
   this.add.image(0, 0, 'mid').setOrigin(0).setScrollFactor(.6).setDepth(-15);
@@ -51,27 +56,31 @@ export class PrisonScene extends Phaser.Scene {
   this.syncTerrain();
   this.barrelSprites = this.sim.barrels.map(b => this.add.image(b.x, b.y, 'props', 0).setOrigin(.5, 1).setDepth(4));
   const beforeProps=new Set(this.children.list);
-  this.add.image(487, 224, 'props', 1).setOrigin(.5, 1).setDepth(3);
+  const terminal=this.add.image(487,224,'supplied-props','terminal').setDepth(3);this.supplied.pose(terminal,'props','terminal',487,224);
   this.add.image(110, 288, 'props', 8).setOrigin(.5, 1).setDepth(-1).setTint(0x7b8d98);
   this.add.image(548, 177, 'props', 9).setOrigin(.5, 1).setDepth(0);
   this.add.image(645, 273, 'props', 7).setOrigin(.5, 1).setDepth(0);
   for (const x of [287, 790, 945]) this.add.image(x, 211, 'props', 4).setDepth(-1).setTint(0xa9a7a1);
   for (const x of [590, 1159]) this.add.image(x, 153, 'props', 5).setDepth(0);
   this.sectorOneObjects.push(...this.children.list.filter(o=>!beforeProps.has(o)));
+  this.rescueCage=this.add.image(RESCUE_CAGE.x,RESCUE_CAGE.y,'supplied-props','rescue_cage').setDepth(3);
+  this.checkpointFlag=this.add.image(690,288,'supplied-props','checkpoint_flag').setDepth(0);
+  this.rescueHint=this.text(RESCUE_CAGE.x,166,'HOLD INTERACT / RESCUE','#b8fff0',6).setOrigin(.5).setDepth(12);
+  this.sectorOneObjects.push(this.rescueCage,this.checkpointFlag,this.rescueHint);
   this.link = this.add.graphics().setDepth(6); this.gateGraphics = this.add.graphics().setDepth(5);
-  this.sprites = ['zip', 'brick'].map(key => this.add.sprite(0, 0, key).setOrigin(.5, 1).setDepth(7));
-  this.guardSprites = this.sim.guards.map(() => this.add.sprite(0, 0, 'guard').setOrigin(.5, 1).setDepth(6));
+  this.sprites = ['zip', 'brick'].map(key => this.add.sprite(0, 0, 'supplied-'+key,'idle').setOrigin(.5, 1).setDepth(7));
+  this.guardSprites = this.sim.guards.map((_,i) => this.add.sprite(0, 0, 'supplied-enemies',GUARD_POSES[i%4]).setOrigin(.5, 1).setDepth(6));
   this.fx=this.add.graphics().setDepth(10);
   this.anims.create({ key: 'boom', frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 17 }), frameRate: 28, repeat: 0, hideOnComplete: true });
   this.anims.create({ key: 'impact', frames: this.anims.generateFrameNumbers('impact', { start: 0, end: 5 }), frameRate: 35, repeat: 0, hideOnComplete: true });
   this.names = this.sprites.map((_, i) => this.text(0, 0, i ? '2' : '1', i ? '#ffba68' : '#83fff3', 6).setDepth(12).setOrigin(.5));
-  this.hackLabel = this.text(487, 164, '', '#91f3ec', 7).setOrigin(.5);
+  this.hackLabel = this.text(487, 132, '', '#91f3ec', 7).setOrigin(.5);
   this.sectorOneObjects.push(this.text(864, 248, 'CAUTION: LOAD LIMIT', '#c8995c', 6).setOrigin(.5));
   this.sectorOneObjects.push(this.text(1193, 195, 'FREIGHT 04', '#8a9caa', 7).setOrigin(.5));
   this.hud = this.add.graphics().setScrollFactor(0).setDepth(29);
   this.objective = this.text(320, 15, '', '#859aa9', 7).setOrigin(.5).setScrollFactor(0).setDepth(30);
   this.dialog = this.text(320, 329, '', '#f7d6a0', 8).setOrigin(.5).setScrollFactor(0).setDepth(30);
-  this.portraits=['zip','brick'].map((key,i)=>this.add.image(i?520:25,27,key+'-portrait').setCrop(10,0,29,29).setScrollFactor(0).setDepth(31));
+  this.portraits=['zip','brick'].map((key,i)=>this.add.image(i?520:25,23,'supplied-'+key,'idle').setScale(.5).setOrigin(.5,.5).setScrollFactor(0).setDepth(31));
   this.healthLabels=[this.text(47,9,'ZIP','#9efff0',7),this.text(542,9,'BRICK','#ffc27b',7)];
   this.healthLabels.forEach(t=>t.setScrollFactor(0).setDepth(31));
   window.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -89,7 +98,7 @@ export class PrisonScene extends Phaser.Scene {
  text(x:number,y:number,value:string,color:string,size=8) {return this.add.text(x,y,value,{fontFamily:'monospace',fontSize:`${size}px`,fontStyle:'bold',color,stroke:'#060e1b',strokeThickness:2,padding:{x:2,y:2}}).setDepth(3);}
  start(online=false,slot=0,seed=2026) {
   this.sim=new Simulation(seed);this.previousTerrain=[];this.lastEvent=0;this.activeRun=true;this.pausedRun=false;this.online=online;this.localSlot=slot;this.winSent=false;this.accumulator=0;
-  this.effects.clear();this.keys.clear();this.pressed.clear();this.stride=[0,0];this.guardHp=[2,2,2,2];this.guardReaction=[0,0,0,0];this.lastHint='';this.hintUntil=0;
+  this.effects.clear();this.rescueVisual=0;this.keys.clear();this.pressed.clear();this.stride=[0,0];this.guardHp=[2,2,2,2];this.guardReaction=[0,0,0,0];this.lastHint='';this.hintUntil=0;
   this.sfx.unlock();this.cameras.main.fadeIn(350,6,12,22);
  }
  readInputs(): Input[] {
@@ -105,7 +114,7 @@ export class PrisonScene extends Phaser.Scene {
   this.sectorOneObjects.forEach(o=>(o as Phaser.GameObjects.Image).setVisible(!machine));this.machineArt.visible(machine);
   this.terrainLayer.fill(-1);this.previousTerrain=[];this.effects.clear();this.gateGraphics.clear();this.hackLabel.setVisible(false);
   this.barrelSprites.forEach(s=>s.destroy());this.barrelSprites=this.sim.barrels.map(b=>this.add.image(b.x,b.y,'props',0).setOrigin(.5,1).setDepth(4));
-  this.guardSprites.forEach(s=>s.destroy());this.guardSprites=this.sim.guards.map(()=>this.add.sprite(0,0,'guard').setOrigin(.5,1).setDepth(6));
+  this.guardSprites.forEach(s=>s.destroy());this.guardSprites=this.sim.guards.map((_,i)=>this.add.sprite(0,0,'supplied-enemies',GUARD_POSES[i%4]).setOrigin(.5,1).setDepth(6));
   this.guardHp=this.sim.guards.map(g=>g.hp);this.guardReaction=this.sim.guards.map(()=>0);
   this.cameras.main.setBounds(0,0,WORLD_W,machine?640:360);this.cameras.main.scrollY=machine?280:0;
   this.winSent=false;this.machineArt.lastDialogue=-1;
@@ -138,7 +147,12 @@ export class PrisonScene extends Phaser.Scene {
   }
  }
  event(e:GameEvent) {
-  this.sfx.play(e.type);
+  this.sfx.play(e.type==='rescue'?'revive':e.type);
+  if(e.type==='rescue'){
+   this.say('PRISONER EXTRACTED / +1 TEAM HEALTH',3);this.effects.burst(e.x,e.y,12,0x7cfff0,.4);
+   const icon=this.add.image(e.x,e.y-20,'supplied-pickups','health').setDepth(13);
+   this.tweens.add({targets:icon,y:icon.y-30,alpha:0,duration:1200,onComplete:()=>icon.destroy()});
+  }
   if(e.type==='blast') {
    const power=e.power??1;this.effects.blast(e.x,e.y,power,e.material??'concrete',e.direction??0);this.cameras.main.shake(220,.008*Math.min(1.25,power),true);this.freeze=.055;
    const p=this.sim.players[1];if(Math.abs(p.x-e.x)<60)this.effects.impact(p.x+p.facing*23,p.y-25,p.facing);
@@ -202,37 +216,25 @@ export class PrisonScene extends Phaser.Scene {
   this.sprites.forEach((s,i)=>{
    const p=sim.players[i],running=Math.abs(p.vx)>15;
    this.stride[i]+=Math.abs(p.vx)*dt;
-   let frame=Math.floor(t*4)%4;
-   if(running)frame=4+Math.floor(this.stride[i]/8)%8;
-   if(!p.grounded)frame=p.vy<0?12:13;
-   if(p.landed>0)frame=14;
-   if(i===1&&p.shield>0&&p.grounded&&!running)frame=15;
-   if(p.action>0){
-    const age=(i===1?.42:.32)-p.action;
-    frame=i===0&&sim.plate&&Math.abs(p.x-487)<32?15+Math.floor(t*14)%4:age<(i===1?.14:.035)?19:age<(i===1?.23:.11)?20:age<(i===1?.34:.22)?21:22;
-   }
-   if(p.hurt>.9)frame=23;
-   if(p.reviving>0)frame=28+Math.floor(t*10)%2;
-   if(sim.won)frame=30+Math.floor(t*8)%2;
-   if(p.ghost)frame=p.hurt>.55?24+Math.min(3,Math.floor((1.1-p.hurt)*8)):13;
+   const frame=heroPose(p,sim);
    const x=this.activeRun?this.online?Phaser.Math.Linear(s.x,p.x,Math.min(1,dt*24)):p.x:430+i*48;
-   const y=this.activeRun?this.online?Phaser.Math.Linear(s.y-2,p.y,Math.min(1,dt*24)):p.y:288;
+   const y=this.activeRun?this.online?Phaser.Math.Linear(s.y+(p.ghost?14:0),p.y,Math.min(1,dt*24)):p.y:288;
    // Small contact shadows anchor the larger silhouettes to the surfaces.
    if(p.grounded)this.fx.fillStyle(0x050a16,.7).fillEllipse(Math.round(x),Math.round(y),i?31:23,5);
-   s.setPosition(Math.round(x),Math.round(y)+2+(p.ghost?-14+Math.round(Math.sin(t*5)*3):0)).setFrame(frame).setFlipX(p.facing<0);
+   this.supplied.pose(s,i?'brick':'zip',frame,x,y+(p.ghost?-14:0),p.facing);
    s.setAlpha(p.ghost?.48:p.hurt>0&&Math.floor(t*18)%2?.5:1);
    if(p.ghost)s.setTint(0x66eafa);else if(p.hurt>.94)s.setTintFill(0xffffff);else s.clearTint();
-   this.names[i].setPosition(x,y-51).setVisible(this.activeRun&&(sim.elapsed<3||p.ghost)).setText(p.ghost?'REVIVE':i?'2':'1');
+   this.names[i].setPosition(x,y-93).setVisible(this.activeRun&&(sim.elapsed<3||p.ghost)).setText(p.ghost?'REVIVE':i?'2':'1');
    // Electric afterimages use the actual moving character frame.
    if(i===0&&Math.abs(p.vx)>220&&t>this.shotTrail){
-    this.shotTrail=t+.045;const trail=this.add.image(s.x-p.facing*7,s.y,'zip',frame).setOrigin(.5,1).setFlipX(s.flipX).setTintFill(0x43d8ec).setAlpha(.35).setDepth(5);
+    this.shotTrail=t+.045;const trail=this.add.image(s.x-p.facing*7,s.y,s.texture.key,frame).setOrigin(s.originX,s.originY).setFlipX(s.flipX).setTintFill(0x43d8ec).setAlpha(.35).setDepth(5);
     this.tweens.add({targets:trail,alpha:0,duration:140,onComplete:()=>trail.destroy()});
    }
   });
   this.guardSprites.forEach((s,i)=>{
    const g=sim.guards[i];if(g.hp<this.guardHp[i])this.guardReaction[i]=.2;this.guardHp[i]=g.hp;this.guardReaction[i]=Math.max(0,this.guardReaction[i]-dt);
-   s.setPosition(Math.round(g.x)+(this.guardReaction[i]>0?-g.direction*3:0),Math.round(g.y)+2)
-    .setFrame(g.hp<=0?(g.reaction>0?24+Math.min(3,Math.floor((.35-g.reaction)*12)):27):g.stun>0?23:g.aim>0?15:g.reaction>0?21:g.cooldown>0&&sim.players.some(p=>Math.abs(p.x-g.x)<235)?0:4+Math.floor(t*8)%8).setFlipX(g.direction<0).setAlpha(g.hp>0?1:.65);
+   this.supplied.pose(s,'enemies',GUARD_POSES[i%4],Math.round(g.x)+(this.guardReaction[i]>0?-g.direction*3:0),g.y,g.direction);
+   s.setAlpha(g.hp>0?1:.35); // Static enemy art has no supplied death/run cycle.
    if(this.guardReaction[i]>.13)s.setTintFill(0xffd9bd);else s.clearTint();
    if(g.hp>0&&g.aim>0){const mx=g.x+g.direction*23,my=g.y-20;this.fx.fillStyle(0xff5949,.55).fillRect(mx,my,2,2);this.fx.lineStyle(1,0xff7059,.18).lineBetween(mx,my,mx+g.direction*70,my);}
   });
@@ -242,7 +244,14 @@ export class PrisonScene extends Phaser.Scene {
    if(sim.plate)this.link.lineStyle(3,0x2da9d4,.24).strokePoints(points);
    this.link.lineStyle(1,sim.plate?0xc4fff3:0x58a3bf,sim.plate?.9:.17).strokePoints(points);
   }
-  if(sim.sector===1)this.drawGate();
+  if(sim.sector===1){
+   this.drawGate();
+   this.rescueVisual=sim.rescued?Math.min(1,this.rescueVisual+dt*1.8):0;
+   this.supplied.pose(this.rescueCage,'props','rescue_cage',RESCUE_CAGE.x,RESCUE_CAGE.y-this.rescueVisual*110);
+   this.rescueCage.setVisible(this.rescueVisual<1).setAlpha(1-this.rescueVisual);
+   this.supplied.pose(this.checkpointFlag,'props','checkpoint_flag',690,288);this.checkpointFlag.setAlpha(sim.checkpoint?1:.45);
+   this.rescueHint.setVisible(!sim.rescued&&sim.gate).setText(sim.rescueProgress>0?'EXTRACTING '+Math.floor(sim.rescueProgress*100)+'%':'HOLD INTERACT / RESCUE');
+  }
   for(const bolt of sim.bolts){
    const x=Math.round(bolt.x),y=Math.round(bolt.y),dir=Math.sign(bolt.vx);
    if(bolt.owner===0){
@@ -282,7 +291,7 @@ export class PrisonScene extends Phaser.Scene {
   const g=this.hud;
   for(const p of this.sim.players){
    const x=p.id?504:9,color=p.id?0xffae59:0x67efdf;
-   g.fillStyle(0x060d19,.87).fillRoundedRect(x,6,115,32,3);g.fillStyle(color).fillRect(x,10,2,24);
+   g.fillStyle(0x060d19,.87).fillRoundedRect(x,6,115,42,3);g.fillStyle(color).fillRect(x,10,2,24);
    for(let i=0;i<3;i++)g.fillStyle(p.hp>i?color:0x263245).fillRect(x+39+i*21,22,18,5);
    if(p.cooldown>0)g.fillStyle(0x8b9dac).fillRect(x+39,31,60*Math.max(0,1-p.cooldown/.65),1);
   }

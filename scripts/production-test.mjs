@@ -11,7 +11,8 @@ try{
  await mkdir(output,{recursive:true});await page.screenshot({path:`${output}/production.png`});
  await page.keyboard.press('Escape');await expect(page.locator('#resume')).toBeVisible();await page.click('#resume');await expect(page.locator('#pause')).toBeVisible();
  expect(errors).toEqual([]);expect(badResponses).toEqual([]);expect(assets.size).toBeGreaterThanOrEqual(16);
- for(const name of ['zip','brick','guard','explosion','smoke','debris','prison-composition','machine-composition','machine-depth','machine-foreground','machine-props'])expect(assets.has(`/assets/${name}.png`)).toBe(true);
+ for(const name of ['explosion','smoke','debris','prison-composition','machine-composition','machine-depth','machine-foreground','machine-props'])expect(assets.has(`/assets/${name}.png`)).toBe(true);
+ for(const name of ['zip','brick','enemies','pickups','props'])expect(assets.has(`/assets/supplied/${name}.png`)).toBe(true);
  await writeFile(`${output}/production-evidence.json`,JSON.stringify({verifiedAt:new Date().toISOString(),browserErrors:errors,badResponses,assets:[...assets],developmentHookAbsent:true,pauseResume:true},null,2)+'\n');
  console.log(`PASS production UI/input/pause, ${assets.size} PNG assets, no browser/HTTP errors, inspection hook absent`);
 }finally{await browser.close();}

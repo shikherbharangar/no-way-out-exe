@@ -1,0 +1,1213 @@
+{
+  "scale": 1,
+  "pixelPolicy": "One original artwork pixel per world pixel; nearest-neighbor; no frame fitting",
+  "groups": {
+    "zip": {
+      "idle": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          20,
+          21,
+          75,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "run": {
+        "index": 1,
+        "atlas_x": 96,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          19,
+          27,
+          76,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "jump": {
+        "index": 2,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          23,
+          17,
+          72,
+          89
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          89
+        ],
+        "sourceFacing": 1
+      },
+      "fall": {
+        "index": 3,
+        "atlas_x": 288,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          23,
+          39,
+          72,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          44,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "shoot": {
+        "index": 4,
+        "atlas_x": 0,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          12,
+          14,
+          83,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          43,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "melee": {
+        "index": 5,
+        "atlas_x": 96,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          12,
+          12,
+          83,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 2265,
+        "anchor": [
+          43,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "dash": {
+        "index": 6,
+        "atlas_x": 192,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          5,
+          21,
+          90,
+          89
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          47,
+          89
+        ],
+        "sourceFacing": 1
+      },
+      "wall_jump": {
+        "index": 7,
+        "atlas_x": 288,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          28,
+          22,
+          67,
+          89
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          89
+        ],
+        "sourceFacing": 1
+      },
+      "slide": {
+        "index": 8,
+        "atlas_x": 0,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          28,
+          18,
+          68,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "hack": {
+        "index": 9,
+        "atlas_x": 96,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          24,
+          31,
+          71,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "electric": {
+        "index": 10,
+        "atlas_x": 192,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          15,
+          30,
+          81,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          46,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "hurt": {
+        "index": 11,
+        "atlas_x": 288,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          11,
+          13,
+          84,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "death": {
+        "index": 12,
+        "atlas_x": 0,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          16,
+          11,
+          79,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          49,
+          91
+        ],
+        "sourceFacing": 1
+      }
+    },
+    "brick": {
+      "idle": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          10,
+          10,
+          86,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          45,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "run": {
+        "index": 1,
+        "atlas_x": 96,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          12,
+          20,
+          84,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          43,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "jump": {
+        "index": 2,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          21,
+          8,
+          74,
+          89
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          47,
+          89
+        ],
+        "sourceFacing": 1
+      },
+      "fall": {
+        "index": 3,
+        "atlas_x": 288,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          18,
+          23,
+          77,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          49,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "punch": {
+        "index": 4,
+        "atlas_x": 0,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          10,
+          26,
+          85,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          69,
+          91
+        ],
+        "sourceFacing": -1
+      },
+      "aim": {
+        "index": 5,
+        "atlas_x": 96,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          17,
+          25,
+          64,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 145,
+        "anchor": [
+          39,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "slam": {
+        "index": 6,
+        "atlas_x": 192,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          4,
+          25,
+          92,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          49,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "shield": {
+        "index": 7,
+        "atlas_x": 288,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          19,
+          27,
+          77,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          38,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "charge": {
+        "index": 8,
+        "atlas_x": 0,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          12,
+          31,
+          84,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          46,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "special": {
+        "index": 9,
+        "atlas_x": 96,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          4,
+          21,
+          92,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "hurt": {
+        "index": 10,
+        "atlas_x": 192,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          14,
+          42,
+          82,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          43,
+          91
+        ],
+        "sourceFacing": 1
+      },
+      "death": {
+        "index": 11,
+        "atlas_x": 288,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          20,
+          64,
+          75,
+          91
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          91
+        ],
+        "sourceFacing": 1
+      }
+    },
+    "enemies": {
+      "guard": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          19,
+          15,
+          77,
+          81
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          47,
+          80
+        ],
+        "sourceFacing": 1
+      },
+      "shotgunner": {
+        "index": 1,
+        "atlas_x": 96,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          16,
+          16,
+          79,
+          80
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          46,
+          80
+        ],
+        "sourceFacing": 1
+      },
+      "shield_trooper": {
+        "index": 2,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          15,
+          15,
+          81,
+          81
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          42,
+          81
+        ],
+        "sourceFacing": 1
+      },
+      "sniper": {
+        "index": 3,
+        "atlas_x": 288,
+        "atlas_y": 0,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          11,
+          15,
+          84,
+          81
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          45,
+          81
+        ],
+        "sourceFacing": 1
+      },
+      "heavy_trooper": {
+        "index": 4,
+        "atlas_x": 0,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          9,
+          14,
+          87,
+          82
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          45,
+          82
+        ],
+        "sourceFacing": 1
+      },
+      "jetpack_trooper": {
+        "index": 5,
+        "atlas_x": 96,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          13,
+          10,
+          82,
+          86
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          86
+        ],
+        "sourceFacing": 1
+      },
+      "riot_trooper": {
+        "index": 6,
+        "atlas_x": 192,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          21,
+          15,
+          74,
+          80
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          46,
+          80
+        ],
+        "sourceFacing": 1
+      },
+      "drone": {
+        "index": 7,
+        "atlas_x": 288,
+        "atlas_y": 96,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          13,
+          24,
+          82,
+          72
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          72
+        ],
+        "sourceFacing": 1
+      },
+      "turret": {
+        "index": 8,
+        "atlas_x": 0,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          17,
+          16,
+          79,
+          80
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          80
+        ],
+        "sourceFacing": 1
+      },
+      "combat_dog": {
+        "index": 9,
+        "atlas_x": 96,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          2,
+          28,
+          68,
+          67
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 174,
+        "anchor": [
+          48,
+          67
+        ],
+        "sourceFacing": 1
+      },
+      "mutant_prisoner": {
+        "index": 10,
+        "atlas_x": 192,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          2,
+          19,
+          94,
+          77
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          77
+        ],
+        "sourceFacing": 1
+      },
+      "bio_soldier": {
+        "index": 11,
+        "atlas_x": 288,
+        "atlas_y": 192,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          5,
+          16,
+          90,
+          80
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          80
+        ],
+        "sourceFacing": 1
+      },
+      "alien_runner": {
+        "index": 12,
+        "atlas_x": 0,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          7,
+          13,
+          89,
+          82
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          82
+        ],
+        "sourceFacing": 1
+      },
+      "alien_spitter": {
+        "index": 13,
+        "atlas_x": 96,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          2,
+          19,
+          94,
+          77
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          48,
+          77
+        ],
+        "sourceFacing": 1
+      },
+      "armored_brute": {
+        "index": 14,
+        "atlas_x": 192,
+        "atlas_y": 288,
+        "frame_width": 96,
+        "frame_height": 96,
+        "alphaBounds": [
+          2,
+          19,
+          94,
+          85
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 75,
+        "anchor": [
+          48,
+          85
+        ],
+        "sourceFacing": 1
+      }
+    },
+    "pickups": {
+      "health": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          16,
+          10,
+          47,
+          53
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          53
+        ],
+        "sourceFacing": 1
+      },
+      "ammo": {
+        "index": 1,
+        "atlas_x": 64,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          21,
+          16,
+          43,
+          47
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          47
+        ],
+        "sourceFacing": 1
+      },
+      "extra_life": {
+        "index": 2,
+        "atlas_x": 128,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          7,
+          17,
+          56,
+          47
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          47
+        ],
+        "sourceFacing": 1
+      },
+      "shield": {
+        "index": 3,
+        "atlas_x": 192,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          14,
+          8,
+          49,
+          56
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          56
+        ],
+        "sourceFacing": 1
+      },
+      "speed": {
+        "index": 4,
+        "atlas_x": 256,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          12,
+          15,
+          52,
+          49
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          49
+        ],
+        "sourceFacing": 1
+      },
+      "invulnerability": {
+        "index": 5,
+        "atlas_x": 320,
+        "atlas_y": 0,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          16,
+          8,
+          47,
+          56
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          56
+        ],
+        "sourceFacing": 1
+      },
+      "electric": {
+        "index": 6,
+        "atlas_x": 0,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          10,
+          5,
+          53,
+          59
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          59
+        ],
+        "sourceFacing": 1
+      },
+      "explosive": {
+        "index": 7,
+        "atlas_x": 64,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          12,
+          6,
+          52,
+          57
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          57
+        ],
+        "sourceFacing": 1
+      },
+      "double_damage": {
+        "index": 8,
+        "atlas_x": 128,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          11,
+          7,
+          52,
+          57
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          57
+        ],
+        "sourceFacing": 1
+      },
+      "drone": {
+        "index": 9,
+        "atlas_x": 192,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          6,
+          6,
+          57,
+          57
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          57
+        ],
+        "sourceFacing": 1
+      },
+      "random": {
+        "index": 10,
+        "atlas_x": 256,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          13,
+          4,
+          50,
+          59
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          59
+        ],
+        "sourceFacing": 1
+      },
+      "alien_artifact": {
+        "index": 11,
+        "atlas_x": 320,
+        "atlas_y": 64,
+        "frame_width": 64,
+        "frame_height": 64,
+        "alphaBounds": [
+          6,
+          5,
+          57,
+          59
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          32,
+          59
+        ],
+        "sourceFacing": 1
+      }
+    },
+    "props": {
+      "checkpoint_flag": {
+        "index": 0,
+        "atlas_x": 0,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128,
+        "alphaBounds": [
+          22,
+          9,
+          106,
+          118
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          31,
+          118
+        ],
+        "sourceFacing": 1
+      },
+      "rescue_cage": {
+        "index": 1,
+        "atlas_x": 128,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128,
+        "alphaBounds": [
+          26,
+          9,
+          102,
+          119
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          64,
+          119
+        ],
+        "sourceFacing": 1
+      },
+      "terminal": {
+        "index": 2,
+        "atlas_x": 256,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128,
+        "alphaBounds": [
+          26,
+          24,
+          101,
+          104
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          64,
+          104
+        ],
+        "sourceFacing": 1
+      },
+      "reactor": {
+        "index": 3,
+        "atlas_x": 384,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128,
+        "alphaBounds": [
+          24,
+          6,
+          103,
+          122
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          64,
+          122
+        ],
+        "sourceFacing": 1
+      },
+      "exit_beacon": {
+        "index": 4,
+        "atlas_x": 512,
+        "atlas_y": 0,
+        "frame_width": 128,
+        "frame_height": 128,
+        "alphaBounds": [
+          13,
+          8,
+          114,
+          119
+        ],
+        "singlePose": true,
+        "individualVisiblePixelsMatch": true,
+        "transparentRGBDifferences": 0,
+        "anchor": [
+          64,
+          119
+        ],
+        "sourceFacing": 1
+      }
+    }
+  }
+}

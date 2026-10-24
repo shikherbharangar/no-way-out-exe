@@ -1,14 +1,15 @@
 import { MACHINE_HEIGHT, machineSolid, machineTerrain, newMachine, stepMachinery, machineBolt, type MachineState } from './machine';
 /** Fixed-step, renderer-independent authoritative simulation. Units are world pixels. */
 export const TILE = 16, COLS = 80, ROWS = 22, WORLD_W = COLS * TILE, WORLD_H = ROWS * TILE;
+export const RESCUE_CAGE={x:647,y:288,range:42,duration:.75} as const;
 export type Input = { left: boolean; right: boolean; jump: boolean; interact: boolean; special: boolean };
 export const idleInput = (): Input => ({ left: false, right: false, jump: false, interact: false, special: false });
 export type Player = { id: number; x: number; y: number; vx: number; vy: number; facing: number; grounded: boolean; hp: number; ghost: boolean; coyote: number; buffer: number; cooldown: number; action: number; hurt: number; shield: number; wasJump: boolean; wasSpecial: boolean; wall: number; airDash: boolean; revive: number; landed: number; reviving: number; charge: number; windup: number; attackFacing: number };
-export type GameEvent = { id: number; type: 'blast' | 'jump' | 'land' | 'hurt' | 'death' | 'revive' | 'gate' | 'win' | 'spark' | 'checkpoint' | 'charge' | 'arc' | 'shot' | 'deflect'; x: number; y: number; power?: number; material?: 'fuel' | 'concrete' | 'steel'; direction?: number };
+export type GameEvent = { id: number; type: 'blast' | 'jump' | 'land' | 'hurt' | 'death' | 'revive' | 'gate' | 'win' | 'spark' | 'checkpoint' | 'charge' | 'arc' | 'shot' | 'deflect' | 'rescue'; x: number; y: number; power?: number; material?: 'fuel' | 'concrete' | 'steel'; direction?: number };
 export type Barrel = { x: number; y: number; alive: boolean; fuse: number };
 export type Guard = { x: number; y: number; hp: number; direction: number; cooldown: number; min: number; max: number; vx: number; vy: number; aim: number; stun: number; reaction: number };
 export type Bolt = { x: number; y: number; vx: number; owner: number; life: number; charged?: boolean };
-export type Snapshot = { sector: number; seed: number; transition: number; eventId:number; resetTimer:number; machine: MachineState | null; tick: number; players: Player[]; terrain: number[]; barrels: Barrel[]; guards: Guard[]; bolts: Bolt[]; gate: boolean; plate: boolean; hack: number; checkpoint: boolean; won: boolean; deaths: number; events: GameEvent[]; collapse: number; elapsed: number };
+export type Snapshot = { rescued?:boolean; rescueProgress?:number; sector: number; seed: number; transition: number; eventId:number; resetTimer:number; machine: MachineState | null; tick: number; players: Player[]; terrain: number[]; barrels: Barrel[]; guards: Guard[]; bolts: Bolt[]; gate: boolean; plate: boolean; hack: number; checkpoint: boolean; won: boolean; deaths: number; events: GameEvent[]; collapse: number; elapsed: number };
 export function makeTerrain(): number[] {
  const t = new Array(COLS * ROWS).fill(-1);
  for (let y = 18; y < ROWS; y++) for (let x = 0; x < COLS; x++) t[y * COLS + x] = y === 18 ? 9 : y === 21 ? 11 : 3 + (x * 13 + y) % 3;
@@ -25,6 +26,7 @@ export function makeTerrain(): number[] {
 }
 function player(id: number): Player { return { id, x: 90 + id * 48, y: 288, vx: 0, vy: 0, facing: 1, grounded: true, hp: 3, ghost: false, coyote: .1, buffer: 0, cooldown: 0, action: 0, hurt: 0, shield: 0, wasJump: false, wasSpecial: false, wall: 0, airDash: false, revive: 0, landed: 0, reviving: 0, charge: 0, windup: 0, attackFacing: 1 }; }
 export class Simulation {
+ rescued=false; rescueProgress=0;
  sector=1; machine:MachineState|null=null; transition=0;
  constructor(public seed=2026) {}
  get height(){return this.sector===2?MACHINE_HEIGHT:WORLD_H;}
@@ -159,6 +161,11 @@ export class Simulation {
     if (this.hack === 1) { this.gate = true; this.emit('gate', 616, 225); }
    } else this.hack = Math.max(0, this.hack - dt * .12);
   }
+  if(!this.rescued){
+   const helping=this.gate&&this.players.some(p=>!p.ghost&&p.grounded&&Math.abs(p.x-RESCUE_CAGE.x)<RESCUE_CAGE.range&&Math.abs(p.y-RESCUE_CAGE.y)<10&&inputs[p.id]?.interact);
+   this.rescueProgress=helping?Math.min(1,this.rescueProgress+dt/RESCUE_CAGE.duration):0;
+   if(this.rescueProgress===1){this.rescued=true;this.players.forEach(p=>{if(!p.ghost)p.hp=Math.min(3,p.hp+1);});this.emit('rescue',RESCUE_CAGE.x,RESCUE_CAGE.y-50);}
+  }
   if (this.gate && !this.checkpoint && this.players.every(p => !p.ghost && p.x > 640)) { this.checkpoint = true; this.emit('checkpoint', 665, 250); }
   if (this.collapse > 0) {
    this.collapse -= dt;
@@ -226,6 +233,7 @@ export class Simulation {
   if (this.players.every(p => !p.ghost && p.x > (this.sector===2?1200:1160) && p.y > (this.sector===2?420:270)) && (!this.machine||(this.machine.bossHp===0&&this.players.every(p=>Math.abs(p.y-432)<8))) && inputs.some(i => i.interact)) { this.won = true; this.emit('win', 1200, 250); }
  }
  respawn() {
+  if(!this.rescued)this.rescueProgress=0;
   if(this.machine){
    const checkpoint=this.machine.checkpoint;this.enterMachine();const m=this.machine!;
    if(checkpoint>=1){m.liftSolved=true;m.liftY=368;m.relay=true;m.relayCharge=2;m.checkpoint=checkpoint;}
@@ -239,6 +247,6 @@ export class Simulation {
   this.barrels.forEach(b => {b.alive=true;b.fuse=-1;}); this.guards=this.makeGuards();
   this.emit('revive', this.players[0].x, 270);
  }
- snapshot(): Snapshot { return { sector:this.sector,seed:this.seed,transition:this.transition,eventId:this.eventId,resetTimer:this.resetTimer,machine:this.machine,tick: this.tick, players: this.players, terrain: this.terrain, barrels: this.barrels, guards: this.guards, bolts: this.bolts, gate: this.gate, plate: this.plate, hack: this.hack, checkpoint: this.checkpoint, won: this.won, deaths: this.deaths, events: this.events.slice(-24), collapse: this.collapse, elapsed: this.elapsed }; }
- apply(s: Snapshot) { Object.assign(this, s); }
+ snapshot(): Snapshot { return {rescued:this.rescued,rescueProgress:this.rescueProgress, sector:this.sector,seed:this.seed,transition:this.transition,eventId:this.eventId,resetTimer:this.resetTimer,machine:this.machine,tick: this.tick, players: this.players, terrain: this.terrain, barrels: this.barrels, guards: this.guards, bolts: this.bolts, gate: this.gate, plate: this.plate, hack: this.hack, checkpoint: this.checkpoint, won: this.won, deaths: this.deaths, events: this.events.slice(-24), collapse: this.collapse, elapsed: this.elapsed }; }
+ apply(s: Snapshot) { Object.assign(this, s);this.rescued=s.rescued??false;this.rescueProgress=s.rescueProgress??0; }
 }
