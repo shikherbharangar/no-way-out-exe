@@ -1,0 +1,149 @@
+{
+  "packagingValidated": true,
+  "animationAcceptance": "NOT MET",
+  "completedNewFrames": 0,
+  "completedAnatomyRepairs": 0,
+  "missingDrawings": 78,
+  "missingFrameIds": [
+    "zip-idle-01",
+    "zip-idle-02",
+    "zip-idle-03",
+    "zip-idle-04",
+    "zip-run-01",
+    "zip-run-02",
+    "zip-run-03",
+    "zip-run-04",
+    "zip-run-05",
+    "zip-run-06",
+    "zip-run-07",
+    "zip-run-08",
+    "zip-jump-01",
+    "zip-jump-02",
+    "zip-jump-03",
+    "zip-fall-01",
+    "zip-fall-02",
+    "zip-land-01",
+    "zip-land-02",
+    "zip-land-03",
+    "zip-attack-01",
+    "zip-attack-02",
+    "zip-attack-03",
+    "zip-attack-04",
+    "zip-attack-05",
+    "zip-attack-06",
+    "zip-hurt-01",
+    "zip-hurt-02",
+    "zip-death-01",
+    "zip-death-02",
+    "zip-death-03",
+    "zip-death-04",
+    "zip-death-05",
+    "zip-death-06",
+    "zip-revive-01",
+    "zip-revive-02",
+    "zip-revive-03",
+    "zip-revive-04",
+    "zip-revive-05",
+    "brick-idle-01",
+    "brick-idle-02",
+    "brick-idle-03",
+    "brick-idle-04",
+    "brick-run-01",
+    "brick-run-02",
+    "brick-run-03",
+    "brick-run-04",
+    "brick-run-05",
+    "brick-run-06",
+    "brick-run-07",
+    "brick-run-08",
+    "brick-jump-01",
+    "brick-jump-02",
+    "brick-jump-03",
+    "brick-fall-01",
+    "brick-fall-02",
+    "brick-land-01",
+    "brick-land-02",
+    "brick-land-03",
+    "brick-attack-01",
+    "brick-attack-02",
+    "brick-attack-03",
+    "brick-attack-04",
+    "brick-attack-05",
+    "brick-attack-06",
+    "brick-hurt-01",
+    "brick-hurt-02",
+    "brick-death-01",
+    "brick-death-02",
+    "brick-death-03",
+    "brick-death-04",
+    "brick-death-05",
+    "brick-death-06",
+    "brick-revive-01",
+    "brick-revive-02",
+    "brick-revive-03",
+    "brick-revive-04",
+    "brick-revive-05"
+  ],
+  "sourceFilesUnchanged": 83,
+  "runtimeHeroAtlasesUnchanged": true,
+  "authoritativeFilesChanged": [],
+  "runtimeScale": 1,
+  "proposedNativeHeights": {
+    "zip": 34,
+    "brick": 40
+  },
+  "sameTickGameplayComparisons": 3,
+  "editablePackages": [
+    {
+      "file": "art/animation-production/zip-repair.ora",
+      "size": [
+        384,
+        384
+      ],
+      "layers": [
+        "REPAIR PAINT \u2014 empty; no repair completed",
+        "EDIT THIS COPY \u2014 erase stray pixels here; redraw missing anatomy manually",
+        "ORIGINAL REFERENCE \u2014 do not edit; immutable original also in art/supplied/source"
+      ],
+      "sha256": "3fa9069b67159b1821c6f18c923b82e53b33b73aca861b9f8e5c86acea540753"
+    },
+    {
+      "file": "art/animation-production/zip-animation-template.ora",
+      "size": [
+        512,
+        576
+      ],
+      "layers": [
+        "PAINT \u2014 empty; illustration required",
+        "GUIDES ONLY \u2014 hide before export; not character art"
+      ],
+      "sha256": "415df37e32900104a3ea4bb323713aa9a06f2785200c1037144e7c2b91cdd57c"
+    },
+    {
+      "file": "art/animation-production/brick-repair.ora",
+      "size": [
+        384,
+        288
+      ],
+      "layers": [
+        "REPAIR PAINT \u2014 empty; no repair completed",
+        "EDIT THIS COPY \u2014 erase stray pixels here; redraw missing anatomy manually",
+        "ORIGINAL REFERENCE \u2014 do not edit; immutable original also in art/supplied/source"
+      ],
+      "sha256": "e7d9794e56b6c8578d6d9b67867fbf5b4257607762a9a2e08dc50d5edf25d0e3"
+    },
+    {
+      "file": "art/animation-production/brick-animation-template.ora",
+      "size": [
+        512,
+        576
+      ],
+      "layers": [
+        "PAINT \u2014 empty; illustration required",
+        "GUIDES ONLY \u2014 hide before export; not character art"
+      ],
+      "sha256": "ceb16fa4f1e23a10eb71c676c278e860e708d9a1fa3b7c2b5b6d7edc3b506634"
+    }
+  ],
+  "limitation": "A consistent illustrated animation cycle and anatomical repairs are not supplied by this tooling. Editable templates and specifications are not finished art."
+}

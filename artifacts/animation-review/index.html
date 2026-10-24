@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NO WAY OUT.exe — animation and scale review</title>
+<style>
+:root{color-scheme:dark;font:16px/1.55 system-ui,sans-serif;background:#10151d;color:#e0e6eb}body{max-width:1320px;margin:auto;padding:24px}h1,h2{line-height:1.2}h2{margin-top:40px}a{color:#8ce1d7}p{max-width:950px}.status{border-left:4px solid #e5a268;padding:12px 18px;background:#20222a}.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:16px 0}button,select{font:inherit;padding:7px 12px;border:1px solid #536270;background:#202c39;color:inherit}button{cursor:pointer}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}.pixel{image-rendering:pixelated;max-width:100%;height:auto}#game{width:640px}video{width:640px;max-width:100%;background:#000}canvas{background:repeating-conic-gradient(#28313c 0% 25%,#1c242e 0% 50%) 0/16px 16px;image-rendering:pixelated}#pose{width:384px;height:384px;max-width:100%}pre{white-space:pre-wrap;background:#171e28;padding:12px;font-size:13px}table{border-collapse:collapse}th,td{text-align:left;padding:8px;border-bottom:1px solid #34404c}.frame{display:inline-block;width:150px;min-height:120px;vertical-align:top;margin:4px;padding:10px;border:1px dashed #6d7882;font-size:13px}.frame strong{display:block;color:#e5a268}small{color:#a9b7c5}
+</style></head><body>
+<h1>Animation and scale review</h1>
+<p class="status"><strong>Animation acceptance is not met.</strong> There are no new finished drawings or completed anatomy repairs in this pass. The live game still holds a single running pose. The source identities remain unchanged. The only shipped visual change is reduced brightness on three distant prison layers.</p>
+<p>This page is a review and artist handoff, not a finished-art showcase. Serve the repository with <code>npm run dev</code> and open <code>/artifacts/animation-review/index.html</code>. <a href="../../docs/ANIMATION_SCALE_REVIEW.md">Full findings</a> · <a href="../../art/animation-production/README.md">Editable sources and instructions</a> · <a href="../../art/animation-production/REPAIR_BRIEF.md">Remaining artist tasks</a></p>
+<h2>Actual gameplay: scale and scenery comparison</h2>
+<p>All frames come from the real Phaser canvas after keyboard input. Only cosmetic rendering was paused for same-tick comparisons. The yellow diagnostic box is the unchanged 14×25 collider. Scale options affect the two heroes only, so the existing 16px terrain and enemy art remain reference points. HUD thumbnails are unchanged.</p>
+<div class="controls"><label>Moment <select id="moment"><option value="idle">Idle</option><option value="running">Running</option><option value="combat">Combat</option></select></label><label>View <select id="view"></select></label><label>Inspection size <select id="zoom"><option value="1">Native 640×360</option><option value="2">2× nearest neighbor</option></select></label></div>
+<img id="game" class="pixel" alt="Actual gameplay scale comparison"><p id="caption"></p><p><a id="download">Download current PNG</a></p>
+<table><thead><tr><th>Standing source scale</th><th>ZIP height / collider</th><th>BRICK height / collider</th><th>Decision</th></tr></thead><tbody>
+<tr><td>1× integer</td><td>70px / 2.8×</td><td>81px / 3.24×</td><td>Existing integration; still oversized</td></tr>
+<tr><td>2× integer</td><td>140px / 5.6×</td><td>162px / 6.48×</td><td>Reject</td></tr>
+<tr><td>3× integer</td><td>210px / 8.4×</td><td>243px / 9.72×</td><td>Reject</td></tr>
+<tr><td>1:2 reduction diagnostic</td><td>35px / 1.4×</td><td>40.5px / 1.62×</td><td>Useful proportion reference; loses deliberate pixel clusters</td></tr>
+<tr><td>Artist target, drawn at 1×</td><td>34px / 1.36×</td><td>40px / 1.6×</td><td>Selected production dimensions; artwork missing</td></tr>
+</tbody></table>
+<h2>Real gameplay recording</h2>
+<p>This new continuous capture shows the current limitation as well as the preserved combat, rescue, checkpoint, destruction and escape. A held pose during running is not a completed run animation. The video has no frame interpolation or fabricated animation; CFR encoding may repeat captured frames.</p>
+<video controls preload="metadata" src="action/gameplay-15s.mp4"></video>
+<p><a href="action/gameplay-15s.mp4" download>Download 15-second MP4</a> · <a href="action/gameplay-source.webm" download>Original recording</a> · <a href="../supplied/action/gameplay-15s.mp4">Previous integration recording</a></p>
+<h2>Native source poses — still incomplete</h2>
+<p>Inspect the actual 96×96 extracted cells. Selecting a different pose does not demonstrate an animation cycle. There is only one run image for each hero. Enlargement uses nearest-neighbor pixels; original native sheets are linked below.</p>
+<div class="controls"><label>Hero <select id="hero"><option value="zip">ZIP</option><option value="brick">BRICK</option></select></label><label>Supplied pose <select id="pose-name"></select></label></div>
+<div class="grid"><div><canvas id="pose" width="96" height="96"></canvas><p id="pose-info"></p></div><pre id="pose-data"></pre></div>
+<p><a href="../../art/animation-production/zip-reference.png" download>ZIP native reference sheet</a> · <a href="../../art/animation-production/brick-reference.png" download>BRICK native reference sheet</a></p>
+<h2>Required animation drawings</h2>
+<p>Each box is a production brief for a distinct drawing. These are intentionally empty work items, not placeholder character artwork. There are 39 required drawings per hero, including eight run frames. No new frame is marked complete.</p>
+<div class="controls"><label>Animation <select id="clip"></select></label></div><div id="timeline"></div>
+<pre id="alignment"></pre>
+<h2>Editable production files</h2>
+<p>Repair documents contain an editable original-sized copy, a hidden original reference and an empty paint layer. Animation templates contain a blank paint layer and removable guides at the proposed native scale. They are not loaded into the game. Open them in GIMP or Krita; keep source originals untouched.</p>
+<ul>
+<li><a href="../../art/animation-production/zip-repair.ora" download>ZIP editable repair source</a> · <a href="../../art/animation-production/brick-repair.ora" download>BRICK editable repair source</a> — repairs not completed.</li>
+<li><a href="../../art/animation-production/zip-animation-template.ora" download>ZIP animation template</a> · <a href="../../art/animation-production/brick-animation-template.ora" download>BRICK animation template</a> — blank artwork, guides only.</li>
+<li><a href="../../art/animation-production/animation-spec.json">Frame specifications</a> · <a href="../../art/animation-production/scale-audit.json">All 25 pose measurements</a> · <a href="production-readiness.json">Readiness report</a></li>
+</ul>
+<script type="module">
+const $=id=>document.getElementById(id);
+const [meta,spec]=await Promise.all([fetch('../../art/supplied/runtime.json').then(r=>r.json()),fetch('../../art/animation-production/animation-spec.json').then(r=>r.json())]);
+const image=new Image();let loadedHero='';
+const common=[['current','Current scenery'],['previous-background','Previous integration scenery (same tick)'],['scale-1x-colliders','Current 1× with physics collider']];
+function chooseMoment(){const extra=$('moment').value==='idle'?[['scale-2x','2× source scale'],['scale-2x-colliders','2× with collider'],['scale-3x','3× source scale'],['scale-3x-colliders','3× with collider'],['scale-half-diagnostic','1:2 reduction — diagnostic only'],['scale-half-diagnostic-colliders','1:2 with collider — diagnostic only'],['scale-third-diagnostic','1:3 reduction — diagnostic only']]:$('moment').value==='running'?[['scale-half-diagnostic','1:2 reduction — diagnostic only']]:[];
+ $('view').replaceChildren(...[...common,...extra].map(([v,t])=>new Option(t,v)));showGame();}
+function showGame(){const large=$('zoom').value==='2',name=`${$('moment').value}-${$('view').value}${large?'-2x':''}.png`;$('game').src=name;$('game').style.width=large?'1280px':'640px';$('download').href=name;$('download').download=name;$('caption').textContent=$('view').selectedOptions[0].text+' • '+(large?'1280×720 enlargement':'640×360 native')+' • collision and gameplay state unchanged';}
+async function showPose(){const hero=$('hero').value,f=meta.groups[hero][$('pose-name').value];if(loadedHero!==hero){image.src=`../../art/animation-production/${hero}-reference.png`;await image.decode();loadedHero=hero;}
+ const canvas=$('pose'),c=canvas.getContext('2d');canvas.width=f.frame_width;canvas.height=f.frame_height;c.imageSmoothingEnabled=false;c.clearRect(0,0,canvas.width,canvas.height);c.drawImage(image,f.atlas_x,f.atlas_y,f.frame_width,f.frame_height,0,0,f.frame_width,f.frame_height);
+ $('pose-info').textContent=`Original ${f.frame_width}×${f.frame_height} cell, displayed at 4×. Visible height: ${f.alphaBounds[3]-f.alphaBounds[1]}px. Single supplied pose.`;
+ $('pose-data').textContent=JSON.stringify({pose:$('pose-name').value,anchor:f.anchor,alphaBounds:f.alphaBounds,sourceFacing:f.sourceFacing,status:'Original, unrepaired; not a complete animation'},null,2);}
+function showTimeline(){const hero=spec.heroes[$('hero').value],clip=hero.clips[$('clip').value];$('timeline').replaceChildren(...clip.frames.map(f=>{const el=document.createElement('div');el.className='frame';const title=document.createElement('strong');title.textContent=f.id+' — MISSING';const p=document.createElement('p');p.textContent=f.brief;const time=document.createElement('small');time.textContent=f.durationMs+'ms nominal';el.append(title,p,time);return el;}));$('alignment').textContent=JSON.stringify({target:hero.target,timing:clip.timingPolicy,simulationAlignment:clip.simulationAlignment||'Follow actual simulation state; presentation never controls gameplay'},null,2);}
+function chooseHero(){const hero=$('hero').value;$('pose-name').replaceChildren(...Object.keys(meta.groups[hero]).map(k=>new Option(k,k)));$('clip').replaceChildren(...Object.keys(spec.heroes[hero].clips).map(k=>new Option(k,k)));showPose();showTimeline();}
+$('moment').onchange=chooseMoment;$('view').onchange=showGame;$('zoom').onchange=showGame;$('hero').onchange=chooseHero;$('pose-name').onchange=showPose;$('clip').onchange=showTimeline;
+chooseMoment();chooseHero();window.reviewReady=true;
+</script></body></html>

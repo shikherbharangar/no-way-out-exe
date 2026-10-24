@@ -1,0 +1,32 @@
+{
+  "verifiedAt": "2026-10-24T08:58:09.202Z",
+  "browserErrors": [],
+  "badResponses": [],
+  "assets": [
+    "/assets/far.png",
+    "/assets/mid.png",
+    "/assets/fan.png",
+    "/assets/zip-portrait.png",
+    "/assets/brick-portrait.png",
+    "/assets/prison-composition.png",
+    "/assets/machine-foreground.png",
+    "/assets/machine-composition.png",
+    "/assets/machine-depth.png",
+    "/assets/supplied/zip.png",
+    "/assets/supplied/brick.png",
+    "/assets/supplied/enemies.png",
+    "/assets/supplied/props.png",
+    "/assets/supplied/pickups.png",
+    "/assets/props.png",
+    "/assets/explosion.png",
+    "/assets/smoke.png",
+    "/assets/debris.png",
+    "/assets/impact.png",
+    "/assets/machine-props.png",
+    "/assets/tiles.png",
+    "/assets/icon.png",
+    "/assets/logo.png"
+  ],
+  "developmentHookAbsent": true,
+  "pauseResume": true
+}

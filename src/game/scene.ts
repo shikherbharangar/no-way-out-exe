@@ -18,6 +18,7 @@ export class PrisonScene extends Phaser.Scene {
  sprites!: Phaser.GameObjects.Sprite[]; guardSprites!: Phaser.GameObjects.Sprite[]; barrelSprites!: Phaser.GameObjects.Image[];
  terrainLayer!: Phaser.Tilemaps.TilemapLayer; previousTerrain: number[] = [];
  supplied!:SuppliedArt; rescueCage!:Phaser.GameObjects.Image; checkpointFlag!:Phaser.GameObjects.Image; rescueHint!:Phaser.GameObjects.Text; rescueVisual=0;
+ backdropLayers:Phaser.GameObjects.Image[]=[];
  effects!: PixelEffects; scenery!: PrisonArt; machineArt!:MachineArt;
  sectorOneObjects:Phaser.GameObjects.GameObject[]=[];displaySector=1;
  fx!: Phaser.GameObjects.Graphics; link!: Phaser.GameObjects.Graphics; edges!: Phaser.GameObjects.Graphics;
@@ -42,9 +43,13 @@ export class PrisonScene extends Phaser.Scene {
  create() {
   this.supplied=new SuppliedArt(this);
   this.cameras.main.setBackgroundColor('#080f1c').setRoundPixels(true).setBounds(0, 0, WORLD_W, 360);
-  this.add.image(0, 0, 'far').setOrigin(0).setScrollFactor(.16).setDepth(-20);
-  this.add.image(0, 0, 'mid').setOrigin(0).setScrollFactor(.6).setDepth(-15);
-  this.add.image(0,0,'prison-composition').setOrigin(0).setDepth(-8);
+  // Quiet only distant architecture. Actor pixels, collision surfaces, lamps,
+  // terminal, hazards and effects retain their existing colors and brightness.
+  this.backdropLayers=[
+   this.add.image(0, 0, 'far').setOrigin(0).setScrollFactor(.16).setDepth(-20).setTint(0x8594ab),
+   this.add.image(0, 0, 'mid').setOrigin(0).setScrollFactor(.6).setDepth(-15).setTint(0x9cabb9),
+   this.add.image(0,0,'prison-composition').setOrigin(0).setDepth(-8).setTint(0xb4bac4),
+  ];
   this.scenery=new PrisonArt(this);
   this.sectorOneObjects=this.children.list.slice();
   this.effects=new PixelEffects(this);

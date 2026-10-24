@@ -1,0 +1,104 @@
+{
+  "verifiedAt": "2026-10-24T13:21:11.686285+00:00",
+  "baseCommit": "fed52c95575c5e75b75f6b5e8fb56aaee6695f3d",
+  "branch": "approved-art-integration",
+  "checks": [
+    {
+      "command": "npm test",
+      "result": "passed",
+      "logSha256": "fbfdcfc4befc3047f313314158c5e6bd7a3815195cbc1530002d3559880356fb",
+      "evidenceLine": "      Tests  37 passed (37)"
+    },
+    {
+      "command": "npm run build",
+      "result": "passed",
+      "logSha256": "b699fb908adf0f6a046dd413468cf3b330eebee172d2b1dd276b0c4d903ed10c",
+      "evidenceLine": "\u2713 built in 7.75s"
+    },
+    {
+      "command": "npm run test:network",
+      "result": "passed",
+      "logSha256": "4b146e8cb8096fbb5cc2c04cb9362d643a9f02f575ba37d6ad76113866573e72",
+      "evidenceLine": "PASS room capacity, two ready slots, authoritative movement, disconnect freeze, token reconnect, duplicate rejection, state tamper rejection"
+    },
+    {
+      "command": "npm run test:network:action",
+      "result": "passed",
+      "logSha256": "aa4401ea6b08cdca6468a1e4be51377d4f7bc041051a014ec379e82f4ff38756",
+      "evidenceLine": "PASS identical combat snapshots and reconnect preserves destroyed terrain, barrels and gate"
+    },
+    {
+      "command": "npm run test:network:machine",
+      "result": "passed",
+      "logSha256": "0bc33f8f94e5aabf91b338a65e1085e8acaa25f2eecd4eae27a8afdd47c54985",
+      "evidenceLine": "PASS full authoritative campaign, both co-op mechanisms, trap/chase, boss, two-player exit and identical snapshots"
+    },
+    {
+      "command": "npm run test:browser",
+      "result": "passed",
+      "logSha256": "47215a4b98b0c2d69a9243ce6caea9dba3fba8ae5f377e7af1ffc9a994471e14",
+      "evidenceLine": "PASS no unhandled browser exceptions"
+    },
+    {
+      "command": "npm run test:production",
+      "result": "passed",
+      "logSha256": "a1c7b729badb29e5f90de2d4522d17a2016cebbc46d713234155129d52a9db2d",
+      "evidenceLine": "PASS production UI/input/pause, 23 PNG assets, no browser/HTTP errors, inspection hook absent"
+    },
+    {
+      "command": "npm run test:browser:machine",
+      "result": "passed",
+      "logSha256": "355a47d78e09db13b1b9cfc7494e1a61440a7f6e6a22a3c9b1b19dff5f012677",
+      "evidenceLine": "PASS supplied heroes across both sectors and real replay resets rescue"
+    },
+    {
+      "command": "npm run test:browser:machine:online",
+      "result": "passed",
+      "logSha256": "067a07dd23b7604fa996c2a75c82d0ad2d477bb4692b255f482b97ece153c1da",
+      "evidenceLine": "PASS both browser clients render THE MACHINE, solve co-op boss and finish with identical snapshots"
+    },
+    {
+      "command": "npm run test:art",
+      "result": "passed",
+      "logSha256": "c93068075dbcb4cffe4d20b08fe55881db5b78e96685771a692877d98ba1303b",
+      "evidenceLine": "PASS all 57 supplied frames in both directions: exact visible pixels, uncut dimensions, reflected anchors, native scale; performance sample recorded"
+    },
+    {
+      "command": "npm run test:animation-gallery",
+      "result": "passed",
+      "logSha256": "fa53169382b976432b445600d4d1608dafa38fa0d319a1e3582f3440ad24502e",
+      "evidenceLine": "PASS gallery gameplay comparisons, 25 original pose cells, 78 explicitly missing briefs, 4 ORA downloads and actual video playback"
+    },
+    {
+      "command": "npm run export:showcase",
+      "result": "passed",
+      "logSha256": "19ef6f99a104966f9c8bb92afd3f2fbf7d306fafc57d284cecb46151692e7bc2",
+      "evidenceLine": "PASS 15.000-second H.264/AAC video, 450 decoded frames, 640x360; media SHA-256 manifest written"
+    }
+  ],
+  "allNonSceneTypeScriptFilesUnchanged": {
+    "src/main.ts": "ce16285cc77a707e45960ea541a27b5fb0f2cd1d14a5b0d2d72846e24f6f05f9",
+    "src/game/audio.ts": "eb86bb58b5f111e467f9f1c6e59e76169c32ad64e60b34f2a6bc388e7a9ba299",
+    "src/game/pixel-effects.ts": "28053d0f3ee7e8a44878b373bd6773345c16965d4a6dc3d93ae5f7631bd7f578",
+    "src/game/prison-art.ts": "20013783574d82c502225c1053b4a6e1241cfcfba05274042ccec2988264e366",
+    "src/game/simulation.ts": "d94fe1506125724f077fdd7228ad252dfb0f341dc9a45cb5336a7317c28a8368",
+    "src/game/machine.ts": "6b6759255a3baa2d68ccd72af3c0d2052ac3a17acb89e11adf1a311dd776841c",
+    "src/game/supplied-art.ts": "788991e3a2070183d7b9a3eb6818bd4af86d7609bfbf6bb372473378c38c27e1",
+    "src/game/machine-art.ts": "e1d0a8e19e75b263a9d6487eaab1fb1fb34dcf631e88a7cfe98d58d764030aed",
+    "src/net/client.ts": "e5d152f2983646420a6873c30cbedcb24113c6ae6501dcb3cae0425e8b30eb5b",
+    "server/index.ts": "fa2906c45c8a44493a9e7343d3d8f39ba5b00342e1bf7aba95c5423f4e6d27a6"
+  },
+  "documentationLinksChecked": [
+    "docs/ANIMATION_SCALE_REVIEW.md",
+    "art/animation-production/README.md",
+    "artifacts/animation-review/README.md"
+  ],
+  "animationAcceptance": "NOT MET",
+  "newIllustratedFrames": 0,
+  "completedAnatomyRepairs": 0,
+  "notes": [
+    "114 pixel checks do not validate animation quality",
+    "No production deployment or 60fps benchmark claimed",
+    "GIMP editor import unavailable without an X display; ORA packaging and downloads verified"
+  ]
+}

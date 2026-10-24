@@ -1,0 +1,1552 @@
+{
+  "version": 1,
+  "status": "Incomplete artist handoff, not production animation",
+  "baseCommit": "fed52c9",
+  "nativeGame": [
+    640,
+    360
+  ],
+  "tile": 16,
+  "physicsCollider": [
+    14,
+    25
+  ],
+  "liveScale": 1,
+  "newApprovedFrames": 0,
+  "heroes": {
+    "zip": {
+      "identity": "White swept hair, red scarf, teal jacket, dark trousers, electric gauntlets; cocky face",
+      "target": {
+        "cell": [
+          64,
+          64
+        ],
+        "anchor": [
+          32,
+          56
+        ],
+        "idleVisibleHeight": 34,
+        "headTop": 22,
+        "colliderFromAnchor": [
+          -7,
+          -25,
+          14,
+          25
+        ],
+        "bodyWidthLimit": 22,
+        "equipmentAndScarfWidthLimit": 46,
+        "sourceFacing": 1,
+        "runtimeScale": 1,
+        "status": "artist target; not implemented or visually approved"
+      },
+      "clips": {
+        "idle": {
+          "loop": true,
+          "frames": [
+            {
+              "id": "zip-idle-01",
+              "rect": [
+                0,
+                0,
+                64,
+                64
+              ],
+              "durationMs": 180,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Neutral breath, confident face",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            },
+            {
+              "id": "zip-idle-02",
+              "rect": [
+                64,
+                0,
+                64,
+                64
+              ],
+              "durationMs": 180,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Inhale: chest contour changes one pixel",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            },
+            {
+              "id": "zip-idle-03",
+              "rect": [
+                128,
+                0,
+                64,
+                64
+              ],
+              "durationMs": 180,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Breath crest; scarf settles",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            },
+            {
+              "id": "zip-idle-04",
+              "rect": [
+                192,
+                0,
+                64,
+                64
+              ],
+              "durationMs": 180,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Exhale back to neutral",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "run": {
+          "loop": true,
+          "frames": [
+            {
+              "id": "zip-run-01",
+              "rect": [
+                0,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 40,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Near-foot contact, far arm forward",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "zip-run-02",
+              "rect": [
+                64,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 40,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Near-leg compression; planted foot tracks ground",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "zip-run-03",
+              "rect": [
+                128,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 40,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Near-leg passing under hip",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "zip-run-04",
+              "rect": [
+                192,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 40,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Near-leg push-off; far knee leads",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "zip-run-05",
+              "rect": [
+                256,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 40,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Far-foot contact, near arm forward",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "zip-run-06",
+              "rect": [
+                320,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 40,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Far-leg compression; fist counterbalances",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "zip-run-07",
+              "rect": [
+                384,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 40,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Far-leg passing under hip",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "zip-run-08",
+              "rect": [
+                448,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 40,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Far-leg push-off; near knee leads",
+              "artStatus": "missing",
+              "referencePose": "run"
+            }
+          ],
+          "timingPolicy": "Run is distance-driven: one eight-frame cycle per 48 world pixels; timings are nominal only."
+        },
+        "jump": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "zip-jump-01",
+              "rect": [
+                0,
+                128,
+                64,
+                64
+              ],
+              "durationMs": 60,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Takeoff extension",
+              "artStatus": "missing",
+              "referencePose": "jump"
+            },
+            {
+              "id": "zip-jump-02",
+              "rect": [
+                64,
+                128,
+                64,
+                64
+              ],
+              "durationMs": 90,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Rising tuck; head remains forward",
+              "artStatus": "missing",
+              "referencePose": "jump"
+            },
+            {
+              "id": "zip-jump-03",
+              "rect": [
+                128,
+                128,
+                64,
+                64
+              ],
+              "durationMs": 100,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Apex hang; feet below hip",
+              "artStatus": "missing",
+              "referencePose": "jump"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "fall": {
+          "loop": true,
+          "frames": [
+            {
+              "id": "zip-fall-01",
+              "rect": [
+                0,
+                192,
+                64,
+                64
+              ],
+              "durationMs": 100,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Descending extension, knees soft",
+              "artStatus": "missing",
+              "referencePose": "fall"
+            },
+            {
+              "id": "zip-fall-02",
+              "rect": [
+                64,
+                192,
+                64,
+                64
+              ],
+              "durationMs": 100,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Landing-ready; soles face surface",
+              "artStatus": "missing",
+              "referencePose": "fall"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "land": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "zip-land-01",
+              "rect": [
+                0,
+                256,
+                64,
+                64
+              ],
+              "durationMs": 30,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Foot contact and knee absorption",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            },
+            {
+              "id": "zip-land-02",
+              "rect": [
+                64,
+                256,
+                64,
+                64
+              ],
+              "durationMs": 30,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Recover torso; equipment lags",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            },
+            {
+              "id": "zip-land-03",
+              "rect": [
+                128,
+                256,
+                64,
+                64
+              ],
+              "durationMs": 40,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Return to neutral anchor",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "attack": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "zip-attack-01",
+              "rect": [
+                0,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 30,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Immediate electric release: projectile exists on the first action tick",
+              "artStatus": "missing",
+              "referencePose": "shoot"
+            },
+            {
+              "id": "zip-attack-02",
+              "rect": [
+                64,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 35,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Gauntlet recoil with connected wrist",
+              "artStatus": "missing",
+              "referencePose": "shoot"
+            },
+            {
+              "id": "zip-attack-03",
+              "rect": [
+                128,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 35,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Residual arc follows forearm",
+              "artStatus": "missing",
+              "referencePose": "shoot"
+            },
+            {
+              "id": "zip-attack-04",
+              "rect": [
+                192,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 50,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Recover shoulder and hand",
+              "artStatus": "missing",
+              "referencePose": "shoot"
+            },
+            {
+              "id": "zip-attack-05",
+              "rect": [
+                256,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 70,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Scarf settles",
+              "artStatus": "missing",
+              "referencePose": "shoot"
+            },
+            {
+              "id": "zip-attack-06",
+              "rect": [
+                320,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 80,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Ready stance",
+              "artStatus": "missing",
+              "referencePose": "shoot"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins.",
+          "simulationAlignment": {
+            "releaseAtMs": 0,
+            "contactFromAnchor": [
+              12,
+              -16
+            ],
+            "facingField": "facing",
+            "note": "Never delay damage to fit a visual anticipation frame. BRICK impact is the first tick windup reaches zero."
+          }
+        },
+        "hurt": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "zip-hurt-01",
+              "rect": [
+                0,
+                384,
+                64,
+                64
+              ],
+              "durationMs": 60,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Short recoil; face exposed",
+              "artStatus": "missing",
+              "referencePose": "hurt"
+            },
+            {
+              "id": "zip-hurt-02",
+              "rect": [
+                64,
+                384,
+                64,
+                64
+              ],
+              "durationMs": 90,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Recover balance",
+              "artStatus": "missing",
+              "referencePose": "hurt"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "death": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "zip-death-01",
+              "rect": [
+                0,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 60,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Lose balance",
+              "artStatus": "missing",
+              "referencePose": "death"
+            },
+            {
+              "id": "zip-death-02",
+              "rect": [
+                64,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 70,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Knees buckle",
+              "artStatus": "missing",
+              "referencePose": "death"
+            },
+            {
+              "id": "zip-death-03",
+              "rect": [
+                128,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 80,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Torso descends",
+              "artStatus": "missing",
+              "referencePose": "death"
+            },
+            {
+              "id": "zip-death-04",
+              "rect": [
+                192,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 90,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Ground contact",
+              "artStatus": "missing",
+              "referencePose": "death"
+            },
+            {
+              "id": "zip-death-05",
+              "rect": [
+                256,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 110,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Settle equipment",
+              "artStatus": "missing",
+              "referencePose": "death"
+            },
+            {
+              "id": "zip-death-06",
+              "rect": [
+                320,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 1000,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Hold readable downed body",
+              "artStatus": "missing",
+              "referencePose": "death"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "revive": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "zip-revive-01",
+              "rect": [
+                0,
+                512,
+                64,
+                64
+              ],
+              "durationMs": 70,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Downed hero stirs after partner revival",
+              "artStatus": "missing",
+              "referencePose": "hack"
+            },
+            {
+              "id": "zip-revive-02",
+              "rect": [
+                64,
+                512,
+                64,
+                64
+              ],
+              "durationMs": 80,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Elbow supports torso",
+              "artStatus": "missing",
+              "referencePose": "hack"
+            },
+            {
+              "id": "zip-revive-03",
+              "rect": [
+                128,
+                512,
+                64,
+                64
+              ],
+              "durationMs": 90,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "One knee under hip; equipment braced",
+              "artStatus": "missing",
+              "referencePose": "hack"
+            },
+            {
+              "id": "zip-revive-04",
+              "rect": [
+                192,
+                512,
+                64,
+                64
+              ],
+              "durationMs": 100,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Rise with stable head volume",
+              "artStatus": "missing",
+              "referencePose": "hack"
+            },
+            {
+              "id": "zip-revive-05",
+              "rect": [
+                256,
+                512,
+                64,
+                64
+              ],
+              "durationMs": 110,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Return to ready stance",
+              "artStatus": "missing",
+              "referencePose": "hack"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins.",
+          "simulationAlignment": {
+            "starts": "reviving > 0 on the revived hero, after 0.8s partner interaction",
+            "durationMs": 450,
+            "note": "Recovery animation, not the helper interaction. Death/ghost has higher priority."
+          }
+        }
+      },
+      "completedNewFrames": 0,
+      "repairFile": "zip-repair.ora",
+      "animationFile": "zip-animation-template.ora"
+    },
+    "brick": {
+      "identity": "Muscular shoulders, dark beard, orange trousers, pale vest, harness, one enormous connected mechanical fist",
+      "target": {
+        "cell": [
+          64,
+          64
+        ],
+        "anchor": [
+          32,
+          56
+        ],
+        "idleVisibleHeight": 40,
+        "headTop": 16,
+        "colliderFromAnchor": [
+          -7,
+          -25,
+          14,
+          25
+        ],
+        "bodyWidthLimit": 32,
+        "equipmentAndScarfWidthLimit": 60,
+        "sourceFacing": 1,
+        "runtimeScale": 1,
+        "status": "artist target; not implemented or visually approved"
+      },
+      "clips": {
+        "idle": {
+          "loop": true,
+          "frames": [
+            {
+              "id": "brick-idle-01",
+              "rect": [
+                0,
+                0,
+                64,
+                64
+              ],
+              "durationMs": 180,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Neutral breath, confident face",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            },
+            {
+              "id": "brick-idle-02",
+              "rect": [
+                64,
+                0,
+                64,
+                64
+              ],
+              "durationMs": 180,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Inhale: chest contour changes one pixel",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            },
+            {
+              "id": "brick-idle-03",
+              "rect": [
+                128,
+                0,
+                64,
+                64
+              ],
+              "durationMs": 180,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Breath crest; scarf settles",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            },
+            {
+              "id": "brick-idle-04",
+              "rect": [
+                192,
+                0,
+                64,
+                64
+              ],
+              "durationMs": 180,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Exhale back to neutral",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "run": {
+          "loop": true,
+          "frames": [
+            {
+              "id": "brick-run-01",
+              "rect": [
+                0,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 50,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Near-foot contact, far arm forward",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "brick-run-02",
+              "rect": [
+                64,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 50,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Near-leg compression; planted foot tracks ground",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "brick-run-03",
+              "rect": [
+                128,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 50,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Near-leg passing under hip",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "brick-run-04",
+              "rect": [
+                192,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 50,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Near-leg push-off; far knee leads",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "brick-run-05",
+              "rect": [
+                256,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 50,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Far-foot contact, near arm forward",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "brick-run-06",
+              "rect": [
+                320,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 50,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Far-leg compression; fist counterbalances",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "brick-run-07",
+              "rect": [
+                384,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 50,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Far-leg passing under hip",
+              "artStatus": "missing",
+              "referencePose": "run"
+            },
+            {
+              "id": "brick-run-08",
+              "rect": [
+                448,
+                64,
+                64,
+                64
+              ],
+              "durationMs": 50,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Far-leg push-off; near knee leads",
+              "artStatus": "missing",
+              "referencePose": "run"
+            }
+          ],
+          "timingPolicy": "Run is distance-driven: one eight-frame cycle per 48 world pixels; timings are nominal only."
+        },
+        "jump": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "brick-jump-01",
+              "rect": [
+                0,
+                128,
+                64,
+                64
+              ],
+              "durationMs": 60,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Takeoff extension",
+              "artStatus": "missing",
+              "referencePose": "jump"
+            },
+            {
+              "id": "brick-jump-02",
+              "rect": [
+                64,
+                128,
+                64,
+                64
+              ],
+              "durationMs": 90,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Rising tuck; head remains forward",
+              "artStatus": "missing",
+              "referencePose": "jump"
+            },
+            {
+              "id": "brick-jump-03",
+              "rect": [
+                128,
+                128,
+                64,
+                64
+              ],
+              "durationMs": 100,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Apex hang; feet below hip",
+              "artStatus": "missing",
+              "referencePose": "jump"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "fall": {
+          "loop": true,
+          "frames": [
+            {
+              "id": "brick-fall-01",
+              "rect": [
+                0,
+                192,
+                64,
+                64
+              ],
+              "durationMs": 100,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Descending extension, knees soft",
+              "artStatus": "missing",
+              "referencePose": "fall"
+            },
+            {
+              "id": "brick-fall-02",
+              "rect": [
+                64,
+                192,
+                64,
+                64
+              ],
+              "durationMs": 100,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Landing-ready; soles face surface",
+              "artStatus": "missing",
+              "referencePose": "fall"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "land": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "brick-land-01",
+              "rect": [
+                0,
+                256,
+                64,
+                64
+              ],
+              "durationMs": 30,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Foot contact and knee absorption",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            },
+            {
+              "id": "brick-land-02",
+              "rect": [
+                64,
+                256,
+                64,
+                64
+              ],
+              "durationMs": 30,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Recover torso; equipment lags",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            },
+            {
+              "id": "brick-land-03",
+              "rect": [
+                128,
+                256,
+                64,
+                64
+              ],
+              "durationMs": 40,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Return to neutral anchor",
+              "artStatus": "missing",
+              "referencePose": "idle"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "attack": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "brick-attack-01",
+              "rect": [
+                0,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 70,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Readiness; action starts",
+              "artStatus": "missing",
+              "referencePose": "punch"
+            },
+            {
+              "id": "brick-attack-02",
+              "rect": [
+                64,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 70,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Anticipation; show wrist connection",
+              "artStatus": "missing",
+              "referencePose": "punch"
+            },
+            {
+              "id": "brick-attack-03",
+              "rect": [
+                128,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 35,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Release / contact aligned to simulation",
+              "artStatus": "missing",
+              "referencePose": "punch"
+            },
+            {
+              "id": "brick-attack-04",
+              "rect": [
+                192,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 60,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Follow-through; retain shoulder and forearm",
+              "artStatus": "missing",
+              "referencePose": "punch"
+            },
+            {
+              "id": "brick-attack-05",
+              "rect": [
+                256,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 80,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Recover equipment mass",
+              "artStatus": "missing",
+              "referencePose": "punch"
+            },
+            {
+              "id": "brick-attack-06",
+              "rect": [
+                320,
+                320,
+                64,
+                64
+              ],
+              "durationMs": 100,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Settle to neutral",
+              "artStatus": "missing",
+              "referencePose": "punch"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins.",
+          "simulationAlignment": {
+            "releaseAtMs": 140,
+            "contactFromAnchor": [
+              29,
+              -16
+            ],
+            "facingField": "attackFacing",
+            "note": "Never delay damage to fit a visual anticipation frame. BRICK impact is the first tick windup reaches zero."
+          }
+        },
+        "hurt": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "brick-hurt-01",
+              "rect": [
+                0,
+                384,
+                64,
+                64
+              ],
+              "durationMs": 60,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Short recoil; face exposed",
+              "artStatus": "missing",
+              "referencePose": "hurt"
+            },
+            {
+              "id": "brick-hurt-02",
+              "rect": [
+                64,
+                384,
+                64,
+                64
+              ],
+              "durationMs": 90,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Recover balance",
+              "artStatus": "missing",
+              "referencePose": "hurt"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "death": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "brick-death-01",
+              "rect": [
+                0,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 60,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Lose balance",
+              "artStatus": "missing",
+              "referencePose": "death"
+            },
+            {
+              "id": "brick-death-02",
+              "rect": [
+                64,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 70,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Knees buckle",
+              "artStatus": "missing",
+              "referencePose": "death"
+            },
+            {
+              "id": "brick-death-03",
+              "rect": [
+                128,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 80,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Torso descends",
+              "artStatus": "missing",
+              "referencePose": "death"
+            },
+            {
+              "id": "brick-death-04",
+              "rect": [
+                192,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 90,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Ground contact",
+              "artStatus": "missing",
+              "referencePose": "death"
+            },
+            {
+              "id": "brick-death-05",
+              "rect": [
+                256,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 110,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Settle equipment",
+              "artStatus": "missing",
+              "referencePose": "death"
+            },
+            {
+              "id": "brick-death-06",
+              "rect": [
+                320,
+                448,
+                64,
+                64
+              ],
+              "durationMs": 1000,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Hold readable downed body",
+              "artStatus": "missing",
+              "referencePose": "death"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins."
+        },
+        "revive": {
+          "loop": false,
+          "frames": [
+            {
+              "id": "brick-revive-01",
+              "rect": [
+                0,
+                512,
+                64,
+                64
+              ],
+              "durationMs": 70,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Downed hero stirs after partner revival",
+              "artStatus": "missing",
+              "referencePose": "shield"
+            },
+            {
+              "id": "brick-revive-02",
+              "rect": [
+                64,
+                512,
+                64,
+                64
+              ],
+              "durationMs": 80,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Elbow supports torso",
+              "artStatus": "missing",
+              "referencePose": "shield"
+            },
+            {
+              "id": "brick-revive-03",
+              "rect": [
+                128,
+                512,
+                64,
+                64
+              ],
+              "durationMs": 90,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "One knee under hip; equipment braced",
+              "artStatus": "missing",
+              "referencePose": "shield"
+            },
+            {
+              "id": "brick-revive-04",
+              "rect": [
+                192,
+                512,
+                64,
+                64
+              ],
+              "durationMs": 100,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Rise with stable head volume",
+              "artStatus": "missing",
+              "referencePose": "shield"
+            },
+            {
+              "id": "brick-revive-05",
+              "rect": [
+                256,
+                512,
+                64,
+                64
+              ],
+              "durationMs": 110,
+              "anchor": [
+                32,
+                56
+              ],
+              "brief": "Return to ready stance",
+              "artStatus": "missing",
+              "referencePose": "shield"
+            }
+          ],
+          "timingPolicy": "Presentation only; authoritative action and damage timing always wins.",
+          "simulationAlignment": {
+            "starts": "reviving > 0 on the revived hero, after 0.8s partner interaction",
+            "durationMs": 450,
+            "note": "Recovery animation, not the helper interaction. Death/ghost has higher priority."
+          }
+        }
+      },
+      "completedNewFrames": 0,
+      "repairFile": "brick-repair.ora",
+      "animationFile": "brick-animation-template.ora"
+    }
+  },
+  "exportGate": [
+    "Every required frame hand-drawn and reviewed at native size",
+    "No blank, duplicated, warped or interpolated run frames",
+    "Hide guide layers; export transparent RGBA with integer anchors",
+    "Mechanical fist stays attached; scarf/equipment remain consistent",
+    "Keep soles and skull volumes stable; reference actual side view",
+    "Attack timing and muzzle/contact locations agree with existing simulation",
+    "No collision or network protocol changes",
+    "Review gameplay before replacing runtime atlases"
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "verifiedAt": "2026-10-24T08:55:08.663Z",
+  "method": "Two websocket clients; only input messages; no game-state writes",
+  "sameSnapshotTick": 852,
+  "reconnectPreservedTerrain": true,
+  "reconnectPreservedRescue": true,
+  "midRescueDisconnectFrozen": true,
+  "frozenRescueProgress": 0.35555555555555546,
+  "rescued": true,
+  "gate": true,
+  "barrelsDestroyed": 5,
+  "guardsDefeated": 3,
+  "events": [
+    {
+      "id": 19,
+      "type": "land",
+      "x": 409.86111111111154,
+      "y": 256.25977777777763,
+      "power": 1
+    },
+    {
+      "id": 20,
+      "type": "jump",
+      "x": 409.86111111111154,
+      "y": 256.97644444444427,
+      "power": 1
+    },
+    {
+      "id": 21,
+      "type": "shot",
+      "x": 695.4000000000003,
+      "y": 272.9555555555555,
+      "power": -1
+    },
+    {
+      "id": 22,
+      "type": "hurt",
+      "x": 603.6027777777763,
+      "y": 272.94711111111104,
+      "power": 1
+    },
+    {
+      "id": 23,
+      "type": "land",
+      "x": 451.9444444444451,
+      "y": 224.24311111111092,
+      "power": 1
+    },
+    {
+      "id": 24,
+      "type": "land",
+      "x": 589.9861111111102,
+      "y": 288.797111111111,
+      "power": 1
+    },
+    {
+      "id": 25,
+      "type": "land",
+      "x": 578.4444444444443,
+      "y": 288.3986666666665,
+      "power": 1
+    },
+    {
+      "id": 26,
+      "type": "shot",
+      "x": 695.4000000000003,
+      "y": 272.9555555555555,
+      "power": -1
+    },
+    {
+      "id": 27,
+      "type": "deflect",
+      "x": 647.5277777777768,
+      "y": 272.9555555555555,
+      "power": 1
+    },
+    {
+      "id": 28,
+      "type": "death",
+      "x": 713.4000000000003,
+      "y": 270.9555555555555,
+      "power": 1
+    },
+    {
+      "id": 29,
+      "type": "arc",
+      "x": 713.4000000000003,
+      "y": 270.9555555555555,
+      "power": 1
+    },
+    {
+      "id": 30,
+      "type": "rescue",
+      "x": 647,
+      "y": 238,
+      "power": 1
+    },
+    {
+      "id": 31,
+      "type": "spark",
+      "x": 586.1055555555546,
+      "y": 274.797111111111,
+      "power": 1
+    },
+    {
+      "id": 32,
+      "type": "charge",
+      "x": 642.6527777777766,
+      "y": 266.87644444444425,
+      "power": 1
+    },
+    {
+      "id": 33,
+      "type": "blast",
+      "x": 725.3194444444425,
+      "y": 272.87644444444425,
+      "power": 1.34,
+      "material": "steel",
+      "direction": 1
+    },
+    {
+      "id": 34,
+      "type": "arc",
+      "x": 725.3194444444425,
+      "y": 268.87644444444425,
+      "power": 1.5
+    },
+    {
+      "id": 35,
+      "type": "hurt",
+      "x": 789.3333333333328,
+      "y": 206.95555555555555,
+      "power": 1
+    },
+    {
+      "id": 36,
+      "type": "blast",
+      "x": 754,
+      "y": 272,
+      "power": 1.16,
+      "material": "fuel",
+      "direction": 1
+    },
+    {
+      "id": 37,
+      "type": "blast",
+      "x": 802,
+      "y": 272,
+      "power": 1.16,
+      "material": "fuel",
+      "direction": 1
+    },
+    {
+      "id": 38,
+      "type": "death",
+      "x": 818.4882828498415,
+      "y": 203.1222222222222,
+      "power": 1
+    },
+    {
+      "id": 39,
+      "type": "land",
+      "x": 696.3194444444425,
+      "y": 336.26533333333316,
+      "power": 1
+    },
+    {
+      "id": 40,
+      "type": "blast",
+      "x": 850,
+      "y": 256,
+      "power": 1.16,
+      "material": "fuel",
+      "direction": 1
+    },
+    {
+      "id": 41,
+      "type": "blast",
+      "x": 898,
+      "y": 256,
+      "power": 1.16,
+      "material": "fuel",
+      "direction": 1
+    },
+    {
+      "id": 42,
+      "type": "death",
+      "x": 962.7000000000033,
+      "y": 222.95555555555555,
+      "power": 1
+    }
+  ]
+}

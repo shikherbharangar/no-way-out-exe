@@ -26,7 +26,11 @@
     "assets:supplied": "python scripts/import-supplied.py",
     "test:art": "node scripts/test-supplied-render.mjs",
     "capture:supplied": "node scripts/capture-supplied.mjs",
-    "verify:supplied": "python scripts/verify-supplied.py"
+    "verify:supplied": "python scripts/verify-supplied.py",
+    "art:prepare-animation": "python scripts/prepare-animation-production.py",
+    "art:audit-animation": "python scripts/audit-animation-production.py",
+    "capture:animation-review": "node scripts/capture-animation-review.mjs",
+    "test:animation-gallery": "node scripts/review-animation.mjs"
   },
   "dependencies": {
     "phaser": "3.90.0",

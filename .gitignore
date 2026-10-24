@@ -23,3 +23,5 @@ __pycache__/
 
 !artifacts/supplied/
 artifacts/supplied/regression/**/*.webm
+!artifacts/animation-review/
+artifacts/animation-review/regression/**/*.webm

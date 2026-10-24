@@ -1,7 +1,7 @@
 import { chromium } from '@playwright/test';
 import { mkdir,writeFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const out='artifacts/supplied';await mkdir(out,{recursive:true});
+const out=process.env.CAPTURE_DIR||'artifacts/supplied';await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader']});
 const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
 try{

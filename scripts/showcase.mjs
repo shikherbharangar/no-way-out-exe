@@ -100,7 +100,7 @@ try {
  result.browserErrors=errors;result.capturedAt=new Date().toISOString();
  await writeFile(`${output}/evidence.json`,JSON.stringify(result,null,2)+'\n');
  console.log(JSON.stringify({duration:result.duration,shots:result.shots.map(s=>s.name),eventTypes:[...new Set(result.events.map(e=>e.type))],initial:result.initial.players,final:result.final.players,won:result.final.won,errors}));
- assert(result.animationFrames.players.every(frames=>frames.length>=4&&frames.includes('run')),'Missing moving hero animation');
+ assert(result.animationFrames.players.every(frames=>frames.length>=4&&frames.includes('run')),'Missing supplied action poses; this check does not validate animation-cycle quality');
  assert.equal(new Set(result.shots.map(shot=>shot.name)).size,result.shots.length,'Duplicate screenshot filename');
  assert(result.events.some(e=>e.type==='win'&&e.seconds<15),'Escape must be visible in the 15-second excerpt');
  assert(result.events.some(e=>e.type==='rescue'),'No actual cage rescue');

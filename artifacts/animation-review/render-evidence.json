@@ -1,0 +1,1724 @@
+{
+  "verifiedAt": "2026-10-24T13:17:37.247Z",
+  "browserErrors": [],
+  "performance": {
+    "seconds": 3.002600000023842,
+    "frames": 79,
+    "medianMs": 35.10000002384186,
+    "p95Ms": 50.599999994039536,
+    "environment": "Headless Chromium / SwiftShader, not production GPU performance"
+  },
+  "method": "Isolated Phaser rendering test, not a gameplay capture. Every full supplied frame rendered both directions at 1x and compared pixel-for-pixel against the original atlas composited on the same neutral background.",
+  "cases": [
+    {
+      "group": "zip",
+      "name": "idle",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "idle",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "run",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "run",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "jump",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        89
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "jump",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        89
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "fall",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        44,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "fall",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        44,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "shoot",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        43,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "shoot",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        43,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "melee",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        43,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "melee",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        43,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "dash",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        47,
+        89
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "dash",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        47,
+        89
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "wall_jump",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        89
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "wall_jump",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        89
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "slide",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "slide",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "hack",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "hack",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "electric",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        46,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "electric",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        46,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "hurt",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "hurt",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "death",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        49,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "zip",
+      "name": "death",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        49,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "idle",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        45,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "idle",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        45,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "run",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        43,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "run",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        43,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "jump",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        47,
+        89
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "jump",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        47,
+        89
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "fall",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        49,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "fall",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        49,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "punch",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        69,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "punch",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        69,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "aim",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        39,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "aim",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        39,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "slam",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        49,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "slam",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        49,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "shield",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        38,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "shield",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        38,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "charge",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        46,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "charge",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        46,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "special",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "special",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "hurt",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        43,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "hurt",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        43,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "death",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "brick",
+      "name": "death",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        91
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "guard",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        47,
+        80
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "guard",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        47,
+        80
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "shotgunner",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        46,
+        80
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "shotgunner",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        46,
+        80
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "shield_trooper",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        42,
+        81
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "shield_trooper",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        42,
+        81
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "sniper",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        45,
+        81
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "sniper",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        45,
+        81
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "heavy_trooper",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        45,
+        82
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "heavy_trooper",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        45,
+        82
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "jetpack_trooper",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        86
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "jetpack_trooper",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        86
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "riot_trooper",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        46,
+        80
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "riot_trooper",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        46,
+        80
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "drone",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "drone",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        72
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "turret",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        80
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "turret",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        80
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "combat_dog",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        67
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "combat_dog",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        67
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "mutant_prisoner",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        77
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "mutant_prisoner",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        77
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "bio_soldier",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        80
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "bio_soldier",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        80
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "alien_runner",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        82
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "alien_runner",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        82
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "alien_spitter",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        77
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "alien_spitter",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        77
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "armored_brute",
+      "facing": 1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        85
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "enemies",
+      "name": "armored_brute",
+      "facing": -1,
+      "frame": [
+        96,
+        96
+      ],
+      "anchor": [
+        48,
+        85
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "health",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        53
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "health",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        53
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "ammo",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "ammo",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "extra_life",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "extra_life",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        47
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "shield",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        56
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "shield",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        56
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "speed",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        49
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "speed",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        49
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "invulnerability",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        56
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "invulnerability",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        56
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "electric",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        59
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "electric",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        59
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "explosive",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        57
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "explosive",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        57
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "double_damage",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        57
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "double_damage",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        57
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "drone",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        57
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "drone",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        57
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "random",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        59
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "random",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        59
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "alien_artifact",
+      "facing": 1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        59
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "pickups",
+      "name": "alien_artifact",
+      "facing": -1,
+      "frame": [
+        64,
+        64
+      ],
+      "anchor": [
+        32,
+        59
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "props",
+      "name": "checkpoint_flag",
+      "facing": 1,
+      "frame": [
+        128,
+        128
+      ],
+      "anchor": [
+        31,
+        118
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "props",
+      "name": "checkpoint_flag",
+      "facing": -1,
+      "frame": [
+        128,
+        128
+      ],
+      "anchor": [
+        31,
+        118
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "props",
+      "name": "rescue_cage",
+      "facing": 1,
+      "frame": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        119
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "props",
+      "name": "rescue_cage",
+      "facing": -1,
+      "frame": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        119
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "props",
+      "name": "terminal",
+      "facing": 1,
+      "frame": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        104
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "props",
+      "name": "terminal",
+      "facing": -1,
+      "frame": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        104
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "props",
+      "name": "reactor",
+      "facing": 1,
+      "frame": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        122
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "props",
+      "name": "reactor",
+      "facing": -1,
+      "frame": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        122
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "props",
+      "name": "exit_beacon",
+      "facing": 1,
+      "frame": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        119
+      ],
+      "scale": 1,
+      "mismatches": 0
+    },
+    {
+      "group": "props",
+      "name": "exit_beacon",
+      "facing": -1,
+      "frame": [
+        128,
+        128
+      ],
+      "anchor": [
+        64,
+        119
+      ],
+      "scale": 1,
+      "mismatches": 0
+    }
+  ]
+}

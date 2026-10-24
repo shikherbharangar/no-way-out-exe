@@ -1,5 +1,7 @@
 # NO WAY OUT.exe
 
+**Animation/scale review — incomplete:** [Gameplay comparisons and footage](docs/ANIMATION_SCALE_REVIEW.md) · [Editable artist handoff](art/animation-production/README.md). No new completed animation frames or anatomy repairs; supplied identities preserved. Branch `approved-art-integration`; not merged into main.
+
 **Supplied-art integration review:** [Actual screenshots/video and remaining issues](docs/SUPPLIED_ART_INTEGRATION.md) · [Asset inventory](docs/SUPPLIED_ART_INVENTORY.md) · [Validation](docs/SUPPLIED_ART_VALIDATION.md). Branch `approved-art-integration`; not merged into main.
 
 **Two idiots. One prison. Infinite bad decisions.**

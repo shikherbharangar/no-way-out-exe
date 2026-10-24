@@ -52,10 +52,10 @@ try{
  for(const shot of shots)await writeFile(`${output}/${shot.name}.png`,Buffer.from(shot.png,'base64'));
  evidence.shots=shots.map(({png,...rest})=>rest);evidence.browserErrors=errors;await writeFile(`${output}/browser-evidence.json`,JSON.stringify(evidence,null,2)+'\n');
  assert.deepEqual(errors,[]);assert.equal(result.final.won,true);assert.equal(result.final.sector,2);assert.equal(shots.length,7);
- for(const f of result.frames)assert(f.includes('run')&&f.some(n=>['shoot','punch','charge'].includes(n)),'Moving and attacking animations');
+ for(const f of result.frames)assert(f.includes('run')&&f.some(n=>['shoot','punch','charge'].includes(n)),'Moving and attacking pose selection; not a cycle-quality test');
  const art=await page.evaluate(()=>window.__prison.sprites.map(s=>s.texture.key));assert.deepEqual(art,['supplied-zip','supplied-brick']);
  await page.click('#again');await page.waitForFunction(()=>window.__prison.sim.sector===1&&window.__prison.displaySector===1);
  assert.deepEqual(await page.evaluate(()=>({actors:window.__prison.sprites.map(s=>s.texture.key),rescued:window.__prison.sim.rescued})),{actors:['supplied-zip','supplied-brick'],rescued:false});
  console.log('PASS supplied heroes across both sectors and real replay resets rescue');
- console.log('PASS full two-sector browser campaign, seven real frames, video/audio, actor animations, no browser errors');
+ console.log('PASS full two-sector browser campaign, seven real frames, video/audio, actor pose selection, no browser errors');
 }finally{await browser.close();}
