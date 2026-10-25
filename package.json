@@ -25,9 +25,10 @@
     "export:machine": "node scripts/export-machine.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "phaser": "3.90.0",
-    "ws": "8.18.3",
-    "tsx": "4.20.6"
+    "tsx": "4.20.6",
+    "ws": "8.18.3"
   },
   "devDependencies": {
     "@playwright/test": "1.56.1",

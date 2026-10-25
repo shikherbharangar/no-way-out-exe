@@ -1,6 +1,9 @@
 import Phaser from 'phaser';
 import { PrisonScene, defaults, type Binding } from './game/scene';
 import './style.css';
+import { inject } from '@vercel/analytics';
+
+inject();
 
 const ui = document.querySelector<HTMLDivElement>('#ui')!;
 const scene = new PrisonScene();
