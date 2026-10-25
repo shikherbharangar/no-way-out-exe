@@ -8,7 +8,7 @@ const clients:Client[]=[];
 type Message={type:string;[key:string]:any};
 type Client={socket:WebSocket;messages:Message[];states:Map<number,Snapshot>;state?:Snapshot};
 async function connect(){
- const socket=new WebSocket('ws://127.0.0.1:2567'),c:Client={socket,messages:[],states:new Map()};clients.push(c);
+ const socket=new WebSocket(process.env.NETWORK_SERVER_URL||'ws://127.0.0.1:2567',{origin:process.env.NETWORK_ORIGIN}),c:Client={socket,messages:[],states:new Map()};clients.push(c);
  socket.on('message',raw=>{const m=JSON.parse(raw.toString());if(m.type==='state'){c.state=m.state;c.states.set(m.state.tick,m.state);if(c.states.size>100)c.states.delete(c.states.keys().next().value!);}else c.messages.push(m);});
  await new Promise<void>((resolve,reject)=>{socket.once('open',()=>resolve());socket.once('error',reject);});return c;
 }

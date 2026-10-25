@@ -1,0 +1,40 @@
+{
+  "verifiedAt": "2026-10-24T14:10:26.600Z",
+  "frontend": "https://127.0.0.1:4444",
+  "publicDeployment": false,
+  "localTLSCertificateBypass": true,
+  "method": "Two independent production browser contexts, real UI/invite and keyboard inputs. Test-only WebSocket observation, no simulation writes or application inspection hooks. Separate unavailable-transport case deliberately rejects upgrades.",
+  "localWorksWithoutBackend": true,
+  "cancelStopsRetries": true,
+  "reconnected": true,
+  "sameFinalSnapshot": true,
+  "completedBothSectors": true,
+  "finalTick": 3853,
+  "seed": 1746751846,
+  "bossHp": 0,
+  "durationSeconds": 72.591,
+  "observed": {
+    "connections": 1,
+    "urls": [
+      "wss://127.0.0.1:4444/socket"
+    ],
+    "events": [
+      "jump",
+      "land",
+      "blast",
+      "gate",
+      "spark",
+      "hurt",
+      "arc",
+      "shot",
+      "checkpoint",
+      "death",
+      "deflect",
+      "revive",
+      "win",
+      "charge"
+    ],
+    "states": 1326
+  },
+  "browserErrors": []
+}

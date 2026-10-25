@@ -1,7 +1,7 @@
 import WebSocket from 'ws';
 import assert from 'node:assert/strict';
 const sockets=[];
-async function connect(){const s=new WebSocket('ws://127.0.0.1:2567');s.messages=[];s.on('message',m=>s.messages.push(JSON.parse(m)));await new Promise((res,rej)=>{s.on('open',res);s.on('error',rej)});sockets.push(s);return s;}
+async function connect(){const s=new WebSocket(process.env.NETWORK_SERVER_URL||'ws://127.0.0.1:2567',{origin:process.env.NETWORK_ORIGIN});s.messages=[];s.on('message',m=>s.messages.push(JSON.parse(m)));await new Promise((res,rej)=>{s.on('open',res);s.on('error',rej)});sockets.push(s);return s;}
 function send(s,m){s.send(JSON.stringify(m));}
 async function next(s,type,filter=()=>true){const start=Date.now();while(Date.now()-start<5000){const i=s.messages.findIndex(m=>m.type===type&&filter(m));if(i>=0)return s.messages.splice(i,1)[0];await new Promise(r=>setTimeout(r,20));}throw new Error(`Timeout for ${type}`);}
 try{

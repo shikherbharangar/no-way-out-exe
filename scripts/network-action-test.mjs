@@ -4,7 +4,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 const output=process.env.CAPTURE_DIR||'artifacts/premium';
 const clients=[];
 async function connect(){
- const socket=new WebSocket('ws://127.0.0.1:2567'),client={socket,messages:[],states:new Map(),state:null};
+ const socket=new WebSocket(process.env.NETWORK_SERVER_URL||'ws://127.0.0.1:2567',{origin:process.env.NETWORK_ORIGIN}),client={socket,messages:[],states:new Map(),state:null};
  socket.on('message',raw=>{const m=JSON.parse(raw);if(m.type==='state'){client.state=m.state;client.states.set(m.state.tick,m.state);if(client.states.size>100)client.states.delete(client.states.keys().next().value);}else client.messages.push(m);});
  clients.push(client);await new Promise((resolve,reject)=>{socket.once('open',resolve);socket.once('error',reject);});return client;
 }

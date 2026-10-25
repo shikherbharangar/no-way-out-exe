@@ -30,7 +30,8 @@
     "art:prepare-animation": "python scripts/prepare-animation-production.py",
     "art:audit-animation": "python scripts/audit-animation-production.py",
     "capture:animation-review": "node scripts/capture-animation-review.mjs",
-    "test:animation-gallery": "node scripts/review-animation.mjs"
+    "test:animation-gallery": "node scripts/review-animation.mjs",
+    "test:deployed": "node scripts/deployed-browser.mjs"
   },
   "dependencies": {
     "phaser": "3.90.0",

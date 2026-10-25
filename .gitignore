@@ -25,3 +25,6 @@ __pycache__/
 artifacts/supplied/regression/**/*.webm
 !artifacts/animation-review/
 artifacts/animation-review/regression/**/*.webm
+!artifacts/deployment/
+artifacts/deployment/**/*.webm
+.vercel/

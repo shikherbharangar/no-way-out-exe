@@ -1,0 +1,18 @@
+# Import as a Render Blueprint. This explicitly selects the FREE instance type.
+services:
+  - type: web
+    name: no-way-out-multiplayer
+    runtime: docker
+    plan: free
+    branch: free-public-deployment
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    autoDeploy: false
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ALLOWED_ORIGIN
+        sync: false
+# Render supplies PORT. Enter the exact Vercel HTTPS origin for ALLOWED_ORIGIN.
+# No disks, databases, workers, scaling rules, cron jobs or paid add-ons.

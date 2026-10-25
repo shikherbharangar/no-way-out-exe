@@ -1,0 +1,28 @@
+{
+  "verifiedAt": "2026-10-24T13:57:19.311Z",
+  "backend": "ws://127.0.0.1:2569",
+  "health": 200,
+  "head": 200,
+  "originChecks": [
+    {
+      "origin": "https://127.0.0.1:4444",
+      "status": 101
+    },
+    {
+      "origin": "(absent)",
+      "status": 401
+    },
+    {
+      "origin": "null",
+      "status": 401
+    },
+    {
+      "origin": "https://not-your-game.example",
+      "status": 401
+    },
+    {
+      "origin": "https://127.0.0.1:4444.evil.test",
+      "status": 401
+    }
+  ]
+}

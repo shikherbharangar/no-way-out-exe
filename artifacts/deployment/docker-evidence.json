@@ -1,0 +1,13 @@
+{
+  "image": "sha256:4f09d17e652f546b9f1725b532e59dd7f794f86dcff1a732af1f566d101f0dc7",
+  "buildPassed": true,
+  "buildEnvironment": "Execution environment requires its proxy DNS mapping and optional npm_ca build secret; TLS verification remained enabled. No CA copied into final image.",
+  "runtimeUser": "1000",
+  "runtimePort": 10000,
+  "hostPort": 2569,
+  "machineModulePresent": true,
+  "enterMachineImportedSuccessfully": true,
+  "missingProductionOriginFailsStartup": true,
+  "healthURL": "http://127.0.0.1:2569/health",
+  "publicDeployment": false
+}

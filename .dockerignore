@@ -1,6 +1,12 @@
 node_modules
 dist
 .git
-.env
-.env.local
+.env*
 artifacts
+art
+public
+docs
+tests
+scripts
+.github
+.vercel

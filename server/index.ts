@@ -2,14 +2,16 @@ import { createServer } from 'node:http';
 import { randomBytes, randomInt } from 'node:crypto';
 import { WebSocketServer, WebSocket } from 'ws';
 import { Simulation, idleInput, type Input } from '../src/game/simulation';
+import { serverConfig } from './config';
 
 type Slot = { token: string; socket?: WebSocket; ready: boolean; input: Input; lastInput: number; lastSeen: number; taps: { jump: boolean; special: boolean } };
 type Room = { code: string; slots: [Slot, Slot?]; sim: Simulation; started: boolean; touched: number };
 const rooms = new Map<string, Room>();
 const clients = new Map<WebSocket, { room: Room; slot: number }>();
-const allowed = process.env.ALLOWED_ORIGIN?.split(',');
-const http = createServer((req, res) => { if (req.url === '/health') { res.writeHead(200, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ ok: true, rooms: rooms.size })); } else { res.writeHead(404); res.end(); } });
-const wss = new WebSocketServer({ server: http, maxPayload: 1024, verifyClient: ({ origin }: { origin: string }) => !allowed || !origin || allowed.includes(origin) });
+const config = serverConfig();
+const http = createServer((req, res) => { if (req.url === '/health' && ['GET','HEAD'].includes(req.method || '')) { res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(req.method === 'HEAD' ? undefined : JSON.stringify({ ok: true, rooms: rooms.size })); } else { res.writeHead(404); res.end(); } });
+const wss = new WebSocketServer({ server: http, maxPayload: 1024, verifyClient: ({ origin }: { origin: string }) => config.acceptsOrigin(origin) });
+const alive = new WeakSet<WebSocket>();
 function send(socket: WebSocket | undefined, data: unknown) { if (socket?.readyState === WebSocket.OPEN) socket.send(JSON.stringify(data)); }
 function error(socket: WebSocket, message: string) { send(socket, { type: 'error', message }); }
 function newSlot(socket: WebSocket): Slot { return { token: randomBytes(24).toString('hex'), socket, ready: false, input: idleInput(), lastInput: Date.now(), lastSeen: Date.now(), taps: { jump: false, special: false } }; }
@@ -24,6 +26,7 @@ function detach(ws: WebSocket, permanent = false) {
  lobby(c.room);
 }
 wss.on('connection', ws => {
+ alive.add(ws); ws.on('pong', () => alive.add(ws));
  let count = 0, lastWindow = Date.now();
  ws.on('message', raw => {
   if (Date.now() - lastWindow > 1000) { count = 0; lastWindow = Date.now(); }
@@ -73,5 +76,13 @@ setInterval(() => {
   }
  }
 }, 1000 / 60).unref();
-http.listen(Number(process.env.PORT || 2567), '0.0.0.0', () => console.log('Authoritative prison server listening on port', process.env.PORT || 2567));
-process.on('SIGTERM', () => { wss.clients.forEach(s => s.close(1001, 'Server shutting down')); wss.close(); http.close(); });
+// Detect dead transports during real sessions, not a service-warming HTTP job.
+const heartbeat = setInterval(() => {
+ for (const ws of wss.clients) {
+  if (!alive.has(ws)) { ws.terminate(); continue; }
+  alive.delete(ws); ws.ping();
+ }
+}, 10000);
+heartbeat.unref();
+http.listen(config.port, '0.0.0.0', () => console.log('Authoritative prison server listening on port', config.port));
+process.on('SIGTERM', () => { clearInterval(heartbeat); wss.clients.forEach(s => s.close(1001, 'Server shutting down')); wss.close(); http.close(); setTimeout(() => process.exit(0), 5000).unref(); });

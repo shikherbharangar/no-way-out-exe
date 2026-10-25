@@ -110,34 +110,11 @@ npm run assets
 
 No Broforce sprites, maps, textures, audio, or UI were extracted, traced, or redistributed. The direction targets its small character scale, layered industrial scenery, and explosive arcade readability. The [direct visual review](docs/PREMIUM_ACTION_REVIEW.md) compares real captures with accessible Broforce community screenshots, identifies source limitations, and documents remaining differences. Commercial visual parity is not claimed.
 
-## GitHub and Vercel
+## Free public deployment
 
-The checkout was initially empty. To publish reviewed changes to the selected repository's main branch:
+Use **Vercel Hobby + Render Free Docker Web Service** from the separate `free-public-deployment` branch. Main remains unchanged. See [exact account setup, variables, limitations and acceptance tests](docs/FREE_DEPLOYMENT.md). `render.yaml` selects `plan: free`; `vercel.json` builds Vite with `npm ci` / `npm run build` and serves `dist`.
 
-```bash
-git remote -v
-git log --oneline -3
-git push origin HEAD:main
-```
-
-Do not use force push. If the remote gains commits before publication, fetch and reconcile them first.
-
-For the static frontend:
-
-1. Import `shikherbharangar/no-way-out-exe` into Vercel and select the published branch.
-2. Use the included `vercel.json`: install `npm ci`, build `npm run build`, output `dist`.
-3. Set **`VITE_SERVER_URL=wss://YOUR-BACKEND-HOST`** in Vercel's environment settings. This is a public endpoint, not a secret. Redeploy after changing it.
-4. Verify an HTTPS page can create/join a room from two different computers, synchronize destruction, and reconnect. That production test has not been performed here.
-
-The brief's specific Vercel WebSocket announcement URL and official limitations page were requested, but both returned proxy 403 responses in this environment. This implementation makes **no claim about Vercel Functions' current WebSocket support** and does not depend on it.
-
-### Dedicated backend deployment
-
-Use a service that supports one continuously running Node process, WebSocket upgrades, and a public TLS endpoint. Deploy this repository's `Dockerfile`, or configure build `npm ci` and start `npm run server` with Node 24. The Docker image includes tsx because it runs the TypeScript server directly.
-
-Set `PORT` to the platform's assigned port (default 2567). Set `ALLOWED_ORIGIN` to the exact HTTPS frontend origin; multiple origins are comma-separated. The server checks browser origins during the upgrade. Route `/health` for health checks. Configure **one instance**, with no autoscaling, until room-aware routing is implemented. Use WSS for an HTTPS frontend.
-
-The Dockerfile and cloud deployment configuration are supplied but have not been built/deployed in this environment. No hosting credentials were requested or invented. Private rooms are ephemeral and not an authenticated public service; add production abuse controls and monitoring before a broad launch.
+Public deployment is pending account authorization. No public game/backend URL is claimed. The frontend needs the actual Render WSS address in `VITE_SERVER_URL`; Render needs the actual Vercel HTTPS origin in `ALLOWED_ORIGIN`. Initial connections have a bounded wake-up/retry experience; local co-op remains available without the backend.
 
 ## Structure
 

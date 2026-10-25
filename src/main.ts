@@ -59,8 +59,9 @@ import { RoomClient } from './net/client';
 let room: RoomClient | undefined;
 function disconnect() { room?.close(); room = undefined; scene.networkStep = undefined; scene.online = false; }
 function onlineMenu() {
- screen = 'online'; shell(`<h2>PRIVATE CO-OP / EXACTLY TWO PRISONERS</h2><h1>CALL YOUR ACCOMPLICE.</h1><p>Host a room or enter your friend's six-letter code. Each player uses the ZIP keyboard controls or a controller; the host is ZIP and the guest is BRICK.</p><button id="host" class="play">CREATE PRIVATE ROOM <span>+</span></button><div class="form-row"><input id="code" maxlength="6" aria-label="Room code" placeholder="ROOM CODE" autocomplete="off"><button id="join" class="icon-btn">JOIN ROOM</button></div><p id="net-status" class="status">${import.meta.env.VITE_SERVER_URL ? 'Dedicated multiplayer service configured.' : 'Local server: start npm run server. Production requires VITE_SERVER_URL.'}</p><button id="back" class="link-button">← BACK</button>`);
+ screen = 'online'; shell(`<h2>PRIVATE CO-OP / EXACTLY TWO PRISONERS</h2><h1>CALL YOUR ACCOMPLICE.</h1><p>Host a room or enter your friend's six-letter code. Each player uses the ZIP keyboard controls or a controller; the host is ZIP and the guest is BRICK.</p><button id="host" class="play">CREATE PRIVATE ROOM <span>+</span></button><div class="form-row"><input id="code" maxlength="6" aria-label="Room code" placeholder="ROOM CODE" autocomplete="off"><button id="join" class="icon-btn">JOIN ROOM</button></div><p id="net-status" class="status" role="status" aria-live="polite">${import.meta.env.VITE_SERVER_URL ? 'The free multiplayer server may take a minute to wake up.' : 'Online availability depends on the server. Local co-op is always available.'}</p><div class="subplay"><button id="local-online" class="link-button">PLAY LOCAL CO-OP</button><button id="back" class="link-button">← BACK</button></div>`);
  const requested = new URLSearchParams(location.search).get('room'); if (requested) document.querySelector<HTMLInputElement>('#code')!.value = requested.slice(0, 6);
+ click('local-online', () => { disconnect(); tutorial(); });
  click('host', () => connect('')); click('join', () => { const code = document.querySelector<HTMLInputElement>('#code')!.value.trim().toUpperCase(); if (/^[A-Z]{6}$/.test(code)) connect(code); else document.querySelector('#net-status')!.textContent = 'Enter the six-letter room code.'; }); click('back', () => { disconnect(); title(); });
 }
 function connect(code: string) {
@@ -69,10 +70,19 @@ function connect(code: string) {
  const url = configured || (['localhost','127.0.0.1'].includes(location.hostname) ? `ws://${location.hostname}:2567` : '');
  if (!url) { document.querySelector('#net-status')!.textContent = 'Online service is not configured. Deploy the server and set VITE_SERVER_URL before building.'; return; }
  room = new RoomClient(url);
- room.onError = message => {
-  if (screen === 'playing' || screen === 'pause') { scene.pausedRun = true; shell(`<h2>LINK INTERRUPTED</h2><h1>CONNECTION LOST.</h1><p>${escape(message)}</p><button id="back" class="link-button">RETURN TO LOBBY</button>`); click('back', () => { disconnect(); onlineMenu(); }); }
-  else { const status = document.querySelector('#net-status'); if (status) status.textContent = message; }
+ const connectionMessage = (message: string, terminal: boolean) => {
+  if (scene.online && scene.activeRun) {
+   screen = 'reconnecting'; scene.pausedRun = true; scene.keys.clear();
+   shell(`<h2>LINK INTERRUPTED</h2><h1>${terminal ? 'CONNECTION LOST.' : 'RECONNECTING.'}</h1><p id="net-status" role="status" aria-live="polite">${escape(message)}</p><button id="back" class="link-button">RETURN TO LOBBY</button><button id="local-online" class="link-button">PLAY LOCAL CO-OP</button>`);
+   click('back', () => { disconnect(); onlineMenu(); });
+   click('local-online', () => { disconnect(); tutorial(); });
+  } else {
+   const status = document.querySelector('#net-status'); if (status) status.textContent = message;
+   for (const id of ['host','join']) { const button = document.querySelector<HTMLButtonElement>('#'+id); if (button) button.disabled = !terminal; }
+  }
  };
+ room.onStatus = message => connectionMessage(message, false);
+ room.onError = message => connectionMessage(message, true);
  room.onLobby = state => {
   if (state.started && scene.activeRun) { if (state.connected.every(Boolean)) playing(); else { scene.pausedRun = true; shell('<h2>LINK INTERRUPTED</h2><h1>PARTNER DISCONNECTED.</h1><p>Your slot is reserved for 30 seconds. The simulation is paused while your partner reconnects.</p><button id="back" class="link-button">LEAVE ROOM</button>'); click('back', () => { disconnect(); onlineMenu(); }); } return; }
   screen = 'lobby';
@@ -82,7 +92,6 @@ function connect(code: string) {
  room.onStart = slot => { scene.start(true, slot); scene.networkStep = input => room?.input(input); playing(); };
  room.onState = state => { if (!scene.sim.tick) scene.lastEvent = Math.max(0,...state.events.map(e=>e.id)); scene.sim.apply(state); };
  room.open(code);
- document.querySelector('#net-status')!.textContent = 'Connecting to the Panopticon…';
 }
 scene.onPause = pause; scene.onWin = victory;
 game.events.once('prison-ready', () => { try { const v = localStorage.getItem('nwo-volume'); if (v !== null) scene.sfx.setVolume(Number(v)); } catch {} title(); if (new URLSearchParams(location.search).has('room')) onlineMenu(); });

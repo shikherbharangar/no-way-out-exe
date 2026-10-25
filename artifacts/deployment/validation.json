@@ -1,0 +1,90 @@
+{
+  "collectedAt": "2026-10-25T04:37:18.143203+00:00",
+  "baseCommit": "ee08e3952133a61058ae3b5f1b146f1cf46ff121",
+  "branch": "free-public-deployment",
+  "publicDeployment": false,
+  "publicFrontendURL": null,
+  "publicBackendURL": null,
+  "blocker": "No connected Vercel/Render tools or account authorization; real-host setup/acceptance required.",
+  "checks": [
+    {
+      "command": "npm test",
+      "result": "passed",
+      "logSha256": "ba43d35e222084c7f2e46ef51f5a6790ca9678194ebb8b8f12e0ef7b8e55a006",
+      "evidence": "      Tests  46 passed (46)"
+    },
+    {
+      "command": "npm run build",
+      "result": "passed",
+      "logSha256": "7cad51b1d444f491ed20017d8b9d932da9103936b28b951b2c82bceea18c3c0a",
+      "evidence": "\u2713 built in 7.29s"
+    },
+    {
+      "command": "Docker build",
+      "result": "passed",
+      "logSha256": "2d3a86b74072c7f33b95d6e1be067b4f393c3146324634b6a57f8c6b08aa4b2a",
+      "evidence": "#11 naming to docker.io/library/no-way-out:free-deployment 0.0s done"
+    },
+    {
+      "command": "npm run test:browser",
+      "result": "passed",
+      "logSha256": "47215a4b98b0c2d69a9243ce6caea9dba3fba8ae5f377e7af1ffc9a994471e14",
+      "evidence": "PASS no unhandled browser exceptions"
+    },
+    {
+      "command": "npm run test:network (production Docker)",
+      "result": "passed",
+      "logSha256": "4b146e8cb8096fbb5cc2c04cb9362d643a9f02f575ba37d6ad76113866573e72",
+      "evidence": "PASS room capacity, two ready slots, authoritative movement, disconnect freeze, token reconnect, duplicate rejection, state tamper rejection"
+    },
+    {
+      "command": "npm run test:network:action (production Docker)",
+      "result": "passed",
+      "logSha256": "aa4401ea6b08cdca6468a1e4be51377d4f7bc041051a014ec379e82f4ff38756",
+      "evidence": "PASS identical combat snapshots and reconnect preserves destroyed terrain, barrels and gate"
+    },
+    {
+      "command": "npm run test:network:machine (production Docker)",
+      "result": "passed",
+      "logSha256": "0bc33f8f94e5aabf91b338a65e1085e8acaa25f2eecd4eae27a8afdd47c54985",
+      "evidence": "PASS full authoritative campaign, both co-op mechanisms, trap/chase, boss, two-player exit and identical snapshots"
+    },
+    {
+      "command": "npm run test:deployed (localhost production TLS + Docker)",
+      "result": "passed",
+      "logSha256": "ab86878ddab82ed64f36ec18b10814a9dad5b5bfd8a2881abf2cb0ac3d77787d",
+      "evidence": "PASS production HTTPS/WSS, two-client full campaign, invite, movement/destruction, reconnect, and local co-op without backend"
+    },
+    {
+      "command": "node scripts/deployment-server-check.mjs",
+      "result": "passed",
+      "logSha256": "26e6e31c56d1a250f8dca70368b44afe21ae24ad47bce5d7fa29bdccec017733",
+      "evidence": "PASS /health GET/HEAD and exact-origin WebSocket upgrade; absent, null and unauthorized origins rejected with 401"
+    }
+  ],
+  "originalSourceFilesUnchanged": 83,
+  "gameplayArtPublicPathsChanged": [],
+  "files": {
+    "docker-evidence.json": "af7f32428f47093a7ffa43ec68313852498fbca284ab774d4aee37652af4cf19",
+    "server-waking.png": "3799236f2f8bfbda5833004c8d01b13fff53df01f98c953612992edc1716f358",
+    "local-without-backend.png": "1f8ba6255eafc50e3a638fda9901cdac26c31738d011e60ea5f9f9300abd8320",
+    "production-online-1.png": "235f61c692556feb983352a4e9a1cadba8e1c124e62df52f3bf0637692bca86e",
+    "README.md": "2b0ae94d54613c687e08775cd5af697cfd1c513826031d9c5702163c9b5296cf",
+    "production-online-0.png": "8bc0dc660e58e6b1169b57129fdce4d18efd88e7bdaeab484e46f9dc62194bb8",
+    "server-security-evidence.json": "7886d36efffcdd0450cbff1a77608d166645f46064eafee84dfc451e0ddefc01",
+    "production-online-evidence.json": "b99c3d81a5db8f75f3865ca02acddb36dc06ce86d8dba59ae7026362be02da4d",
+    "network-action/network-evidence.json": "910074169ac4a45af95cca36a9c5e87ecdfda1a11924c81bac042076600d4145",
+    "network-machine/network-evidence.json": "66cf10b16aae9b75c2e6e2a8a4e1d7c28184369845291536b5a3e0ea6b58a5ab",
+    "regression/smoke/responsive.png": "baab25611036576f489f7e401c04865e819c55786ad5909feac74bd03a8c0e82",
+    "regression/smoke/online.png": "5266f1622e800c653c96dbeecea7d3bcff1f839d051b4e49a1b4efae856102c4",
+    "regression/smoke/prison.png": "e7eef5b3100a76bce58662dac8146c2087b8349506d879e5e620d21b03b2d1f5",
+    "regression/smoke/title.png": "cca5d2d1431c788c5dd65ac93586fc70a43a3511c7da6dca7275a724f7d3da6f",
+    "regression/smoke/destruction.png": "3c8882c350dd3c0969dc7d0cd560d64e7438ea7c072d1ca4b9a24010a3773a45"
+  },
+  "limits": [
+    "Local self-signed TLS fixture, not public provider TLS",
+    "No internet latency or production load test",
+    "Initial free-provider cold-start duration not verified",
+    "Previous production bot attempts required input-driver timing fixes; gameplay physics unchanged"
+  ]
+}
